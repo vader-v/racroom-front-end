@@ -1,9 +1,24 @@
 import { useState } from "react"
 
 const NewTrivia = () => {
+  const [formData, setFormData ] = useState({
+    title: '',
+    text: '',
+    category: 'shortcuts'
+  })
+
+  const handleChange = (evt) => {
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
+  }
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault()
+    // Update this line shortly...
+  }
+
   return (
     <main>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="title-input">Title</label>
         <input 
           type="text" 
@@ -11,15 +26,21 @@ const NewTrivia = () => {
           id="title-input"
           value={formData.title}
           placeholder="Title"
+          onChange={handleChange}
         />
         <label htmlFor="category-input">Category</label>
-        <select name="category" id="category-input" >
-          <option value="shortcuts">Keyboard Shortcuts</option>
-          <option value="programming">Programming</option>
-          <option value="Pop-Culture">Pop Culture</option>
-          <option value="History">History</option>
-          <option value="Games">Games</option>
-          <option value="Languages">Languages</option>
+        <select 
+          name="category" 
+          id="category-input" 
+          value={formData.category}
+          onChange={handleChange}
+        >
+            <option value="shortcuts">Keyboard Shortcuts</option>
+            <option value="programming">Programming</option>
+            <option value="Pop-Culture">Pop Culture</option>
+            <option value="History">History</option>
+            <option value="Games">Games</option>
+            <option value="Languages">Languages</option>
         </select>
         <label htmlFor="question-1-input">Question 1</label>
         <textarea
@@ -28,6 +49,7 @@ const NewTrivia = () => {
           name="question-1"
           id="text-input"
           value={formData.text}
+          onChange={handleChange}
         >
         </textarea>
         <label htmlFor="answer-1-input">Answer 1</label>
@@ -35,24 +57,32 @@ const NewTrivia = () => {
           required
           type="text"
           name="answer-1"
+          value={formData.text}
+          onChange={handleChange}
         />
         <label htmlFor="answer-1-input">Answer 2</label>
         <input 
           required
           type="text"
           name="answer-2"
+          value={formData.text}
+          onChange={handleChange}
         />
         <label htmlFor="answer--input">Answer 3</label>
         <input 
           required
           type="text"
           name="answer-3"
+          value={formData.text}
+          onChange={handleChange}
         />
         <label htmlFor="answer--input">Answer 4</label>
         <input 
           required
           type="text"
           name="answer-4"
+          value={formData.text}
+          onChange={handleChange}
         />
       </form>
     </main>
