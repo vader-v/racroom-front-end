@@ -37,10 +37,10 @@ const NewTrivia = () => {
         >
             <option value="shortcuts">Keyboard Shortcuts</option>
             <option value="programming">Programming</option>
-            <option value="Pop-Culture">Pop Culture</option>
-            <option value="History">History</option>
-            <option value="Games">Games</option>
-            <option value="Languages">Languages</option>
+            <option value="pop-culture">Pop Culture</option>
+            <option value="history">History</option>
+            <option value="games">Games</option>
+            <option value="languages">Languages</option>
         </select>
         <label htmlFor="question-1-input">Question 1</label>
         <textarea
@@ -84,6 +84,7 @@ const NewTrivia = () => {
           value={formData.text}
           onChange={handleChange}
         />
+        <button type="submit">submit</button>
       </form>
     </main>
   )

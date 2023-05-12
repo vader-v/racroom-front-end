@@ -9,6 +9,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import TriviaList from './pages/TriviaList/TriviaList'
+import NewTrivia from './pages/NewTrivia/NewTrivia'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -70,6 +71,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <TriviaList />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/trivia/new'
+          element={
+            <ProtectedRoute user={user}>
+              <NewTrivia />
             </ProtectedRoute>
           }
         />
