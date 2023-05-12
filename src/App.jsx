@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -25,7 +25,16 @@ import './App.css'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
+  const [trivia, setTrivia] = useState([])
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const fetchAllTrivia = async () => {
+      const data = await triviaService.index()
+      setTrivia(data)
+    }
+    if (user) fetchAllTrivia()
+  }, [user])
 
   const handleLogout = () => {
     authService.logout()
@@ -35,6 +44,12 @@ function App() {
 
   const handleAuthEvt = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddTrivia = async (triviaFormData) => {
+    const newTrivia = await triviaService.create(triviaFormData)
+    setTrivia([newTrivia, ...trivia])
+    navigate('/trivia')
   }
 
   return (
@@ -78,7 +93,7 @@ function App() {
           path='/trivia/new'
           element={
             <ProtectedRoute user={user}>
-              <NewTrivia />
+              <NewTrivia handleAddTrivia={handleAddTrivia}/>
             </ProtectedRoute>
           }
         />

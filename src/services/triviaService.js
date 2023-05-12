@@ -14,6 +14,24 @@ async function indexTrivia(){
   }
 }
 
+async function create(triviaFormData) {
+  try {
+    // BASE_URL IS POST http://localhost:3001/api/trivia
+    const res = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(triviaFormData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
-  indexTrivia
+  indexTrivia,
+  create
 }

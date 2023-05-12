@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const NewTrivia = () => {
+const NewTrivia = (props) => {
   const [formData, setFormData ] = useState({
     title: '',
     text: '',
@@ -13,7 +13,7 @@ const NewTrivia = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    // Update this line shortly...
+    props.handleAddTrivia(formData)
   }
 
   return (
@@ -35,12 +35,13 @@ const NewTrivia = () => {
           value={formData.category}
           onChange={handleChange}
         >
-            <option value="shortcuts">Keyboard Shortcuts</option>
-            <option value="programming">Programming</option>
-            <option value="pop-culture">Pop Culture</option>
-            <option value="history">History</option>
-            <option value="games">Games</option>
-            <option value="languages">Languages</option>
+            <option value="Keyboard Shortcuts">Keyboard Shortcuts</option>
+            <option value="Programming">Programming</option>
+            <option value="Pop-culture">Pop Culture</option>
+            <option value="History">History</option>
+            <option value="Games">Games</option>
+            <option value="Languages">Languages</option>
+            <option value="Television">Television</option>
         </select>
         <label htmlFor="question-1-input">Question 1</label>
         <textarea
@@ -48,7 +49,7 @@ const NewTrivia = () => {
           type="text"
           name="question-1"
           id="text-input"
-          value={formData.text}
+          value={formData.question}
           onChange={handleChange}
         >
         </textarea>
@@ -57,7 +58,7 @@ const NewTrivia = () => {
           required
           type="text"
           name="answer-1"
-          value={formData.text}
+          value={formData.answer1}
           onChange={handleChange}
         />
         <label htmlFor="answer-1-input">Answer 2</label>
@@ -65,7 +66,7 @@ const NewTrivia = () => {
           required
           type="text"
           name="answer-2"
-          value={formData.text}
+          value={formData.answer2}
           onChange={handleChange}
         />
         <label htmlFor="answer--input">Answer 3</label>
@@ -73,7 +74,7 @@ const NewTrivia = () => {
           required
           type="text"
           name="answer-3"
-          value={formData.text}
+          value={formData.answer3}
           onChange={handleChange}
         />
         <label htmlFor="answer--input">Answer 4</label>
@@ -81,7 +82,7 @@ const NewTrivia = () => {
           required
           type="text"
           name="answer-4"
-          value={formData.text}
+          value={formData.answer4}
           onChange={handleChange}
         />
         <button type="submit">submit</button>
