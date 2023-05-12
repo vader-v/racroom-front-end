@@ -8,7 +8,7 @@ const NewTrivia = (props) => {
     title: '',
     text: '',
     category: 'Keyboard Shortcuts',
-    question1: '',
+    question: '',
     answer1: '', 
     answer2: '',
     answer3: '',
@@ -51,11 +51,11 @@ const NewTrivia = (props) => {
             <option value="Languages">Languages</option>
             <option value="Television">Television</option>
         </select>
-        <label htmlFor="question1-input">Question 1</label>
+        <label htmlFor="question-input">Question</label>
         <textarea
           required
           type="text"
-          name="question1"
+          name="question"
           id="text-input"
           value={formData.question}
           onChange={handleChange}

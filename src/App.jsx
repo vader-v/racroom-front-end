@@ -31,6 +31,7 @@ function App() {
   useEffect(() => {
     const fetchAllTrivia = async () => {
       const data = await triviaService.indexTrivia()
+      console.log(data)
       setTrivias(data)
     }
     if (user) fetchAllTrivia()

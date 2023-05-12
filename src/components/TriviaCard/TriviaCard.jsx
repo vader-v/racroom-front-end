@@ -23,5 +23,5 @@ const TriviaCard = ({ trivia }) => {
     </Link>
   )
 }
- 
+
 export default TriviaCard
