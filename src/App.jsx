@@ -8,6 +8,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import TriviaList from './pages/TriviaList/TriviaList'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -15,6 +16,8 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
+import * as triviaService from './services/triviaService'
 
 // styles
 import './App.css'
@@ -59,6 +62,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <ChangePassword handleAuthEvt={handleAuthEvt} />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/triviaList'
+          element={
+            <ProtectedRoute user={user}>
+              <TriviaList />
             </ProtectedRoute>
           }
         />
