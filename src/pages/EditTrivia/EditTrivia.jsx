@@ -25,9 +25,9 @@ const EditTrivia = (props) => {
 
   return (
     <main>
-            <form onSubmit={handleSubmit}>
-        <label htmlFor="title-input">Title</label>
-        <input 
+      <form onSubmit={handleSubmit}>
+				<label htmlFor="title-input">Title</label>
+				<input
           type="text" 
           name="title"
           id="title-input"
