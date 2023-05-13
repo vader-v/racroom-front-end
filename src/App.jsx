@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import TriviaList from './pages/TriviaList/TriviaList'
 import NewTrivia from './pages/NewTrivia/NewTrivia'
+import TriviaDetails from './pages/TriviaDetails/TriviaDetails'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -25,13 +26,12 @@ import './App.css'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
-  const [trivia, setTrivia] = useState([])
+  const [trivias, setTrivias] = useState([])
   const navigate = useNavigate()
-
   useEffect(() => {
     const fetchAllTrivia = async () => {
-      const data = await triviaService.index()
-      setTrivia(data)
+      const data = await triviaService.indexTrivia()
+      setTrivias(data)
     }
     if (user) fetchAllTrivia()
   }, [user])
@@ -47,8 +47,9 @@ function App() {
   }
 
   const handleAddTrivia = async (triviaFormData) => {
+    console.log(trivias)
     const newTrivia = await triviaService.create(triviaFormData)
-    setTrivia([newTrivia, ...trivia])
+    setTrivias([newTrivia, ...trivias])
     navigate('/trivia')
   }
 
@@ -85,7 +86,7 @@ function App() {
           path='/triviaList'
           element={
             <ProtectedRoute user={user}>
-              <TriviaList />
+              <TriviaList trivias={trivias} />
             </ProtectedRoute>
           }
         />
@@ -97,6 +98,13 @@ function App() {
             </ProtectedRoute>
           }
         />
+          <Route 
+          path='/trivia/:trivaId'
+          element={
+            <ProtectedRoute user={user}>
+              <TriviaDetails user={user}/>
+            </ProtectedRoute>
+          }/>
       </Routes>
     </>
   )
