@@ -7,7 +7,12 @@ const NewTrivia = (props) => {
   const [formData, setFormData ] = useState({
     title: '',
     text: '',
-    category: 'shortcuts'
+    category: 'Keyboard Shortcuts',
+    question: '',
+    answer1: '', 
+    answer2: '',
+    answer3: '',
+    answer4: ''
   })
 
   const handleChange = (evt) => {
@@ -46,11 +51,11 @@ const NewTrivia = (props) => {
             <option value="Languages">Languages</option>
             <option value="Television">Television</option>
         </select>
-        <label htmlFor="question-1-input">Question 1</label>
+        <label htmlFor="question-input">Question</label>
         <textarea
           required
           type="text"
-          name="question-1"
+          name="question"
           id="text-input"
           value={formData.question}
           onChange={handleChange}
