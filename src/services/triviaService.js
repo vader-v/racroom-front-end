@@ -31,7 +31,7 @@ async function create(triviaFormData) {
   }
 }
 
-async function show(triviaId) {
+async function showTrivia(triviaId) {
   try {
     const res =await fetch(`${BASE_URL}/${triviaId}`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
@@ -44,6 +44,6 @@ async function show(triviaId) {
 
 export {
   indexTrivia,
-  show,
+  showTrivia,
   create
 }
