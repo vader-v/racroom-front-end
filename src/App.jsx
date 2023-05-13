@@ -11,6 +11,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import TriviaList from './pages/TriviaList/TriviaList'
 import NewTrivia from './pages/NewTrivia/NewTrivia'
 import TriviaDetails from './pages/TriviaDetails/TriviaDetails'
+import EditTrivia from './pages/EditTrivia/EditTrivia'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -51,6 +52,12 @@ function App() {
     console.log(trivias)
     const newTrivia = await triviaService.create(triviaFormData)
     setTrivias([newTrivia, ...trivias])
+    navigate('/trivia')
+  }
+
+  const handleUpdateTrivia = async (triviaFormData) => {
+    const updatedTrivia = await triviaService.update(triviaFormData)
+    setTrivia(trivias.map((b) => triviaFormData._id === b._id ? updatedTrivia : b))
     navigate('/trivia')
   }
 
@@ -106,6 +113,14 @@ function App() {
               <TriviaDetails user={user}/>
             </ProtectedRoute>
           }/>
+                  <Route 
+          path="/trivia/:triviaId/edit" 
+          element={
+            <ProtectedRoute user={user}>
+              <EditTrivia handleUpdateTrivia={handleUpdateTrivia} />
+            </ProtectedRoute>
+          } 
+        />
       </Routes>
     </>
   )
