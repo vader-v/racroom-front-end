@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 
 // components
-import AuthorInfo from "../../components/AuthorInfo/AuthorInfo"
+import OwnerInfo from "../../components/OwnerInfo/OwnerInfo"
 
 // services
 import * as triviaService from '../../services/triviaService'
@@ -32,8 +32,9 @@ const TriviaDetails = (props) => {
           <h3>{trivia.category.toUpperCase()}</h3>
           <h1>{trivia.title}</h1>
           <span>
-            <AuthorInfo content={trivia} />
-            {trivia.author._id === props.user.profile &&
+            <OwnerInfo content={trivia} />
+
+            {trivia.owner._id === props.user.profile &&
               <>
                 <Link to={`/trivia/${triviaId}/edit`} state={trivia}>
                   Edit
