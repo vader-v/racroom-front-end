@@ -31,6 +31,10 @@ const TriviaDetails = (props) => {
         <header>
           <h3>{trivia.category.toUpperCase()}</h3>
           <h1>{trivia.title}</h1>
+          {trivia.questions.map((question, idx) => <div className="question" key={idx} > 
+            <h3>{question.text}</h3>
+            {question.choices.map((choice, idx) => <p>{choice.text}</p> )}
+          </div> )}
           <span>
             <OwnerInfo content={trivia} />
             {trivia.owner._id === props.user.profile &&
