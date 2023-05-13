@@ -1,4 +1,7 @@
+// npm modules
 import { useState } from "react"
+// css
+import styles from './NewTrivia.module.css'
 
 const NewTrivia = (props) => {
   const [formData, setFormData ] = useState({
@@ -17,7 +20,7 @@ const NewTrivia = (props) => {
   }
 
   return (
-    <main>
+    <main className={styles.container}>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title-input">Title</label>
         <input 
