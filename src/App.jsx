@@ -57,7 +57,13 @@ function App() {
 
   const handleUpdateTrivia = async (triviaFormData) => {
     const updatedTrivia = await triviaService.update(triviaFormData)
-    setTrivia(trivias.map((b) => triviaFormData._id === b._id ? updatedTrivia : b))
+    setTrivias(trivias.map((b) => triviaFormData._id === b._id ? updatedTrivia : b))
+    navigate('/trivia')
+  }
+
+  const handleDeleteTrivia = async (triviaId) => {
+    const deletedTrivia = await triviaService.deleteBlog(triviaId)
+    setTrivias(trivias.filter(b => b._id !== deletedTrivia._id))
     navigate('/trivia')
   }
 
@@ -110,7 +116,10 @@ function App() {
           path='/trivia/:trivaId'
           element={
             <ProtectedRoute user={user}>
-              <TriviaDetails user={user}/>
+              <TriviaDetails 
+                user={user} 
+                handleDeleteTrivia={handleDeleteTrivia}
+              />
             </ProtectedRoute>
           }/>
                   <Route 

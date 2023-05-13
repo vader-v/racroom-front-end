@@ -44,19 +44,33 @@ async function showTrivia(triviaId) {
 }
 
 async function updateTrivia(triviaFormData) {
-  try {
-    const res = await fetch(`${BASE_URL}/${triviaFormData._id}`, {
-    method: 'PUT',
-    headers: {
-      'Authorization': `Bearer ${tokenService.getToken()}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(triviaFormData)
-  })
-  return res.json()
-} catch (error) {
-  console.log(error)
+	try {
+		const res = await fetch(`${BASE_URL}/${triviaFormData._id}`, {
+			method: 'PUT',
+			headers: {
+				'Authorization': `Bearer ${tokenService.getToken()}`,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(triviaFormData)
+		})
+		return res.json()
+	} catch (error) {
+		console.log(error)
+	}
 }
+
+async function deleteTrivia(triviaId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${triviaId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 
@@ -64,5 +78,6 @@ export {
   indexTrivia,
   showTrivia,
   create,
-  updateTrivia
+  updateTrivia,
+  deleteTrivia,
 }
