@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -8,6 +8,8 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import TriviaList from './pages/TriviaList/TriviaList'
+import NewTrivia from './pages/NewTrivia/NewTrivia'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -15,13 +17,24 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
+import * as triviaService from './services/triviaService'
 
 // styles
 import './App.css'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
+  const [trivia, setTrivia] = useState([])
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const fetchAllTrivia = async () => {
+      const data = await triviaService.index()
+      setTrivia(data)
+    }
+    if (user) fetchAllTrivia()
+  }, [user])
 
   const handleLogout = () => {
     authService.logout()
@@ -31,6 +44,12 @@ function App() {
 
   const handleAuthEvt = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddTrivia = async (triviaFormData) => {
+    const newTrivia = await triviaService.create(triviaFormData)
+    setTrivia([newTrivia, ...trivia])
+    navigate('/trivia')
   }
 
   return (
@@ -59,6 +78,22 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <ChangePassword handleAuthEvt={handleAuthEvt} />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/triviaList'
+          element={
+            <ProtectedRoute user={user}>
+              <TriviaList />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/trivia/new'
+          element={
+            <ProtectedRoute user={user}>
+              <NewTrivia handleAddTrivia={handleAddTrivia}/>
             </ProtectedRoute>
           }
         />
