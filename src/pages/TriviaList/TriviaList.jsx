@@ -6,7 +6,7 @@ import styles from './TriviaList.module.css'
 
 
 const TriviaList = (props) => {
-  console.log(props.trivias)
+  console.log("PROPS,TRIVIAS",props.trivias)
   return (
     <main className={styles.container} >
       {props.trivias.map(trivia => (
