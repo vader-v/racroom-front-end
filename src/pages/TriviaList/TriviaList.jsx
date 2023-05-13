@@ -6,13 +6,14 @@ import * as triviaService from '../../services/triviaService'
 
 //css
 import styles from './TriviaList.module.css'
+import TriviaCard from '../../components/TriviaCard/TriviaCard'
 
-const TriviaList = () => {
+const TriviaList = (props) => {
   return (
-    <main className={styles.container} >
-      <h1>
-        all the trivia
-      </h1>
+    <main className={`${styles.container} ${styles.main}`} >
+      {props.trivia.map(trivia => (
+        <TriviaCard key={trivia._id} trivia={trivia}/>
+      ))}
     </main>
   )
 }
