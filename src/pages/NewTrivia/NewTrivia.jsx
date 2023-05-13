@@ -7,7 +7,12 @@ const NewTrivia = (props) => {
   const [formData, setFormData ] = useState({
     title: '',
     text: '',
-    category: 'shortcuts'
+    category: 'Keyboard Shortcuts',
+    question1: '',
+    answer1: '', 
+    answer2: '',
+    answer3: '',
+    answer4: '' 
   })
 
   const handleChange = (evt) => {

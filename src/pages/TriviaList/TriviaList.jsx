@@ -1,17 +1,15 @@
-// npm modules
-import { useState, useEffect } from 'react'
-
-// services
-import * as triviaService from '../../services/triviaService'
+// components
+import TriviaCard from '../../components/TriviaCard/TriviaCard'
 
 //css
 import styles from './TriviaList.module.css'
-import TriviaCard from '../../components/TriviaCard/TriviaCard'
+
 
 const TriviaList = (props) => {
+  console.log(props.trivias)
   return (
-    <main className={`${styles.container} ${styles.main}`} >
-      {props.trivia.map(trivia => (
+    <main className={styles.container} >
+      {props.trivias.map(trivia => (
         <TriviaCard key={trivia._id} trivia={trivia}/>
       ))}
     </main>

@@ -87,7 +87,7 @@ function App() {
           path='/triviaList'
           element={
             <ProtectedRoute user={user}>
-              <TriviaList />
+              <TriviaList trivias={trivias} />
             </ProtectedRoute>
           }
         />

@@ -23,6 +23,8 @@ const TriviaDetails = (props) => {
     fetchTrivia()
   }, [triviaId])
 
+  if (!trivia) return <h1>Loading</h1>
+
   return (
     <main className={styles.container}>
       <article>
