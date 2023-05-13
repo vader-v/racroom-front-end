@@ -25,13 +25,13 @@ import './App.css'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
-  const [trivia, setTrivia] = useState([])
+  const [trivias, setTrivias] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
     const fetchAllTrivia = async () => {
       const data = await triviaService.indexTrivia()
-      setTrivia(data)
+      setTrivias(data)
     }
     if (user) fetchAllTrivia()
   }, [user])
@@ -47,8 +47,9 @@ function App() {
   }
 
   const handleAddTrivia = async (triviaFormData) => {
+    console.log(trivias)
     const newTrivia = await triviaService.create(triviaFormData)
-    setTrivia([newTrivia, ...trivia])
+    setTrivias([newTrivia, ...trivias])
     navigate('/trivia')
   }
 
