@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import TriviaList from './pages/TriviaList/TriviaList'
 import NewTrivia from './pages/NewTrivia/NewTrivia'
+import TriviaDetails from './pages/TriviaDetails/TriviaDetails'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -98,6 +99,13 @@ function App() {
             </ProtectedRoute>
           }
         />
+          <Route 
+          path='/trivia/:trivaId'
+          element={
+            <ProtectedRoute user={user}>
+              <TriviaDetails user={user}/>
+            </ProtectedRoute>
+          }/>
       </Routes>
     </>
   )
