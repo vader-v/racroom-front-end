@@ -43,8 +43,26 @@ async function showTrivia(triviaId) {
   }
 }
 
+async function updateTrivia(triviaFormData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${triviaFormData._id}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(triviaFormData)
+  })
+  return res.json()
+} catch (error) {
+  console.log(error)
+}
+}
+
+
 export {
   indexTrivia,
   showTrivia,
-  create
+  create,
+  updateTrivia
 }
