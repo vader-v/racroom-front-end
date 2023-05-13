@@ -7,12 +7,7 @@ const NewTrivia = (props) => {
   const [formData, setFormData ] = useState({
     title: '',
     text: '',
-    category: 'Keyboard Shortcuts',
-    question1: '',
-    answer1: '', 
-    answer2: '',
-    answer3: '',
-    answer4: '' 
+    category: 'shortcuts'
   })
 
   const handleChange = (evt) => {
@@ -51,45 +46,45 @@ const NewTrivia = (props) => {
             <option value="Languages">Languages</option>
             <option value="Television">Television</option>
         </select>
-        <label htmlFor="question1-input">Question 1</label>
+        <label htmlFor="question-1-input">Question 1</label>
         <textarea
           required
           type="text"
-          name="question1"
+          name="question-1"
           id="text-input"
           value={formData.question}
           onChange={handleChange}
         >
         </textarea>
-        <label htmlFor="answer1-input">Answer 1</label>
+        <label htmlFor="answer-1-input">Answer 1</label>
         <input 
           required
           type="text"
-          name="answer1"
+          name="answer-1"
           value={formData.answer1}
           onChange={handleChange}
         />
-        <label htmlFor="answer2-input">Answer 2</label>
+        <label htmlFor="answer-1-input">Answer 2</label>
         <input 
           required
           type="text"
-          name="answer2"
+          name="answer-2"
           value={formData.answer2}
           onChange={handleChange}
         />
-        <label htmlFor="answer3-input">Answer 3</label>
+        <label htmlFor="answer--input">Answer 3</label>
         <input 
           required
           type="text"
-          name="answer3"
+          name="answer-3"
           value={formData.answer3}
           onChange={handleChange}
         />
-        <label htmlFor="answer4-input">Answer 4</label>
+        <label htmlFor="answer--input">Answer 4</label>
         <input 
           required
           type="text"
-          name="answer4"
+          name="answer-4"
           value={formData.answer4}
           onChange={handleChange}
         />

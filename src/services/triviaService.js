@@ -15,6 +15,7 @@ async function indexTrivia(){
 }
 
 async function create(triviaFormData) {
+  console.log(JSON.stringify(triviaFormData))
   try {
     // BASE_URL IS POST http://localhost:3001/api/trivia
     const res = await fetch(BASE_URL, {
