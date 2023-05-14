@@ -2,21 +2,21 @@
 import profileIcon from '../../assets/icons/profile.png'
 
 // css
-import styles from './AuthorInfo.module.css'
+import styles from './OwnerInfo.module.css'
 
-const AuthorInfo = (props) => {
+const OwnerInfo = (props) => {
   const { content } = props
 
-  const photo = content.author.photo ? content.author.photo : profileIcon
+  const photo = content.owner.photo ? content.owner.photo : profileIcon
 
   return (
     <div className={styles.container}>
       <img src={photo} alt="The user's avatar" />
       <section>
-        <h4>{content.author.name}</h4>
+        <h4>{content.owner.name}</h4>
       </section>
     </div>
   )
 }
 
-export default AuthorInfo
+export default OwnerInfo
