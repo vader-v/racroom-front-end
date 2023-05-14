@@ -54,6 +54,11 @@ function App() {
     navigate('/trivia')
   }
 
+  const handleUpdateTrivia = async (triviaFormData) => {
+    const updatedTrivia = await triviaService.update(triviaFormData)
+    setTrivia(trivias.map((b) => triviaFormData._id === b._id ? updatedTrivia : b))
+    navigate('/trivia')
+  }
 
   return (
     <>
