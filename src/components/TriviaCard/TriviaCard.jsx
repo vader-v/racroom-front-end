@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom"
 
 // components
-import AuthorInfo from '../AuthorInfo/AuthorInfo'
+import OwnerInfo from '../OwnerInfo/OwnerInfo'
 
 // css
 import styles from './TriviaCard.module.css'
@@ -15,7 +15,7 @@ const TriviaCard = ({ trivia }) => {
           <span>
             <h1>{trivia.title}</h1>
           </span>
-          <AuthorInfo content={trivia}/>
+          <OwnerInfo content={trivia}/>
         </header>
         <p>{trivia.tex}</p>
       </article>
