@@ -17,7 +17,7 @@ const TriviaCard = ({ trivia }) => {
           </span>
           <OwnerInfo content={trivia}/>
         </header>
-        <p>{trivia.tex}</p>
+        <p>{trivia.text}</p>
       </article>
     
     </Link>
