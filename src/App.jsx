@@ -97,7 +97,7 @@ function App() {
           }
         />
         <Route 
-          path='/triviaList'
+          path='/trivia'
           element={
             <ProtectedRoute user={user}>
               <TriviaList trivias={trivias} />
