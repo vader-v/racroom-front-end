@@ -57,7 +57,7 @@ function App() {
 
   const handleUpdateTrivia = async (triviaFormData) => {
     const updatedTrivia = await triviaService.update(triviaFormData)
-    setTrivia(trivias.map((b) => triviaFormData._id === b._id ? updatedTrivia : b))
+    setTrivias(trivias.map((b) => triviaFormData._id === b._id ? updatedTrivia : b))
     navigate('/trivia')
   }
 
@@ -106,14 +106,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-          <Route 
+        <Route 
           path='/trivia/:trivaId'
           element={
             <ProtectedRoute user={user}>
               <TriviaDetails user={user}/>
             </ProtectedRoute>
           }/>
-                  <Route 
+        <Route 
           path="/trivia/:triviaId/edit" 
           element={
             <ProtectedRoute user={user}>
