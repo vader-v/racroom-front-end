@@ -11,9 +11,11 @@ const OwnerInfo = (props) => {
 
   return (
     <div className={styles.container}>
-      <img src={photo} alt="The user's avatar" />
       <section>
-        <h4>{content.owner.name}</h4>
+        <h4>
+          {content.owner.name}
+          {photo}
+        </h4>
       </section>
     </div>
   )
