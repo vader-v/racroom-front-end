@@ -113,7 +113,7 @@ function App() {
           }
         />
         <Route 
-          path='/trivia/:trivaId'
+          path='/trivia/:triviaId'
           element={
             <ProtectedRoute user={user}>
               <TriviaDetails 
@@ -121,7 +121,8 @@ function App() {
                 handleDeleteTrivia={handleDeleteTrivia}
               />
             </ProtectedRoute>
-          }/>
+          }
+        />
         <Route 
           path="/trivia/:triviaId/edit" 
           element={

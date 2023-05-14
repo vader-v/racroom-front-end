@@ -17,7 +17,7 @@ const TriviaDetails = (props) => {
 
   useEffect(() => {
     const fetchTrivia =async () => {
-      const data = await triviaService.show(triviaId)
+      const data = await triviaService.showTrivia(triviaId)
       setTrivia(data)
     }
     fetchTrivia()
@@ -33,7 +33,6 @@ const TriviaDetails = (props) => {
           <h1>{trivia.title}</h1>
           <span>
             <OwnerInfo content={trivia} />
-
             {trivia.owner._id === props.user.profile &&
               <>
                 <Link to={`/trivia/${triviaId}/edit`} state={trivia}>
