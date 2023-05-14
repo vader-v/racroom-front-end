@@ -84,3 +84,12 @@
 .container > section article p {
   text-indent: 0px;
 }
+
+img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  margin-right: 12px;
+  border-radius: 50%;
+  background-color: var(--background);
+}

@@ -14,8 +14,8 @@ const OwnerInfo = (props) => {
       <section>
         <h4>
           {content.owner.name}
-          {photo}
         </h4>
+        <img src={photo} alt="" />
       </section>
     </div>
   )
