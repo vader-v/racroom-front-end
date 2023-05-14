@@ -54,6 +54,7 @@ function App() {
     navigate('/trivia')
   }
 
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
