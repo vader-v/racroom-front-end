@@ -58,10 +58,25 @@ async function updateTrivia(triviaFormData) {
 	}
 }
 
+async function deleteTrivia(triviaId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${triviaId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 
 export {
   indexTrivia,
   showTrivia,
   create,
-  updateTrivia
+  updateTrivia,
+  deleteTrivia,
 }
