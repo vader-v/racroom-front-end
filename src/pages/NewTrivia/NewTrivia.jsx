@@ -2,47 +2,66 @@
 import { useState } from "react"
 // css
 import styles from './NewTrivia.module.css'
+import OwnerInfo from "../../components/OwnerInfo/OwnerInfo";
 
-const NewTrivia = (props) => {
-  const [formData, setFormData ] = useState({
+const NewTrivia = ({ handleAddTrivia }) => {
+  const [triviaFormData, setTriviaFormData] = useState({
     title: '',
-    text: '',
-    category: 'Keyboard Shortcuts',
-    question: '',
-    answer1: '', 
-    answer2: '',
-    answer3: '',
-    answer4: ''
-  })
+    category: '',
+    questions: [],
+  });
 
-  const handleChange = (evt) => {
-    setFormData({ ...formData, [evt.target.name]: evt.target.value })
-  }
+  const handleSaveTrivia = (e) => {
+    e.preventDefault();
+    const triviaData = {
+      ...triviaFormData,
+    }
+    handleAddTrivia(triviaData)
+  };
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault()
-    props.handleAddTrivia(formData)
-  }
+  const handleQuestionChange = (index, question) => {
+    const updatedQuestions = [...triviaFormData.questions];
+    updatedQuestions[index] = question;
+    setTriviaFormData({ ...triviaFormData, questions: updatedQuestions });
+  };
+
+  const handleAddQuestion = () => {
+    setTriviaFormData({
+      ...triviaFormData,
+      questions: [...triviaFormData.questions, { text: '', choices: [] }],
+    });
+  };
+
+  if (!triviaFormData) return <h1>Loading</h1>
 
   return (
     <main className={styles.container}>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title-input">Title</label>
-        <input 
-          type="text" 
-          name="title"
-          id="title-input"
-          value={formData.title}
-          placeholder="Title"
-          onChange={handleChange}
+
+    <form onSubmit={handleSaveTrivia}>
+      <label htmlFor="title">Title:</label>
+      <input
+        type="text"
+        id="title"
+        value={triviaFormData.title}
+        onChange={(e) =>
+          setTriviaFormData({
+            ...triviaFormData,
+            title: e.target.value,
+          })
+        }
         />
         <label htmlFor="category-input">Category</label>
         <select 
           name="category" 
           id="category-input" 
-          value={formData.category}
-          onChange={handleChange}
-        >
+          value={triviaFormData.category}
+          onChange={(e) =>
+            setTriviaFormData({
+              ...triviaFormData,
+              category: e.target.value,
+            })
+          }
+          >
             <option value="Keyboard Shortcuts">Keyboard Shortcuts</option>
             <option value="Programming">Programming</option>
             <option value="Pop-culture">Pop Culture</option>
@@ -51,52 +70,86 @@ const NewTrivia = (props) => {
             <option value="Languages">Languages</option>
             <option value="Television">Television</option>
         </select>
-        <label htmlFor="question-input">Question</label>
-        <textarea
-          required
-          type="text"
-          name="question"
-          id="text-input"
-          value={formData.question}
-          onChange={handleChange}
-        >
-        </textarea>
-        <label htmlFor="answer1-input">Answer 1</label>
-        <input 
-          required
-          type="text"
-          name="answer1"
-          value={formData.answer1}
-          onChange={handleChange}
-        />
-        <label htmlFor="answer2-input">Answer 2</label>
-        <input 
-          required
-          type="text"
-          name="answer2"
-          value={formData.answer2}
-          onChange={handleChange}
-        />
-        <label htmlFor="answer3-input">Answer 3</label>
-        <input 
-          required
-          type="text"
-          name="answer3"
-          value={formData.answer3}
-          onChange={handleChange}
-        />
-        <label htmlFor="answer4-input">Answer 4</label>
-        <input 
-          required
-          type="text"
-          name="answer4"
-          value={formData.answer4}
-          onChange={handleChange}
-        />
-        <button type="submit">submit</button>
+      {triviaFormData.questions.map((question, index) => (
+        <div key={index}>
+          <label htmlFor={`question-${index}`}>Question:</label>
+          <input
+            type="text"
+            id={`question-${index}`}
+            value={question.text}
+            onChange={(e) =>
+              handleQuestionChange(index, {
+                ...question,
+                text: e.target.value,
+              })
+            }
+            />
+
+          {question.choices.map((choice, choiceIndex) => (
+            <div key={choiceIndex}>
+              <label htmlFor={`choice-${index}-${choiceIndex}`}>
+                Choice {choiceIndex + 1}:
+              </label>
+              <input
+                type="text"
+                id={`choice-${index}-${choiceIndex}`}
+                value={choice}
+                onChange={(e) => {
+                  const updatedQuestions = [...triviaFormData.questions];
+                  updatedQuestions[index].choices[choiceIndex] =
+                  e.target.value;
+                  setTriviaFormData({
+                    ...triviaFormData,
+                    questions: updatedQuestions,
+                  });
+                }}
+              />
+
+              <label htmlFor={`correct-answer-${index}-${choiceIndex}`}>
+                Correct answer:
+              </label>
+              <input
+                type="checkbox"
+                id={`correct-answer-${index}-${choiceIndex}`}
+                checked={
+                  question.correctAnswerIndex === choiceIndex
+                }
+                onChange={(e) => {
+                  const updatedQuestions = [...triviaFormData.questions];
+                  updatedQuestions[index].correctAnswerIndex =
+                  e.target.checked ? choiceIndex : -1;
+                  setTriviaFormData({
+                    ...triviaFormData,
+                    questions: updatedQuestions,
+                  });
+                }}
+                />
+            </div>
+          ))}
+
+          <button
+            type="button"
+            onClick={() => {
+              const updatedQuestions = [...triviaFormData.questions];
+              updatedQuestions[index].choices.push('');
+              setTriviaFormData({
+                ...triviaFormData,
+                questions: updatedQuestions,
+              });
+            }}
+            >
+            Add Choice
+          </button>
+        </div>
+      ))}
+      <button type="button" onClick={handleAddQuestion}>
+            Add Question
+          </button>
+        <button type="submit">Submit</button>
       </form>
-    </main>
-  )
-}
+      </main>
+  );
+};
+
 
 export default NewTrivia
