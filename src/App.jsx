@@ -61,6 +61,12 @@ function App() {
     navigate('/trivia')
   }
 
+  const handleDeleteTrivia = async (triviaId) => {
+    const deletedTrivia = await triviaService.deleteBlog(triviaId)
+    setTrivias(trivias.filter(b => b._id !== deletedTrivia._id))
+    navigate('/trivia')
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -110,7 +116,10 @@ function App() {
           path='/trivia/:trivaId'
           element={
             <ProtectedRoute user={user}>
-              <TriviaDetails user={user}/>
+              <TriviaDetails 
+                user={user} 
+                handleDeleteTrivia={handleDeleteTrivia}
+              />
             </ProtectedRoute>
           }/>
         <Route 

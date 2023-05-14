@@ -33,14 +33,16 @@ const TriviaDetails = (props) => {
           <h1>{trivia.title}</h1>
           <span>
             <AuthorInfo content={trivia} />
-
             {trivia.author._id === props.user.profile &&
               <>
-                <Link to={`/trivia/${triviaId}/edit`} state={trivia}>Edit</Link>
-                <button>Delete</button>
+                <Link to={`/trivia/${triviaId}/edit`} state={trivia}>
+                  Edit
+                </Link>
+                <button onClick={() => props.handleDeleteTrivia(triviaId)}>
+                  Delete
+                </button>
               </>
             }
-
           </span>
         </header>
         <p>{trivia.text}</p>
