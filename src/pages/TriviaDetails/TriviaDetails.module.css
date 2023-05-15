@@ -63,9 +63,31 @@
   border-radius: 5px;
   text-align: center;
   border: 1px solid var(--border);
+  transition: all 0.3s ease;
 }
 
-.container span button, .container span a  {
+.container span a {
+  color: var(--primary);
+  background-color: rgb(31, 10, 10);
+  border: 1px solid var(--primary);
+}
+
+.container span button {
+  color: white;
+  background-color: red;
+  border: 1px solid red;
+}
+
+.container span button:hover {
+  background-color: darkred;
+  border: 1px solid darkred;
+}
+
+.container span button:active, .container span a:active {
+  transform: scale(0.95);
+}
+
+button, input[type="checkbox"] {
   cursor: pointer;
 }
 
