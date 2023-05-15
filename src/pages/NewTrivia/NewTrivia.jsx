@@ -36,6 +36,15 @@ const NewTrivia = ({ handleAddTrivia }) => {
     })
   }
 
+  const handleDeleteChoice = (questionIndex, choiceIndex) => {
+    const updatedQuestions = [...triviaFormData.questions]
+    updatedQuestions[questionIndex].choices.splice(choiceIndex, 1)
+    setTriviaFormData({
+      ...triviaFormData,
+      questions: updatedQuestions,
+    })
+  }
+
   if (!triviaFormData) return <h1>Loading</h1>
 
   return (
@@ -105,6 +114,12 @@ const NewTrivia = ({ handleAddTrivia }) => {
                   })
                 }}
               />
+              <button
+                type="button"
+                onClick={() => handleDeleteChoice(index, choiceIndex)}
+              >
+                Delete
+              </button>
               <label htmlFor={`correct-answer-${index}-${choiceIndex}`}>
                 Correct answer:
               </label>
