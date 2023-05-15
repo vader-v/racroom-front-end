@@ -63,15 +63,15 @@ const EditTrivia = ({handleUpdateTrivia}) => {
             <option value="Languages">Languages</option>
             <option value="Television">Television</option>
         </select>
-      {triviaFormData.questions.map((question, index) => (
-        <div key={index}>
-          <label htmlFor={`question-${index}`}>Question:</label>
+      {triviaFormData.questions.map((question, questionIndex) => (
+        <div key={questionIndex}>
+          <label htmlFor={`question-${questionIndex}`}>Question:</label>
           <input
             type="text"
-            id={`question-${index}`}
+            id={`question-${questionIndex}`}
             value={question.text}
             onChange={(e) =>
-              handleQuestionChange(index, {
+              handleQuestionChange(questionIndex, {
                 ...question,
                 text: e.target.value,
               })
@@ -79,36 +79,36 @@ const EditTrivia = ({handleUpdateTrivia}) => {
             />
           {question.choices.map((choice, choiceIndex) => (
             <div key={choiceIndex}>
-              <label htmlFor={`choice-${index}-${choiceIndex}`}>
+              <label htmlFor={`choice-${questionIndex}-${choiceIndex}`}>
                 Choice {choiceIndex + 1}:
               </label>
               <input
                 type="text"
-                id={`choice-${index}-${choiceIndex}`}
+                id={`choice-${questionIndex}-${choiceIndex}`}
                 value={choice.text}
                 onChange={(e) => {
                   const updatedQuestions = [...triviaFormData.questions]
-                  updatedQuestions[index].choices[choiceIndex].text = e.target.value
+                  updatedQuestions[questionIndex].choices[choiceIndex].text = e.target.value
                   setTriviaFormData({
                     ...triviaFormData, questions: updatedQuestions
                   })
                 }}
               />
-              <label htmlFor={`correct-answer-${index}-${choiceIndex}`}>
+              <label htmlFor={`correct-answer-${questionIndex}-${choiceIndex}`}>
                 Correct answer:
               </label>
               <input
                 type="checkbox"
                 className="checkbox"
-                id={`correct-answer-${index}-${choiceIndex}`}
+                id={`correct-answer-${questionIndex}-${choiceIndex}`}
                 checked={
                   choice.answer ? "checked" : ""
                 }
                 onChange={(e) => {
                   const updatedQuestions = [...triviaFormData.questions]
-                  updatedQuestions[index].correctAnswerIndex =
+                  updatedQuestions[questionIndex].correctAnswerIndex =
                   e.target.checked ? choiceIndex : 1
-                  updatedQuestions[index].choices.map((choice, idx) => 
+                  updatedQuestions[questionIndex].choices.map((choice, idx) => 
                     choice.answer = idx === (e.target.checked ? choiceIndex : 1)
                       ?  true : false )
                   setTriviaFormData({
@@ -123,7 +123,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
             type="button"
             onClick={() => {
               const updatedQuestions = [...triviaFormData.questions]
-              updatedQuestions[index].choices.push({text: '', answer: false})
+              updatedQuestions[questionIndex].choices.push({text: '', answer: false})
               setTriviaFormData({
                 ...triviaFormData,
                 questions: updatedQuestions,

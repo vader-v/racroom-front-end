@@ -151,12 +151,12 @@ const NewTrivia = ({ handleAddTrivia }) => {
               >
                 Delete Choice
               </button>
-              <button
+              {/* <button
                 type="button"
                 onClick={() => handleDeleteQuestion(questionIndex)}
               >
                 Delete Question
-              </button>
+              </button> */}
             </div>
           ))}
           <button
@@ -171,6 +171,12 @@ const NewTrivia = ({ handleAddTrivia }) => {
             }}
             >
             Add Choice
+          </button>
+          <button
+            type="button"
+            onClick={() => handleDeleteQuestion(questionIndex)}
+          >
+            Delete Question
           </button>
         </div>
       ))}
