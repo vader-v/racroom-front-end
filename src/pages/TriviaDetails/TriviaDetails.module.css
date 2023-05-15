@@ -16,7 +16,7 @@
 }
 
 .container p {
-  text-indent: 21px;
+  text-indent: -50px;
   text-align-last: left;
 	word-break: break-all;
 }
@@ -92,4 +92,9 @@ img {
   margin-right: 12px;
   border-radius: 50%;
   background-color: var(--background);
+}
+
+.checkbox {
+  width: 20px;
+  margin-right: 15px;
 }
