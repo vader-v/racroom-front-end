@@ -57,57 +57,62 @@ const EditTrivia = (props) => {
           name="question"
           id="text-input"
           value={formData.question}
+          placeholder={formData.questions[0].text}
           onChange={handleChange}
         >
         </textarea>
-        <label htmlFor="answer1-input">Answer 1</label>
-        <input 
-          required
-          type="text"
-          name="answer1"
-          value={formData.answer1}
-          onChange={handleChange}
-        />
-        <input 
-          type="checkbox" 
-          name="checkbox1"
-          onChange={handleCheckbox} />
-        <label htmlFor="answer2-input">Answer 2</label>
-        <input 
-          required
-          type="text"
-          name="answer2"
-          value={formData.answer2}
-          onChange={handleChange}
-        />
-        <input 
-          type="checkbox" 
-          name="checkbox2"
-          onChange={handleCheckbox} />
-        <label htmlFor="answer3-input">Answer 3</label>
-        <input 
-          required
-          type="text"
-          name="answer3"
-          value={formData.answer3}
-          onChange={handleChange}
-        />
-        <input 
-          type="checkbox" 
-          name="checkbox3"
-          onChange={handleCheckbox} />
-        <label htmlFor="answer4-input">Answer 4</label>
-        <input 
-          required
-          type="text"
-          name="answer4"
-          value={formData.answer4}
-          onChange={handleChange}
-        />
-        <input 
-          type="checkbox" 
-          name="checkbox4"
-          onChange={handleCheckbox} />
+        {formData.questions[0].choices[0] && (
+          <div>
+            <label htmlFor="answer1-input">Answer 1</label>
+            <input 
+              required
+              type="text"
+              name="answer1"
+              value={formData.answer1}
+              placeholder={formData.questions[0].choices[0].text}
+              onChange={handleChange}
+            />
+          </div>
+        )}
+        {formData.questions[0].choices[1] && (
+          <div>
+            <label htmlFor="answer2-input">Answer 2</label>
+            <input 
+              required
+              type="text"
+              name="answer2"
+              value={formData.answer2}
+              placeholder={formData.questions[0].choices[1].text}
+              onChange={handleChange}
+            />
+          </div>
+        )}
+        {formData.questions[0].choices[2] && (
+          <div>
+            <label htmlFor="answer3-input">Answer 3</label>
+            <input 
+              required
+              type="text"
+              name="answer3"
+              value={formData.answer3}
+              placeholder={formData.questions[0].choices[2].text}
+              onChange={handleChange}
+            />
+          </div>
+        )}
+        {formData.questions[0].choices[3] && (
+          <div>
+            <label htmlFor="answer4-input">Answer 4</label>
+            <input 
+              required
+              type="text"
+              name="answer4"
+              value={formData.answer4}
+              placeholder={formData.questions[0].choices[3].text}
+              onChange={handleChange}
+            />
+          </div>
+        )}
         <button type="submit">submit</button>
       </form>
     </main>
