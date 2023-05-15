@@ -127,6 +127,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
               </label>
               <input
                 type="checkbox"
+                className="checkbox"
                 id={`correct-answer-${questionIndex}-${choiceIndex}`}
                 checked={
                   question.correctAnswerIndex === choiceIndex
@@ -150,12 +151,12 @@ const NewTrivia = ({ handleAddTrivia }) => {
               >
                 Delete Choice
               </button>
-              <button
+              {/* <button
                 type="button"
                 onClick={() => handleDeleteQuestion(questionIndex)}
               >
                 Delete Question
-              </button>
+              </button> */}
             </div>
           ))}
           <button
@@ -170,6 +171,12 @@ const NewTrivia = ({ handleAddTrivia }) => {
             }}
             >
             Add Choice
+          </button>
+          <button
+            type="button"
+            onClick={() => handleDeleteQuestion(questionIndex)}
+          >
+            Delete Question
           </button>
         </div>
       ))}

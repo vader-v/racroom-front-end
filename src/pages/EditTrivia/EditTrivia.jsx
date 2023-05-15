@@ -99,6 +99,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
               </label>
               <input
                 type="checkbox"
+                className="checkbox"
                 id={`correct-answer-${questionIndex}-${choiceIndex}`}
                 checked={
                   choice.answer ? "checked" : ""
