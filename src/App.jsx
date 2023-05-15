@@ -62,7 +62,7 @@ function App() {
   }
 
   const handleDeleteTrivia = async (triviaId) => {
-    const deletedTrivia = await triviaService.deleteBlog(triviaId)
+    const deletedTrivia = await triviaService.deleteTrivia(triviaId)
     setTrivias(trivias.filter(b => b._id !== deletedTrivia._id))
     navigate('/trivia')
   }
