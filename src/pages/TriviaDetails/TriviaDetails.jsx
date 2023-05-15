@@ -33,7 +33,7 @@ const TriviaDetails = (props) => {
           <h1>{trivia.title}</h1>
           {trivia.questions.map((question, idx) => <div className="question" key={idx} > 
             <h3>{question.text}</h3>
-            {question.choices.map((choice, idx) => <p>{choice.text}</p> )}
+            {question.choices.map((choice, idx) => <p key={idx}>{choice.text}</p> )}
           </div> )}
           <span>
             <OwnerInfo content={trivia} />
