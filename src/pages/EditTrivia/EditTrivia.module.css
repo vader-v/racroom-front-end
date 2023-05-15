@@ -44,3 +44,41 @@ input:focus, select:focus {
   outline: none;
   border: 1px solid var(--primary);
 }
+
+/* Add this to your existing CSS */
+
+.container button {
+  color: white;
+  font-weight: 600;
+  margin: 21px 0px 0px 0px;
+  background: var(--primary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.container button:hover {
+  background: blue;  /* change color on hover, you need to define this variable with the color you want */
+  transform: scale(1.05);  /* slightly increase size on hover */
+}
+
+.container button:active {
+  transform: scale(1);  /* return to normal size when button is clicked */
+}
+
+.container button[type="submit"] {
+  background: red;  /* different color for the submit button, you need to define this variable with the color you want */
+}
+
+.container button[type="submit"]:hover {
+  background: purple;  /* different hover color for the submit button, you need to define this variable with the color you want */
+}
+
+.container button[type="button"] {
+  background: black;  /* different color for the other buttons, you need to define this variable with the color you want */
+}
+
+.container button[type="button"]:hover {
+  background: white;  /* different hover color for the other buttons, you need to define this variable with the color you want */
+}

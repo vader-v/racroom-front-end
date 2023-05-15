@@ -47,7 +47,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
   }
 
   return (
-    <main>
+    <main className={styles.container}>
       <form onSubmit={handleSaveTrivia}>
       <label htmlFor="title">Title:</label>
       <input
