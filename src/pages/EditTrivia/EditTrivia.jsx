@@ -16,7 +16,7 @@ const EditTrivia = (props) => {
 
   const handleCheckbox = (e) => {
     setFormData({ ...formData, [e.target.name]: !!e.target.checked})
-  };
+  }
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
