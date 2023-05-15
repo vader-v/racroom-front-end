@@ -105,6 +105,13 @@ const NewTrivia = ({ handleAddTrivia }) => {
               })
             }
             />
+            <button
+            type="button"
+            className="delete-question-button"
+            onClick={() => handleDeleteQuestion(questionIndex)}
+          >
+            Delete Question
+          </button>
           {question.choices.map((choice, choiceIndex) => (
             <div key={choiceIndex}>
               <label htmlFor={`choice-${questionIndex}-${choiceIndex}`}>
@@ -147,16 +154,11 @@ const NewTrivia = ({ handleAddTrivia }) => {
                 />
               <button
                 type="button"
+                className="delete-choice-button"
                 onClick={() => handleDeleteChoice(questionIndex, choiceIndex)}
               >
                 Delete Choice
               </button>
-              {/* <button
-                type="button"
-                onClick={() => handleDeleteQuestion(questionIndex)}
-              >
-                Delete Question
-              </button> */}
             </div>
           ))}
           <button
@@ -171,12 +173,6 @@ const NewTrivia = ({ handleAddTrivia }) => {
             }}
             >
             Add Choice
-          </button>
-          <button
-            type="button"
-            onClick={() => handleDeleteQuestion(questionIndex)}
-          >
-            Delete Question
           </button>
         </div>
       ))}
