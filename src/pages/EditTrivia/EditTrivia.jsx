@@ -28,6 +28,24 @@ const EditTrivia = ({handleUpdateTrivia}) => {
     })
   }
 
+  const handleDeleteChoice = (questionIndex, choiceIndex) => {
+    const updatedQuestions = [...triviaFormData.questions]
+    updatedQuestions[questionIndex].choices.splice(choiceIndex, 1)
+    setTriviaFormData({
+      ...triviaFormData,
+      questions: updatedQuestions,
+    })
+  }
+
+  const handleDeleteQuestion = (questionIndex) => {
+    const updatedQuestions = [...triviaFormData.questions]
+    updatedQuestions.splice(questionIndex, 1)
+    setTriviaFormData({
+      ...triviaFormData,
+      questions: updatedQuestions
+    })
+  }
+
   return (
     <main>
       <form onSubmit={handleSaveTrivia}>
@@ -117,6 +135,12 @@ const EditTrivia = ({handleUpdateTrivia}) => {
                   })
                 }}
                 />
+              <button
+                type="button"
+                onClick={() => handleDeleteChoice(questionIndex, choiceIndex)}
+              >
+                Delete Choice
+              </button>
             </div>
           ))}
           <button
@@ -131,6 +155,12 @@ const EditTrivia = ({handleUpdateTrivia}) => {
             }}
             >
             Add Choice
+          </button>
+          <button
+            type="button"
+            onClick={() => handleDeleteQuestion(questionIndex)}
+          >
+            Delete Question
           </button>
         </div>
       ))}
