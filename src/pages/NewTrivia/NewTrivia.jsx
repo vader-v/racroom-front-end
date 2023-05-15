@@ -36,18 +36,24 @@ const NewTrivia = ({ handleAddTrivia }) => {
         ...triviaFormData.questions,
         {
           text: '',
-          choices: [{ text: '', answer: false }], // Add an initial empty choice as an object
-          correctAnswerIndex: -1  // Add the correctAnswerIndex property
+          choices: [{ text: '', answer: false }],
+          correctAnswerIndex: -1
         }
       ]
-    })
-  }
+    });
+  };
   
-
+  const handleAddChoice = (questionIndex) => {
+    const updatedQuestions = [...triviaFormData.questions];
+    updatedQuestions[questionIndex].choices.push({ text: '', answer: false });
+    setTriviaFormData({
+      ...triviaFormData,
+      questions: updatedQuestions,
+    });
+  };
 
   if (!triviaFormData) return <h1>Loading</h1>
 
-  
   return (
     <main className={styles.container}>
 
@@ -75,6 +81,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
               category: e.target.value,
             })
           }
+          required
           >
             <option value="Keyboard Shortcuts">Keyboard Shortcuts</option>
             <option value="Programming">Programming</option>
@@ -125,32 +132,22 @@ const NewTrivia = ({ handleAddTrivia }) => {
               <input
                 type="checkbox"
                 id={`correct-answer-${index}-${choiceIndex}`}
-                checked={
-                  question.correctAnswerIndex === choiceIndex
-                }
+                checked={question.choices[choiceIndex].answer}
                 onChange={(e) => {
                   const updatedQuestions = [...triviaFormData.questions];
-                  updatedQuestions[index].correctAnswerIndex =
-                  e.target.checked ? choiceIndex : 1;
+                  updatedQuestions[index].choices[choiceIndex].answer = e.target.checked;
                   setTriviaFormData({
                     ...triviaFormData,
                     questions: updatedQuestions,
                   });
                 }}
-                />
+              />
             </div>
           ))}
 
           <button
             type="button"
-            onClick={() => {
-              const updatedQuestions = [...triviaFormData.questions];
-              updatedQuestions[index].choices.push('');
-              setTriviaFormData({
-                ...triviaFormData,
-                questions: updatedQuestions,
-              });
-            }}
+            onClick={() => handleAddChoice(index)}
             >
             Add Choice
           </button>
