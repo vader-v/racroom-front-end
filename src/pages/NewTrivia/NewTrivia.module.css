@@ -33,7 +33,13 @@
   font-weight: 600;
   margin: 21px 0px 0px 0px;
   background: white;
-  
+  padding: 7px 14px;
+  width: fit-content;
+}
+
+.container button.delete-question-button,
+.container button.delete-choice-button {
+  margin-left: 7px;
 }
 
 .container a {
