@@ -179,9 +179,11 @@ const NewTrivia = ({ handleAddTrivia }) => {
       <button type="button" onClick={handleAddQuestion}>
         Add Question
       </button>
-        <button type="submit">Submit</button>
+        <button type="submit">
+          Submit
+        </button>
       </form>
-      </main>
+    </main>
   )
 }
 
