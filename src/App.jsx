@@ -29,6 +29,7 @@ function App() {
   const [user, setUser] = useState(authService.getUser())
   const [trivias, setTrivias] = useState([])
   const navigate = useNavigate()
+  
   useEffect(() => {
     const fetchAllTrivia = async () => {
       const data = await triviaService.indexTrivia()
