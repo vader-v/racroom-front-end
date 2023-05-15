@@ -50,14 +50,14 @@ function App() {
   }
 
   const handleAddTrivia = async (triviaFormData) => {
-    console.log(trivias)
+    // console.log(trivias)
     const newTrivia = await triviaService.create(triviaFormData)
     setTrivias([newTrivia, ...trivias])
     navigate('/trivia')
   }
 
   const handleUpdateTrivia = async (triviaFormData) => {
-    const updatedTrivia = await triviaService.update(triviaFormData)
+    const updatedTrivia = await triviaService.updateTrivia(triviaFormData)
     setTrivias(trivias.map((b) => triviaFormData._id === b._id ? updatedTrivia : b))
     navigate('/trivia')
   }
