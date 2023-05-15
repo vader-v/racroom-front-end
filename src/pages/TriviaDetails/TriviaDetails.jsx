@@ -14,34 +14,52 @@ import styles from './TriviaDetails.module.css'
 const TriviaDetails = (props) => {
   const { triviaId } = useParams()
   const [trivia, setTrivia] = useState(null)
-  const [selectedChoices, setSelectedChoices] = useState({})
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const [selectedChoices, setSelectedChoices] = useState([])
 
   useEffect(() => {
     const fetchTrivia = async () => {
       const data = await triviaService.showTrivia(triviaId)
       setTrivia(data)
-      const initialChoices = data.questions.reduce((acc, _, idx) => {
-        acc[idx] = null
-        return acc
-      }, {})
-      setSelectedChoices(initialChoices)
+      setSelectedChoices(new Array(data.questions.length).fill(null))
     }
+
     fetchTrivia()
   }, [triviaId])
 
   const handleSelectChoice = (questionIndex, choiceIndex) => {
-    setSelectedChoices(prev => ({
-      ...prev,
-      [questionIndex]: choiceIndex
-    }))
+    setSelectedChoices((prevChoices) => {
+      const updatedChoices = [...prevChoices]
+      updatedChoices[questionIndex] = choiceIndex
+      return updatedChoices
+    })
   }
 
-const handleSubmitAnswer = () => {
-  console.log(selectedChoices)
-}
-
+  const handleSubmitAnswer = () => {
+    console.log(selectedChoices)
+  
+    // Check if it's the last question
+    if (currentQuestionIndex === trivia.questions.length - 1) {
+      // Calculate the number of correct choices
+      const correctChoices = trivia.questions.reduce((total, question, questionIndex) => {
+        const selectedChoiceIndex = selectedChoices[questionIndex]
+        const selectedChoice = question.choices[selectedChoiceIndex]
+        if (selectedChoice && selectedChoice.answer === true) {
+          return total + 1
+        }
+        return total
+      }, 0)
+  
+      console.log(`Number of correct choices: ${correctChoices}`)
+    } else {
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
+    }
+  }
+  
 
   if (!trivia) return <h1>Loading</h1>
+
+  const currentQuestion = trivia.questions[currentQuestionIndex]
 
   return (
     <main className={styles.container}>
@@ -49,34 +67,30 @@ const handleSubmitAnswer = () => {
         <header>
           <h3>{trivia.category.toUpperCase()}</h3>
           <h1>{trivia.title}</h1>
-          {trivia.questions.map((question, questionIndex) => 
-      <div className="question" key={questionIndex}> 
-        <h3>{question.text}</h3>
-        {question.choices.map((choice, choiceIndex) => 
-          <p key={choiceIndex}>
-            {choice.text}
-            <input 
-              type="checkbox" 
-              checked={selectedChoices[questionIndex] === choiceIndex}
-              onChange={() => handleSelectChoice(questionIndex, choiceIndex)}
-            />
-          </p> 
-        )}
-      </div> 
-          )}
-            <button onClick={handleSubmitAnswer}>Submit Answer</button>
+          <div className="question" key={currentQuestionIndex}>
+            <h3>{currentQuestion.text}</h3>
+            {currentQuestion.choices.map((choice, choiceIndex) => (
+              <p key={choiceIndex}>
+                {choice.text}
+                <input
+                  type="checkbox"
+                  checked={selectedChoices[currentQuestionIndex] === choiceIndex}
+                  onChange={() => handleSelectChoice(currentQuestionIndex, choiceIndex)}
+                />
+              </p>
+            ))}
+          </div>
+          <button onClick={handleSubmitAnswer}>Submit Answer</button>
           <span>
             <OwnerInfo content={trivia} />
-            {trivia.owner._id === props.user.profile &&
+            {trivia.owner._id === props.user.profile && (
               <>
                 <Link to={`/trivia/${triviaId}/edit`} state={trivia}>
                   Edit
                 </Link>
-                <button onClick={() => props.handleDeleteTrivia(triviaId)}>
-                  Delete
-                </button>
+                <button onClick={() => props.handleDeleteTrivia(triviaId)}>Delete</button>
               </>
-            }
+            )}
           </span>
         </header>
         <p>{trivia.text}</p>

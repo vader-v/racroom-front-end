@@ -15,26 +15,26 @@ const NewTrivia = ({ handleAddTrivia }) => {
       }],
       correctAnswerIndex: ''  
     }],
-  });
+  })
   
   const handleSaveTrivia = (evt) => {
-    evt.preventDefault();
+    evt.preventDefault()
     const triviaData = {...triviaFormData}
     handleAddTrivia(triviaData)
-  };
+  }
 
   const handleQuestionChange = (index, question) => {
-    const updatedQuestions = [...triviaFormData.questions];
-    updatedQuestions[index] = question;
-    setTriviaFormData({ ...triviaFormData, questions: updatedQuestions });
-  };
+    const updatedQuestions = [...triviaFormData.questions]
+    updatedQuestions[index] = question
+    setTriviaFormData({ ...triviaFormData, questions: updatedQuestions })
+  }
 
   const handleAddQuestion = () => {
     setTriviaFormData({
       ...triviaFormData,
       questions: [...triviaFormData.questions, { text: '', choices: [] }],
-    });
-  };
+    })
+  }
 
   if (!triviaFormData) return <h1>Loading</h1>
 
@@ -102,7 +102,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
                   updatedQuestions[index].choices[choiceIndex].text = e.target.value
                   setTriviaFormData({
                     ...triviaFormData, questions: updatedQuestions
-                  });
+                  })
                 }}
               />
               <label htmlFor={`correct-answer-${index}-${choiceIndex}`}>
@@ -115,16 +115,16 @@ const NewTrivia = ({ handleAddTrivia }) => {
                   question.correctAnswerIndex === choiceIndex
                 }
                 onChange={(e) => {
-                  const updatedQuestions = [...triviaFormData.questions];
+                  const updatedQuestions = [...triviaFormData.questions]
                   updatedQuestions[index].correctAnswerIndex =
-                  e.target.checked ? choiceIndex : 1;
+                  e.target.checked ? choiceIndex : 1
                   updatedQuestions[index].choices.map((choice, idx) => 
                     choice.answer = idx === (e.target.checked ? choiceIndex : 1)
                       ?  true : false )
                   setTriviaFormData({
                     ...triviaFormData,
                     questions: updatedQuestions,
-                  });
+                  })
                 }}
                 />
             </div>
@@ -132,12 +132,12 @@ const NewTrivia = ({ handleAddTrivia }) => {
           <button
             type="button"
             onClick={() => {
-              const updatedQuestions = [...triviaFormData.questions];
-              updatedQuestions[index].choices.push({text: '', answer: false});
+              const updatedQuestions = [...triviaFormData.questions]
+              updatedQuestions[index].choices.push({text: '', answer: false})
               setTriviaFormData({
                 ...triviaFormData,
                 questions: updatedQuestions,
-              });
+              })
             }}
             >
             Add Choice
@@ -150,8 +150,8 @@ const NewTrivia = ({ handleAddTrivia }) => {
         <button type="submit">Submit</button>
       </form>
       </main>
-  );
-};
+  )
+}
 
 
 export default NewTrivia
