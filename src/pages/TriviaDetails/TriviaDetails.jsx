@@ -36,6 +36,11 @@ const TriviaDetails = (props) => {
     }))
   }
 
+const handleSubmitAnswer = () => {
+  console.log(selectedChoices)
+}
+
+
   if (!trivia) return <h1>Loading</h1>
 
   return (
@@ -59,7 +64,7 @@ const TriviaDetails = (props) => {
         )}
       </div> 
           )}
-
+            <button onClick={handleSubmitAnswer}>Submit Answer</button>
           <span>
             <OwnerInfo content={trivia} />
             {trivia.owner._id === props.user.profile &&
