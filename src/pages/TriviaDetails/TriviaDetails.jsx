@@ -71,12 +71,13 @@ const TriviaDetails = (props) => {
             <h3>{currentQuestion.text}</h3>
             {currentQuestion.choices.map((choice, choiceIndex) => (
               <p key={choiceIndex}>
-                {choice.text}
                 <input
                   type="checkbox"
+                  className="checkbox"
                   checked={selectedChoices[currentQuestionIndex] === choiceIndex}
                   onChange={() => handleSelectChoice(currentQuestionIndex, choiceIndex)}
-                />
+                  />
+                  {choice.text}
               </p>
             ))}
           </div>

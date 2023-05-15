@@ -127,6 +127,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
               </label>
               <input
                 type="checkbox"
+                className="checkbox"
                 id={`correct-answer-${questionIndex}-${choiceIndex}`}
                 checked={
                   question.correctAnswerIndex === choiceIndex
