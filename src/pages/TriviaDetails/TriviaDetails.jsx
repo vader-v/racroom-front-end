@@ -14,14 +14,27 @@ import styles from './TriviaDetails.module.css'
 const TriviaDetails = (props) => {
   const { triviaId } = useParams()
   const [trivia, setTrivia] = useState(null)
+  const [selectedChoices, setSelectedChoices] = useState({})
 
   useEffect(() => {
-    const fetchTrivia =async () => {
+    const fetchTrivia = async () => {
       const data = await triviaService.showTrivia(triviaId)
       setTrivia(data)
+      const initialChoices = data.questions.reduce((acc, _, idx) => {
+        acc[idx] = null
+        return acc
+      }, {})
+      setSelectedChoices(initialChoices)
     }
     fetchTrivia()
   }, [triviaId])
+
+  const handleSelectChoice = (questionIndex, choiceIndex) => {
+    setSelectedChoices(prev => ({
+      ...prev,
+      [questionIndex]: choiceIndex
+    }))
+  }
 
   if (!trivia) return <h1>Loading</h1>
 
@@ -31,10 +44,22 @@ const TriviaDetails = (props) => {
         <header>
           <h3>{trivia.category.toUpperCase()}</h3>
           <h1>{trivia.title}</h1>
-          {trivia.questions.map((question, idx) => <div className="question" key={idx} > 
-            <h3>{question.text}</h3>
-            {question.choices.map((choice, idx) => <p key={idx}>{choice.text}</p> )}
-          </div> )}
+          {trivia.questions.map((question, questionIndex) => 
+      <div className="question" key={questionIndex}> 
+        <h3>{question.text}</h3>
+        {question.choices.map((choice, choiceIndex) => 
+          <p key={choiceIndex}>
+            {choice.text}
+            <input 
+              type="checkbox" 
+              checked={selectedChoices[questionIndex] === choiceIndex}
+              onChange={() => handleSelectChoice(questionIndex, choiceIndex)}
+            />
+          </p> 
+        )}
+      </div> 
+          )}
+
           <span>
             <OwnerInfo content={trivia} />
             {trivia.owner._id === props.user.profile &&
