@@ -88,6 +88,8 @@ async function addScore(triviaId, scoreData) {
   }
 }
 
+
+
 export {
   indexTrivia,
   showTrivia,

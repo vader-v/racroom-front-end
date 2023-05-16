@@ -105,7 +105,9 @@ const TriviaDetails = (props) => {
             ))}
           </div>
           {isTriviaFinished ? (
-            <div>Correct Choices: {correctChoices}</div>
+            <div>
+              Correct Choices: {correctChoices} / {trivia.questions.length}
+            </div>
           ) : currentQuestionIndex === trivia.questions.length - 1 ? (
             <>
               {" "}
@@ -120,10 +122,10 @@ const TriviaDetails = (props) => {
             </button>
           )}
           <span>
-            <div className="profileImgage">
+            <div className="profileImage">
               <OwnerInfo content={trivia} />
             </div>
-            <Link to={'/trivia'}>Return</Link>
+            <Link to={"/trivia"}>Return</Link>
             {trivia.owner._id === props.user.profile && (
               <>
                 <Link to={`/trivia/${triviaId}/edit`} state={trivia}>
@@ -145,7 +147,7 @@ const TriviaDetails = (props) => {
         <h1>Comments</h1>
       </section>
     </main>
-  );
+  )
 }
 
 export default TriviaDetails
