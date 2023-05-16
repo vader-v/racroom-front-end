@@ -62,8 +62,9 @@ const NewTrivia = ({ handleAddTrivia }) => {
 
   return (
     <main className={styles.container}>
+      <h1>New Trivia!</h1>
       <form onSubmit={handleSaveTrivia}>
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="title">Trivia Title:</label>
         <input
           type="text"
           id="title"
