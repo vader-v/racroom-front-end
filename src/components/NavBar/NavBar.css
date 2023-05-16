@@ -73,6 +73,7 @@ nav ul li a:hover {
   nav ul.open {
     transform: translateY(0);
     top: 0px;
+    height: 100%;
   }
 
   .nav-links {
