@@ -18,16 +18,23 @@
   font-family: canada-type-gibson, sans-serif;
 }
 
+.container textarea {
+  min-height: 50px;
+}
+
 .container label {
   font-weight: 600;
   margin: 7px 0px 14px 0px;
 }
 
 .container button {
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: 600;
   margin: 21px 0px 0px 0px;
-  background: var(--primary);
+  background: white;
+  padding: 7px 14px;
+  width: fit-content;
+  display: block;
 }
 
 .container a {

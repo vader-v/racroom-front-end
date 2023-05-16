@@ -166,10 +166,10 @@ const EditTrivia = ({handleUpdateTrivia}) => {
             </button>
           </div>
         ))}
-      <button type="button" onClick={handleAddQuestion}>
-        Add Question
-      </button>
-        <button type="submit">Submit</button>
+        <button type="button" onClick={handleAddQuestion}>
+          Add Question
+        </button>
+        <button className="submit-button" type="submit">Submit</button>
       </form>
     </main>
   )
