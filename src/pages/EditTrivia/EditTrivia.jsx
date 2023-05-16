@@ -2,6 +2,9 @@
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
 
+// components 
+import CategoryDropdown from "../../components/CategoryDropdown/CategoryDropdown"
+
 //css
 import styles from './EditTrivia.module.css'
 
@@ -48,6 +51,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
 
   return (
     <main className={styles.container}>
+      <h1>Edit Trivia</h1>
       <form onSubmit={handleSaveTrivia}>
         <label htmlFor="title">Title:</label>
         <input
@@ -62,9 +66,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
           }
           />
         <label htmlFor="category-input">Category</label>
-        <select 
-          name="category" 
-          id="category-input" 
+        <CategoryDropdown
           value={triviaFormData.category}
           onChange={(e) =>
             setTriviaFormData({
@@ -72,15 +74,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
               category: e.target.value,
             })
           }
-          >
-            <option value="Keyboard Shortcuts">Keyboard Shortcuts</option>
-            <option value="Programming">Programming</option>
-            <option value="Pop culture">Pop Culture</option>
-            <option value="History">History</option>
-            <option value="Games">Games</option>
-            <option value="Languages">Languages</option>
-            <option value="Television">Television</option>
-        </select>
+        />
         {triviaFormData.questions.map((question, questionIndex) => (
           <div key={questionIndex}>
             <label htmlFor={`question-${questionIndex}`}>Question:</label>
@@ -169,7 +163,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
         <button type="button" onClick={handleAddQuestion}>
           Add Question
         </button>
-        <button className="submit-button" type="submit">Submit</button>
+        <button className="submit-button" type="submit">Complete Edit</button>
       </form>
     </main>
   )

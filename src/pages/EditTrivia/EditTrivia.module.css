@@ -1,7 +1,8 @@
 .container {
   height: 100%;
   display: flex;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   padding: 28px 21px;
   align-items: center;
   flex-direction: column;
@@ -34,7 +35,11 @@
   background: white;
   padding: 7px 14px;
   width: fit-content;
-  display: block;
+}
+
+.container button.delete-question-button,
+.container button.delete-choice-button {
+  margin-left: 7px;
 }
 
 .container a {
@@ -47,7 +52,7 @@
   color: rgb(200, 200, 200);
 }
 
-input:focus, select:focus {
+input:focus, select:focus, textarea:focus {
   outline: none;
   border: 1px solid var(--primary);
 }
