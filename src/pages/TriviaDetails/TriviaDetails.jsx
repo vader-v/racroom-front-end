@@ -60,6 +60,16 @@ const TriviaDetails = (props) => {
   if (!trivia) return <h1>Loading</h1>
 
   const currentQuestion = trivia.questions[currentQuestionIndex]
+  const totalQuestions = trivia.questions.length
+  const correctChoices = selectedChoices.reduce(
+    (count, choiceIndex, questionIndex) => {
+      const question = trivia.questions[questionIndex]
+      const selectedChoice = question.choices[choiceIndex]
+      if (selectedChoice && selectedChoice.answer) {
+        return count + 1
+      }
+      return count
+    }, 0)
 
   return (
     <main className={styles.container}>
@@ -67,6 +77,11 @@ const TriviaDetails = (props) => {
         <header>
           <h3>{trivia.category.toUpperCase()}</h3>
           <h1>{trivia.title}</h1>
+          
+          <h2>
+            Question {currentQuestionIndex + 1} of {totalQuestions}
+          </h2>
+          <h2>Correct Choices: {correctChoices}</h2>
           <div className="question" key={currentQuestionIndex}>
             <h3>{currentQuestion.text}</h3>
             {currentQuestion.choices.map((choice, choiceIndex) => (
