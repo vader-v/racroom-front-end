@@ -59,10 +59,19 @@
   color: rgb(200, 200, 200);
 }
 
-
-
 .container button:hover {
   color: white;
   background: black;
   transform: scale(1.05);
+}
+
+.container button.delete-question-button:hover,
+.container button.delete-choice-button:hover {
+  background: rgb(94, 0, 0);
+}
+
+.container button.add-question-button:hover,
+.container button.add-choice-button:hover,
+.container button.submit-button:hover {
+  background: green;
 }

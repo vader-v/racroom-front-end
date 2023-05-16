@@ -101,7 +101,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
             />
             <button
               type="button"
-              className="delete-question-button"
+              className={styles["delete-question-button"]}
               onClick={() => handleDeleteQuestion(questionIndex)}
             >
               Delete Question
@@ -156,7 +156,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
                 />
                 <button
                   type="button"
-                  className="delete-choice-button"
+                  className={styles["delete-choice-button"]}
                   onClick={() => handleDeleteChoice(questionIndex, choiceIndex)}
                 >
                   Delete Choice
@@ -165,6 +165,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
             ))}
             <button
               type="button"
+              className={styles["add-choice-button"]}
               onClick={() => {
                 const updatedQuestions = [...triviaFormData.questions]
                 updatedQuestions[questionIndex].choices.push({
@@ -181,10 +182,19 @@ const NewTrivia = ({ handleAddTrivia }) => {
             </button>
           </div>
         ))}
-        <button type="button" onClick={handleAddQuestion}>
+        <button 
+          type="button" 
+          className={styles["add-question-button"]}
+          onClick={handleAddQuestion}
+        >
           Add Question
         </button>
-        <button type="submit">Submit</button>
+        <button 
+          type="submit"
+          className={styles["submit-button"]}
+        >
+          Submit
+        </button>
       </form>
     </main>
   )
