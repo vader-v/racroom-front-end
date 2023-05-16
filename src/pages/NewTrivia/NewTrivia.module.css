@@ -35,6 +35,7 @@
   background: white;
   padding: 7px 14px;
   width: fit-content;
+  display: block;
 }
 
 .container button.delete-question-button,
