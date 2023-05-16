@@ -136,7 +136,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
                 }}
                 />
               <button
-                className="delete-content"
+                className="deleteContent"
                 type="button"
                 onClick={() => handleDeleteChoice(questionIndex, choiceIndex)}
               >
@@ -158,7 +158,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
             Add Choice
           </button>
           <button
-          className="delete-content"
+          className="deleteContent"
             type="button"
             onClick={() => handleDeleteQuestion(questionIndex)}
           >

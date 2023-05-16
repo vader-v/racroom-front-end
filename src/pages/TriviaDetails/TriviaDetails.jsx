@@ -83,13 +83,19 @@ const TriviaDetails = (props) => {
           </div>
           <button onClick={handleSubmitAnswer}>Submit Answer</button>
           <span>
-            <OwnerInfo content={trivia} />
+            <div className="profileImgage">
+              <OwnerInfo content={trivia} />
+            </div>
             {trivia.owner._id === props.user.profile && (
               <>
                 <Link to={`/trivia/${triviaId}/edit`} state={trivia}>
                   Edit
                 </Link>
-                <button onClick={() => props.handleDeleteTrivia(triviaId)}>Delete</button>
+                <button 
+                className="deleteContent"
+                onClick={() => props.handleDeleteTrivia(triviaId)}>
+                  Delete
+                </button>
               </>
             )}
           </span>

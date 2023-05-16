@@ -84,7 +84,7 @@ input:focus, select:focus {
   background: white;
 }
 
-.container button.delete-content {
+.container button.deleteContent {
   background-color: red;
   color: white;
   border: none;
@@ -93,12 +93,16 @@ input:focus, select:focus {
   transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.container button.delete-content:hover {
+.container button.deleteContent:hover {
   background-color: black;
   color: white;
   transform: scale(1.05);
 }
 
-.container button.delete-content:active {
+.container button.deleteContent:active {
   transform: scale(1);
+}
+
+button, input[type="checkbox"] {
+  cursor: pointer;
 }

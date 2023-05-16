@@ -2,10 +2,12 @@
   height: 100%;
   display: flex;
   overflow: scroll;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: var(--card-background);
 }
+
 
 .container article, .container > section {
   width: 100%;
@@ -17,6 +19,7 @@
 
 .container p {
   text-indent: -50px;
+  background-color: rgb(56, 55, 55);
   text-align-last: left;
 	word-break: break-all;
 }
@@ -119,4 +122,94 @@ img {
 .checkbox {
   width: 20px;
   margin-right: 15px;
+}
+
+
+.container button {
+  color: white;
+  font-weight: 600;
+  margin: 21px 0px 0px 0px;
+  background: var(--primary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.container button:hover {
+  color: white;
+  background: black;
+  transform: scale(1.05);
+}
+
+.container button:active {
+  transform: scale(1);
+}
+
+.container button[type="submit"] {
+  color: black;
+  background: white;
+}
+
+.container button[type="submit"]:hover {
+  color: black;
+  background: rgb(78, 255, 50);
+}
+
+.container button[type="button"] {
+  background: black;
+}
+
+.container button[type="button"]:hover {
+  color: black;
+  background: white;
+}
+
+.container button.deleteContent {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.container button.deleteContent:hover {
+  background-color: black;
+  color: white;
+  transform: scale(1.05);
+}
+
+.container button.deleteContent:active {
+  transform: scale(1);
+}
+
+button, input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.container button {
+  color: white;
+  font-weight: 600;
+  margin: 21px 0px 0px 0px;
+  background: var(--primary);
+}
+
+.container button {
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  margin: 21px 0px 0px 0px;
+  background: white;
+  padding: 7px 14px;
+  width: fit-content;
+}
+
+.container input, textarea, select, button { 
+  width: 25%;
+  padding: 14px;
+  font-size: 14px;
+  resize: vertical;
+  border-radius: 5px;
+  margin: 7px 0px 14px 0px;
+  font-family: canada-type-gibson, sans-serif;
 }
