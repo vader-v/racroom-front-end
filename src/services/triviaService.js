@@ -72,6 +72,21 @@ async function deleteTrivia(triviaId) {
   }
 }
 
+async function addScore(triviaId, scoreData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${triviaId}/scores`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(scoreData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 
 
@@ -81,4 +96,5 @@ export {
   create,
   updateTrivia,
   deleteTrivia,
+  addScore
 }
