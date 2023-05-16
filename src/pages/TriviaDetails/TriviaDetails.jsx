@@ -6,10 +6,10 @@ import { useParams, Link } from "react-router-dom"
 import OwnerInfo from "../../components/OwnerInfo/OwnerInfo"
 
 // services
-import * as triviaService from '../../services/triviaService'
+import * as triviaService from "../../services/triviaService"
 
 // css
-import styles from './TriviaDetails.module.css'
+import styles from "./TriviaDetails.module.css"
 
 const TriviaDetails = (props) => {
   const { triviaId } = useParams()
@@ -37,25 +37,28 @@ const TriviaDetails = (props) => {
 
   const handleSubmitAnswer = () => {
     console.log(selectedChoices)
-  
+
     // Check if it's the last question
     if (currentQuestionIndex === trivia.questions.length - 1) {
       // Calculate the number of correct choices
-      const correctChoices = trivia.questions.reduce((total, question, questionIndex) => {
-        const selectedChoiceIndex = selectedChoices[questionIndex]
-        const selectedChoice = question.choices[selectedChoiceIndex]
-        if (selectedChoice && selectedChoice.answer === true) {
-          return total + 1
-        }
-        return total
-      }, 0)
-  
+      const correctChoices = trivia.questions.reduce(
+        (total, question, questionIndex) => {
+          const selectedChoiceIndex = selectedChoices[questionIndex]
+          const selectedChoice = question.choices[selectedChoiceIndex]
+          if (selectedChoice && selectedChoice.answer === true) {
+            return total + 1
+          }
+          return total
+        },
+        0
+      )
+
       console.log(`Number of correct choices: ${correctChoices}`)
+      
     } else {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
     }
   }
-  
 
   if (!trivia) return <h1>Loading</h1>
 
@@ -69,19 +72,19 @@ const TriviaDetails = (props) => {
         return count + 1
       }
       return count
-    }, 0)
+    },
+    0
+  )
 
   return (
     <main className={styles.container}>
       <article>
         <header>
           <h3>{trivia.category.toUpperCase()}</h3>
-          <h1>{trivia.title}</h1>
-          
           <h2>
             Question {currentQuestionIndex + 1} of {totalQuestions}
           </h2>
-          <h2>Correct Choices: {correctChoices}</h2>
+          <h1>{trivia.title}</h1>
           <div className="question" key={currentQuestionIndex}>
             <h3>{currentQuestion.text}</h3>
             {currentQuestion.choices.map((choice, choiceIndex) => (
@@ -89,14 +92,25 @@ const TriviaDetails = (props) => {
                 <input
                   type="checkbox"
                   className="checkbox"
-                  checked={selectedChoices[currentQuestionIndex] === choiceIndex}
-                  onChange={() => handleSelectChoice(currentQuestionIndex, choiceIndex)}
+                  checked={
+                    selectedChoices[currentQuestionIndex] === choiceIndex
+                  }
+                  onChange={() =>
+                    handleSelectChoice(currentQuestionIndex, choiceIndex)
+                  }
                   />
-                  {choice.text}
+                {choice.text}
               </p>
             ))}
-          </div>
-          <button onClick={handleSubmitAnswer}>Submit Answer</button>
+          </div> 
+          {currentQuestionIndex === trivia.questions.length - 1 ? (
+              <>
+                <button onClick={handleSubmitAnswer}>Submit Answer</button>
+                <div>Correct Choices: {correctChoices}</div>
+              </>
+            ) : (
+              <button onClick={handleSubmitAnswer}>Next Question</button>
+              )}
           <span>
             <div className="profileImgage">
               <OwnerInfo content={trivia} />
@@ -106,9 +120,10 @@ const TriviaDetails = (props) => {
                 <Link to={`/trivia/${triviaId}/edit`} state={trivia}>
                   Edit
                 </Link>
-                <button 
-                className="deleteContent"
-                onClick={() => props.handleDeleteTrivia(triviaId)}>
+                <button
+                  className="deleteContent"
+                  onClick={() => props.handleDeleteTrivia(triviaId)}
+                >
                   Delete
                 </button>
               </>
