@@ -105,7 +105,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
               })
             }
             />
-            <button
+          <button
             type="button"
             className="delete-question-button"
             onClick={() => handleDeleteQuestion(questionIndex)}
