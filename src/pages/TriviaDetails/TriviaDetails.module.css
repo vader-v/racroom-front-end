@@ -2,10 +2,9 @@
   height: 100%;
   display: flex;
   overflow: scroll;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  background-color: var(--card-background);
-}
+  flex-direction: column;}
 
 .container article, .container > section {
   width: 100%;
@@ -17,15 +16,18 @@
 
 .container p {
   text-indent: -50px;
+  background-color: rgb(39, 39, 39);
   text-align-last: left;
 	word-break: break-all;
 }
 
 .container header {
   display: flex;
-  margin-bottom: 21px;
   flex-direction: column;
   align-items: flex-start;
+  background: rgb(59, 59, 59);
+  padding: 21px 28px;
+  margin-bottom: 21px;
 }
 
 .container h1 {
@@ -38,7 +40,6 @@
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 10px;
-  color: var(--primary);
 }
 
 .container span {
@@ -62,10 +63,31 @@
   margin-left: 7px;
   border-radius: 5px;
   text-align: center;
-  border: 1px solid var(--border);
+  transition: all 0.3s ease;
 }
 
-.container span button, .container span a  {
+.container span a {
+  color: var(--primary);
+  background-color: rgb(31, 10, 10);
+  border: 1px solid var(--primary);
+}
+
+.container span button {
+  color: white;
+  background-color: red;
+  border: 1px solid red;
+}
+
+.container span button:hover {
+  background-color: darkred;
+  border: 1px solid darkred;
+}
+
+.container span button:active, .container span a:active {
+  transform: scale(0.95);
+}
+
+button, input[type="checkbox"] {
   cursor: pointer;
 }
 
@@ -91,10 +113,98 @@ img {
   object-fit: cover;
   margin-right: 12px;
   border-radius: 50%;
-  background-color: var(--background);
 }
 
 .checkbox {
   width: 20px;
   margin-right: 15px;
+}
+
+
+.container button {
+  color: white;
+  font-weight: 600;
+  margin: 21px 0px 0px 0px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.container button:hover {
+  color: white;
+  background: black;
+  transform: scale(1.05);
+}
+
+.container button:active {
+  transform: scale(1);
+}
+
+.container button[type="submit"] {
+  color: black;
+  background: white;
+}
+
+.container button[type="submit"]:hover {
+  color: black;
+  background: rgb(78, 255, 50);
+}
+
+.container button[type="button"] {
+  background: black;
+}
+
+.container button[type="button"]:hover {
+  color: black;
+  background: white;
+}
+
+.container button.deleteContent {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.container button.deleteContent:hover {
+  background-color: black;
+  color: white;
+  transform: scale(1.05);
+}
+
+.container button.deleteContent:active {
+  transform: scale(1);
+}
+
+button, input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.container button {
+  color: white;
+  font-weight: 600;
+  margin: 21px 0px 0px 0px;
+  background: var(--primary);
+}
+
+.container button {
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  margin: 21px 0px 0px 0px;
+  background: white;
+  padding: 7px 14px;
+  width: fit-content;
+}
+
+.container input, textarea, select, button { 
+  width: 25%;
+  padding: 14px;
+  font-size: 14px;
+  resize: vertical;
+  border-radius: 5px;
+  margin: 7px 0px 14px 0px;
+  font-family: canada-type-gibson, sans-serif;
 }

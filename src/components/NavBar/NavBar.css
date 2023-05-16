@@ -1,0 +1,27 @@
+nav {
+  background-color: #333;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold; 
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+nav ul li a:hover {
+  color: #ddd;
+}

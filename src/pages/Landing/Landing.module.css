@@ -1,5 +1,39 @@
-.container {
+.pageContainer {
   display: flex;
+  justify-content: center;
   align-items: center;
+  height: 100vh;
+  width: 600px;
+  margin: 0 auto;
+  text-overflow: ellipsis;
+  margin-top: 100px;
+}
+
+.container {
+  position: relative; 
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.icon {
+  position: absolute; 
+  width: 450px;
+  height: auto;
+  bottom: 100%; 
+  transform: translateY(35%); 
+  left: 20%;
+}
+
+.container h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  text-shadow: 2px 2px 4px rgba(108, 108, 108, 0.5);
+  background-color: grey;
+  padding: 200px;
+  border-radius: 10px;
 }

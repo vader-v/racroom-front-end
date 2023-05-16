@@ -8,6 +8,12 @@
   flex-direction: column;
 }
 
+.container form {
+  background: rgb(59, 59, 59);
+  padding: 21px 28px;
+  text-align: center;
+}
+
 .container input, textarea, select, button { 
   width: 100%;
   padding: 14px;
@@ -15,7 +21,6 @@
   resize: vertical;
   border-radius: 5px;
   margin: 7px 0px 14px 0px;
-  border: 1px solid var(--border);
   font-family: canada-type-gibson, sans-serif;
 }
 
@@ -54,5 +59,65 @@
 
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border: 1px solid var(--primary);
+}
+
+.container button {
+  color: white;
+  font-weight: 600;
+  margin: 21px 0px 0px 0px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.container button:hover {
+  background: red;
+  transform: scale(1.05);
+}
+
+.container button:active {
+  transform: scale(1);
+}
+
+.container button[type="submit"] {
+  color: black;
+  background: white;
+}
+
+.container button[type="submit"]:hover {
+  color: black;
+  background: rgb(78, 255, 50);
+}
+
+.container button[type="button"] {
+  background: black;
+}
+
+.container button[type="button"]:hover {
+  color: black;
+  background: white;
+}
+
+.container button.deleteContent {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.container button.deleteContent:hover {
+  background-color: black;
+  color: white;
+  transform: scale(1.05);
+}
+
+.container button.deleteContent:active {
+  transform: scale(1);
+}
+
+button, input[type="checkbox"] {
+  cursor: pointer;
 }
