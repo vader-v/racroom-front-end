@@ -45,9 +45,6 @@ const Profiles = () => {
           {profile.name}
         </div>
       )}
-      {profiles.map(profile => (
-        <p key={profile._id}>{profile.name}</p>
-      ))}
       <div className={styles.changePassword}>
         <NavLink to="/auth/change-password">Change Password</NavLink>
       </div>
