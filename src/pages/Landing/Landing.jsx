@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './Landing.module.css'
 import { NavLink } from 'react-router-dom'
 import raccoonImg from '/raccoon-1.svg'
