@@ -15,8 +15,10 @@
   resize: vertical;
   border-radius: 5px;
   margin: 7px 0px 14px 0px;
-  border: 1px solid var(--border);
   font-family: canada-type-gibson, sans-serif;
+  border: 2px solid;
+  border-color: rgb(25, 25, 48);
+  border-radius: 5px;
 }
 
 .container form {
@@ -50,16 +52,6 @@
 .container button.delete-question-button,
 .container button.delete-choice-button {
   margin-left: 7px;
-}
-
-.container a {
-  border: none;
-  font-size: 14px;
-  background: none;
-  font-weight: 500;
-  margin-top: 14px;
-  text-align: center;
-  color: rgb(200, 200, 200);
 }
 
 .container button:hover {
