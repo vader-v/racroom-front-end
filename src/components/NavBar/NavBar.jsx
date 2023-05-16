@@ -1,30 +1,71 @@
-// npm modules
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-
-// css
-
 import './NavBar.css'
+import raccoonIconImg from '/raccoonIcon.svg'
+import raccoonIconImg2 from '/raccoonIcon2.svg'
 
 const NavBar = ({ user, handleLogout }) => {
-  return (
-    <nav>
-      {user ?
-        <ul>
-          <li>Welcome, {user.name}</li>
-          <li><NavLink to="/profiles">Profiles</NavLink></li>
-          <li><NavLink to="/trivia">All Trivia</NavLink></li>
-          <li><NavLink to="/trivia/new">Create</NavLink></li>
-          <li><NavLink to="/auth/change-password">Change Password</NavLink></li>
-          <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
-        </ul>
-      :
-      <ul>
-          <li><NavLink to="/auth/login">Log In</NavLink></li>
-          <li><NavLink to="/auth/signup">Sign Up</NavLink></li>
-        </ul>
-      }
-    </nav>
-  )
+	const [isOpen, setIsOpen] = useState(false)
+	const [photo, setPhoto] = useState(raccoonIconImg)
+
+
+  const handleMouseOver = () => {
+    setPhoto(raccoonIconImg2)
+  }
+
+  const handleMouseOut = () => {
+    setPhoto(raccoonIconImg)
+  }
+
+	const toggleMenu = () => {
+		setIsOpen(!isOpen)
+	}
+
+	const closeMenu = () => {
+		setIsOpen(false)
+	}
+
+	return (
+		<nav>
+			<div onClick={toggleMenu} className="hamburger-icon">
+				&#9776;
+			</div>
+			<ul className={`nav-links ${isOpen ? 'open' : ''}`}>
+      <div onClick={closeMenu} className={`hamburger-icon ${isOpen ? 'inside' : ''}`}>
+          &#9776;
+        </div>
+				{user ? (
+					<>
+						<li className="raccoonLi">
+						<NavLink to="/" onClick={closeMenu}><img src={photo} alt="" className="raccoonImage" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} />
+						</NavLink>
+						</li>
+						<li>
+							<NavLink to="/trivia" onClick={closeMenu}>Trivia</NavLink>
+						</li>
+						<li>
+							<NavLink to="/trivia/new" onClick={closeMenu}>Create</NavLink>
+						</li>
+						<li>
+							<NavLink to="/profiles" onClick={closeMenu}>Profiles</NavLink>
+						</li>
+						<li>
+							<NavLink to="" onClick={(event) => {handleLogout(event); closeMenu();}}>LOG OUT</NavLink>
+						</li>
+					</>
+				) : (
+					<>
+						<li>
+							<NavLink to="/auth/login" onClick={closeMenu}>Log In</NavLink>
+						</li>
+						<li>
+							<NavLink to="/auth/signup" onClick={closeMenu}>Sign Up</NavLink>
+						</li>
+					</>
+				)}
+			</ul>
+		</nav>
+	)
 }
 
 export default NavBar
