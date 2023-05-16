@@ -3,7 +3,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh; /* set the height to the full viewport height */
+  height: 100vh;
 }
 
 .content {
@@ -14,8 +14,15 @@
 
 .container > p, .content > p {
   margin: 8px;
+  background-color: rgb(18, 18, 18);
+  padding: 10px;
+  border-radius: 9px;
 }
 
 .changePassword {
-  margin-bottom: 20px; /* add some space at the bottom */
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
 }
