@@ -9,18 +9,19 @@ import styles from './TriviaCard.module.css'
 
 const TriviaCard = ({ trivia }) => {
   return (
-    <Link to={`/trivia/${trivia._id}`} state={trivia}>
+    <>
       <article className={styles.container}>
         <header>
+          <Link to={`/trivia/${trivia._id}`} state={trivia}>
           <span>
             <h1>{trivia.title}</h1>
           </span>
           <OwnerInfo content={trivia}/>
+          </Link>
+        <h4>{trivia.category}</h4>
         </header>
-        <p>{trivia.tex}</p>
       </article>
-    
-    </Link>
+    </>
   )
 }
 
