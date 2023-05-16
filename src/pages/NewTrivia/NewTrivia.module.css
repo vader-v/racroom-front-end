@@ -19,6 +19,12 @@
   font-family: canada-type-gibson, sans-serif;
 }
 
+.container form {
+  background: rgb(59, 59, 59);
+  padding: 21px 28px;
+  text-align: center;
+}
+
 .container textarea {
   min-height: 50px;
 }
@@ -53,10 +59,7 @@
   color: rgb(200, 200, 200);
 }
 
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border: 1px solid var(--primary);
-}
+
 
 .container button:hover {
   color: white;

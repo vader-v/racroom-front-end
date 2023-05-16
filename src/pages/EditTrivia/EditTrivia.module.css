@@ -11,6 +11,7 @@
 .container form {
   background: rgb(59, 59, 59);
   padding: 21px 28px;
+  text-align: center;
 }
 
 .container input, textarea, select, button { 
