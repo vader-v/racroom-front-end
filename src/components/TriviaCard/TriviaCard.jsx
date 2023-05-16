@@ -18,6 +18,7 @@ const TriviaCard = ({ trivia }) => {
           </span>
           <OwnerInfo content={trivia}/>
           </Link>
+          <h6>Category:</h6>
         <h4>{trivia.category}</h4>
         </header>
       </article>
