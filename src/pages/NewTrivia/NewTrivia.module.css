@@ -20,9 +20,12 @@
 }
 
 .container form {
-  background: rgb(59, 59, 59);
+  background: rgb(63, 49, 67);
   padding: 21px 28px;
   text-align: center;
+  border: 2px solid;
+  border-color: rgb(25, 25, 48);
+  border-radius: 5px;
 }
 
 .container textarea {
@@ -79,4 +82,5 @@
   background: rgb(43, 60, 75);
   border: 2px solid;
   border-color: rgb(25, 25, 48);
+  border-radius: 5px;
 }
