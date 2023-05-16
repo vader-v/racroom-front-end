@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 
 // services
 import * as profileService from '../../services/profileService'
+import { NavLink } from 'react-router-dom'
 
 // components
 import SearchForm from '../../components/SearchForm/SearchForm'
@@ -47,6 +48,9 @@ const Profiles = () => {
       {profiles.map(profile => (
         <p key={profile._id}>{profile.name}</p>
       ))}
+      <div className={styles.changePassword}>
+        <NavLink to="/auth/change-password">Change Password</NavLink>
+      </div>
     </main>
   )
 }

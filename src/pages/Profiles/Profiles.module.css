@@ -2,8 +2,33 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 }
 
-.container > p {
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container > p, .content > p {
   margin: 8px;
+  background-color: rgb(18, 18, 18);
+  padding: 10px;
+  border-radius: 9px;
+}
+
+.changePassword {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+@media (max-width: 800px) {
+  .changePassword {
+    display: none; 
+  }
 }

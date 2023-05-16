@@ -1,12 +1,14 @@
 nav {
   background-color: #333;
   padding: 10px;
+  position: relative;
 }
 
 nav ul {
   list-style: none;
   display: flex;
   justify-content: space-around;
+  transition: transform 0.3s ease-in-out;
 }
 
 nav ul li {
@@ -24,4 +26,64 @@ nav ul li a {
 
 nav ul li a:hover {
   color: #ddd;
+}
+
+.hamburger-icon {
+  color: #fff;
+  font-size: 2rem;
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.hamburger-icon.hide {
+  display: none;
+}
+
+.hamburger-icon.inside {
+  top: 10px;
+  right: 10px;
+  display: none;
+}
+
+@media (max-width: 800px) {
+  nav ul {
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 50px);
+    background-color: rgba(51, 51, 51, 0.7); 
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;
+  }
+
+  nav ul li {
+    background-color: #000000;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  nav ul.open {
+    transform: translateY(0);
+  }
+
+  .hamburger-icon {
+    display: block;
+    background-color: grey;
+    padding: 10px;
+    border-radius: 9px;
+  }
+  .hamburger-icon.inside {
+    display: block;
+  }
+}
+
+.raccoonImage {
+  height: 80px;
+  width: auto;
 }
