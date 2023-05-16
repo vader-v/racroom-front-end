@@ -73,6 +73,8 @@ async function deleteTrivia(triviaId) {
 }
 
 
+
+
 export {
   indexTrivia,
   showTrivia,
