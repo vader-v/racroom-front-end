@@ -7,7 +7,7 @@ const Landing = ({ user }) => {
   return (
     <main className={styles.container}>
       <h1>hello, {user ? user.name : 'please '}
-        <NavLink to="/auth/login">Log In</NavLink>
+      {user ? null : <NavLink to="/auth/login">Log In</NavLink>}
       </h1>
     </main>
   )
