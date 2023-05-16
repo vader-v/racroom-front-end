@@ -2,6 +2,7 @@
 import { useState } from "react"
 // css
 import styles from './NewTrivia.module.css'
+import CategoryDropdown from "../../components/CategoryDropdown/CategoryDropdown"
 
 const NewTrivia = ({ handleAddTrivia }) => {
   const [triviaFormData, setTriviaFormData] = useState({
@@ -72,26 +73,16 @@ const NewTrivia = ({ handleAddTrivia }) => {
         }
         />
         <label htmlFor="category-input">Category</label>
-        <select 
-          name="category" 
-          id="category-input" 
-          value={triviaFormData.category}
-          onChange={(e) =>
-            setTriviaFormData({
-              ...triviaFormData,
-              category: e.target.value,
-            })
-          }
-          >
-            <option value="Keyboard Shortcuts">Keyboard Shortcuts</option>
-            <option value="Programming">Programming</option>
-            <option value="Pop culture">Pop Culture</option>
-            <option value="History">History</option>
-            <option value="Games">Games</option>
-            <option value="Languages">Languages</option>
-            <option value="Television">Television</option>
-        </select>
-      {triviaFormData.questions.map((question, questionIndex) => (
+          <CategoryDropdown 
+            value={triviaFormData.category}
+            onChange={(e) => 
+              setTriviaFormData({
+                ...triviaFormData,
+                category: e.target.value
+              })
+            }
+          />
+        {triviaFormData.questions.map((question, questionIndex) => (
         <div key={questionIndex}>
           <label htmlFor={`question-${questionIndex}`}>Question:</label>
           <input
@@ -151,7 +142,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
                     questions: updatedQuestions,
                   })
                 }}
-                />
+              />
               <button
                 type="button"
                 className="delete-choice-button"
@@ -171,7 +162,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
                 questions: updatedQuestions,
               })
             }}
-            >
+          >
             Add Choice
           </button>
         </div>
@@ -179,11 +170,11 @@ const NewTrivia = ({ handleAddTrivia }) => {
       <button type="button" onClick={handleAddQuestion}>
         Add Question
       </button>
-        <button type="submit">
-          Submit
-        </button>
-      </form>
-    </main>
+      <button type="submit">
+        Submit
+      </button>
+    </form>
+  </main>
   )
 }
 
