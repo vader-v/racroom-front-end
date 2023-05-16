@@ -105,7 +105,7 @@ const TriviaDetails = (props) => {
             ))}
           </div>
           {isTriviaFinished ? (
-            <div>Correct Choices: {correctChoices}</div>
+            <div>Correct Choices: {correctChoices} / {trivia.questions.length}</div>
           ) : currentQuestionIndex === trivia.questions.length - 1 ? (
             <>
               {" "}
