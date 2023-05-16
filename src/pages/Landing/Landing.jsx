@@ -5,20 +5,22 @@ import raccoonImg from '/raccoon-1.svg'
 import raccoonImg2 from '/raccoon-2.svg'
 
 const Landing = ({ user }) => {
-  const [photo, setPhoto] = useState(raccoonImg);
+  const [photo, setPhoto] = useState(raccoonImg)
 
   const handleMouseOver = () => {
-    setPhoto(raccoonImg2);
-  };
+    setPhoto(raccoonImg2)
+  }
 
   const handleMouseOut = () => {
-    setPhoto(raccoonImg);
-  };
+    setPhoto(raccoonImg)
+  }
 
   return (
     <div className={styles.pageContainer}>
       <main className={styles.container}>
-        <img src={photo} alt="" className={styles.icon} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} />
+        <NavLink to="/trivia">
+          <img src={photo} alt="" className={styles.icon} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} />
+        </NavLink>
         <h1>hello, {user ? user.name : 'please '}
         {user ? null : <NavLink to="/auth/login">Log In</NavLink>}
         </h1>

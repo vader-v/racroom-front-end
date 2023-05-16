@@ -1,9 +1,21 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './NavBar.css'
+import raccoonIconImg from '/raccoonIcon.svg'
+import raccoonIconImg2 from '/raccoonIcon2.svg'
 
 const NavBar = ({ user, handleLogout }) => {
 	const [isOpen, setIsOpen] = useState(false)
+	const [photo, setPhoto] = useState(raccoonIconImg)
+
+
+  const handleMouseOver = () => {
+    setPhoto(raccoonIconImg2)
+  }
+
+  const handleMouseOut = () => {
+    setPhoto(raccoonIconImg)
+  }
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen)
@@ -24,7 +36,10 @@ const NavBar = ({ user, handleLogout }) => {
         </div>
 				{user ? (
 					<>
-						<li>Welcome, {user.name}</li>
+						<li className="raccoonLi">
+						<NavLink to="/" onClick={closeMenu}><img src={photo} alt="" className="raccoonImage" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} />
+						</NavLink>
+						</li>
 						<li>
 							<NavLink to="/trivia" onClick={closeMenu}>Trivia</NavLink>
 						</li>

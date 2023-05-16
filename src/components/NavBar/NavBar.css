@@ -82,3 +82,8 @@ nav ul li a:hover {
     display: block;
   }
 }
+
+.raccoonImage {
+  height: 80px;
+  width: auto;
+}
