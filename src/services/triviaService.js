@@ -74,7 +74,7 @@ async function deleteTrivia(triviaId) {
 
 async function addScore(triviaId, scoreData) {
   try {
-    const res = await fetch(`${BASE_URL}/${triviaId}/score`, {
+    const res = await fetch(`${BASE_URL}/${triviaId}/scores`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
