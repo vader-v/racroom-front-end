@@ -91,64 +91,75 @@ const TriviaDetails = (props) => {
     <main className={styles.container}>
       <article>
         <header>
-          <h3>{trivia.category.toUpperCase()}</h3>
-          <h2>
-            Question {currentQuestionIndex + 1} of {totalQuestions}
-          </h2>
-          <h1>{trivia.title}</h1>
-          <div className="question" key={currentQuestionIndex}>
-            <h3>{currentQuestion.text}</h3>
-            {currentQuestion.choices.map((choice, choiceIndex) => (
-              <p key={choiceIndex}>
-                <input
-                  type="checkbox"
-                  className="checkbox"
-                  checked={
-                    selectedChoices[currentQuestionIndex] === choiceIndex
-                  }
-                  onChange={() =>
-                    handleSelectChoice(currentQuestionIndex, choiceIndex)
-                  }
-                  required
-                />
-                {choice.text}
-              </p>
-            ))}
-          </div>
-          {isTriviaFinished ? (
-            <div>Correct Choices: {correctChoices} / {trivia.questions.length}</div>
-          ) : currentQuestionIndex === trivia.questions.length - 1 ? (
-            <>
-              {" "}
-              <button disabled={!isChoiceSelected} onClick={handleSubmitAnswer}>
-                {" "}
-                Finish Trivia{" "}
-              </button>{" "}
-            </>
+          {!isHeaderVisible ? (
+            <img 
+              src={photo} 
+              alt=""
+              className={styles.mailbox}
+              onClick={handleImageClick} 
+            />
           ) : (
-            <button onClick={handleSubmitAnswer} disabled={!isChoiceSelected}>
-              Next Question
-            </button>
-          )}
-          <span>
-            <div className="profileImgage">
-              <OwnerInfo content={trivia} />
-            </div>
-            <Link to={'/trivia'}>Return</Link>
-            {trivia.owner._id === props.user.profile && (
-              <>
-                <Link to={`/trivia/${triviaId}/edit`} state={trivia}>
-                  Edit
-                </Link>
-                <button
-                  className="deleteContent"
-                  onClick={() => props.handleDeleteTrivia(triviaId)}
-                >
-                  Delete
+            <>
+              <h3>{trivia.category.toUpperCase()}</h3>
+              <h2>
+                Question {currentQuestionIndex + 1} of {totalQuestions}
+              </h2>
+              <h1>{trivia.title}</h1>
+              <div className="question" key={currentQuestionIndex}>
+                <h3>{currentQuestion.text}</h3>
+                {currentQuestion.choices.map((choice, choiceIndex) => (
+                  <p key={choiceIndex}>
+                    <input
+                      type="checkbox"
+                      className="checkbox"
+                      checked={
+                        selectedChoices[currentQuestionIndex] === choiceIndex
+                      }
+                      onChange={() =>
+                        handleSelectChoice(currentQuestionIndex, choiceIndex)
+                      }
+                      required
+                    />
+                    {choice.text}
+                  </p>
+                ))}
+              </div>
+              {isTriviaFinished ? (
+                <div>Correct Choices: {correctChoices} / {trivia.questions.length}</div>
+              ) : currentQuestionIndex === trivia.questions.length - 1 ? (
+                <>
+                  {" "}
+                  <button disabled={!isChoiceSelected} onClick={handleSubmitAnswer}>
+                    {" "}
+                    Finish Trivia{" "}
+                  </button>{" "}
+                </>
+              ) : (
+                <button onClick={handleSubmitAnswer} disabled={!isChoiceSelected}>
+                  Next Question
                 </button>
-              </>
-            )}
-          </span>
+              )}
+              <span>
+                <div className="profileImgage">
+                  <OwnerInfo content={trivia} />
+                </div>
+                <Link to={'/trivia'}>Return</Link>
+                {trivia.owner._id === props.user.profile && (
+                  <>
+                    <Link to={`/trivia/${triviaId}/edit`} state={trivia}>
+                      Edit
+                    </Link>
+                    <button
+                      className="deleteContent"
+                      onClick={() => props.handleDeleteTrivia(triviaId)}
+                    >
+                      Delete
+                    </button>
+                  </>
+                )}
+              </span>
+            </>
+          )}
         </header>
         <p>{trivia.text}</p>
       </article>
@@ -157,6 +168,7 @@ const TriviaDetails = (props) => {
       </section>
     </main>
   );
+
 }
 
 export default TriviaDetails
