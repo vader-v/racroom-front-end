@@ -16,6 +16,7 @@ const TriviaDetails = (props) => {
   const [trivia, setTrivia] = useState(null)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [selectedChoices, setSelectedChoices] = useState([])
+  const [isChoiceSelected, setIsChoiceSelected] = useState(false)
 
   useEffect(() => {
     const fetchTrivia = async () => {
@@ -23,7 +24,6 @@ const TriviaDetails = (props) => {
       setTrivia(data)
       setSelectedChoices(new Array(data.questions.length).fill(null))
     }
-
     fetchTrivia()
   }, [triviaId])
 
@@ -33,6 +33,7 @@ const TriviaDetails = (props) => {
       updatedChoices[questionIndex] = choiceIndex
       return updatedChoices
     })
+    setIsChoiceSelected(true)
   }
 
   const handleSubmitAnswer = () => {
@@ -52,11 +53,10 @@ const TriviaDetails = (props) => {
         },
         0
       )
-
-      console.log(`Number of correct choices: ${correctChoices}`)
-      
+      console.log(`Number of correct choices: ${correctChoices}`)      
     } else {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
+      setIsChoiceSelected(false)
     }
   }
 
@@ -98,6 +98,7 @@ const TriviaDetails = (props) => {
                   onChange={() =>
                     handleSelectChoice(currentQuestionIndex, choiceIndex)
                   }
+                  required
                   />
                 {choice.text}
               </p>
@@ -105,11 +106,21 @@ const TriviaDetails = (props) => {
           </div> 
           {currentQuestionIndex === trivia.questions.length - 1 ? (
               <>
-                <button onClick={handleSubmitAnswer}>Submit Answer</button>
+                <button 
+                  disabled={!isChoiceSelected}
+                  onClick={handleSubmitAnswer}
+                >
+                  Submit Answer
+                </button>
                 <div>Correct Choices: {correctChoices}</div>
               </>
             ) : (
-              <button onClick={handleSubmitAnswer}>Next Question</button>
+                <button 
+                  onClick={handleSubmitAnswer}
+                  disabled={!isChoiceSelected}
+                >
+                    Next Question
+                </button>
               )}
           <span>
             <div className="profileImgage">
