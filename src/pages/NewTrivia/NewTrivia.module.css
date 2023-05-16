@@ -73,5 +73,5 @@
 .container button.add-question-button:hover,
 .container button.add-choice-button:hover,
 .container button.submit-button:hover {
-  background: green;
+  background: rgb(0, 84, 0);
 }
