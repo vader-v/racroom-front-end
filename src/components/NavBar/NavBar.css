@@ -50,9 +50,10 @@ nav ul li a:hover {
 }
 
 @media (max-width: 800px) {
+
   nav ul {
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: calc(100vh - 50px);
     background-color: rgba(51, 51, 51, 0.7); 
@@ -71,6 +72,12 @@ nav ul li a:hover {
 
   nav ul.open {
     transform: translateY(0);
+    top: 0px;
+    height: 100%;
+  }
+
+  .nav-links {
+    top: 0px;
   }
 
   .hamburger-icon {
@@ -78,9 +85,15 @@ nav ul li a:hover {
     background-color: grey;
     padding: 10px;
     border-radius: 9px;
+      position: fixed;
+      right: 3px;
+      top: 3px;
   }
   .hamburger-icon.inside {
     display: block;
+    position: fixed;
+    right: 13px;
+    top: 3px;
   }
 }
 
