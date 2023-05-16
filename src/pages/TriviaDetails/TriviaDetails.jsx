@@ -37,6 +37,11 @@ const TriviaDetails = (props) => {
     setIsChoiceSelected(true)
   }
 
+  const handleAddScore = async (scoreData) => {
+    const newScore = await triviaService.addScore(triviaId, scoreData)
+    setTrivia({...trivia, scores: [...trivia.scores, newScore]})
+  }
+
   const handleSubmitAnswer = () => {
     console.log(selectedChoices)
 
@@ -54,6 +59,7 @@ const TriviaDetails = (props) => {
       )
       console.log(`Number of correct choices: ${correctChoices}`)
       setIsTriviaFinished(true)
+      handleAddScore({score: correctChoices})
     } else {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
       setIsChoiceSelected(false)
