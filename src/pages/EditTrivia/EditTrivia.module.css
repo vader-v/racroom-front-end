@@ -1,7 +1,8 @@
 .container {
   height: 100%;
   display: flex;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   padding: 28px 21px;
   align-items: center;
   flex-direction: column;
@@ -18,16 +19,27 @@
   font-family: canada-type-gibson, sans-serif;
 }
 
+.container textarea {
+  min-height: 50px;
+}
+
 .container label {
   font-weight: 600;
   margin: 7px 0px 14px 0px;
 }
 
 .container button {
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: 600;
   margin: 21px 0px 0px 0px;
-  background: var(--primary);
+  background: white;
+  padding: 7px 14px;
+  width: fit-content;
+}
+
+.container button.delete-question-button,
+.container button.delete-choice-button {
+  margin-left: 7px;
 }
 
 .container a {
@@ -40,7 +52,7 @@
   color: rgb(200, 200, 200);
 }
 
-input:focus, select:focus {
+input:focus, select:focus, textarea:focus {
   outline: none;
   border: 1px solid var(--primary);
 }
