@@ -1,5 +1,18 @@
 .container {
   display: flex;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+}
+
+.container h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  text-shadow: 2px 2px 4px rgba(108, 108, 108, 0.5);
+  background-color: grey;
+; padding: 200px;
+  border-radius: 10px;
 }

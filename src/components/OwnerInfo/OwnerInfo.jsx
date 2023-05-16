@@ -1,5 +1,6 @@
 // components
 import profileIcon from '../../assets/icons/profile.png'
+import raccoonIcon from '../../assets/icons/raccoon.svg'
 
 // css
 import styles from './OwnerInfo.module.css'
@@ -7,7 +8,7 @@ import styles from './OwnerInfo.module.css'
 const OwnerInfo = (props) => {
   const { content } = props
 
-  const photo = content.owner.photo ? content.owner.photo : profileIcon
+  const photo = content.owner.photo ? content.owner.photo : raccoonIcon
 
   return (
     <div className={styles.container}>
