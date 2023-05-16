@@ -2,8 +2,20 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100vh; /* set the height to the full viewport height */
 }
 
-.container > p {
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container > p, .content > p {
   margin: 8px;
+}
+
+.changePassword {
+  margin-bottom: 20px; /* add some space at the bottom */
 }
