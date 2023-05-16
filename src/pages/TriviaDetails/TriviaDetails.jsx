@@ -39,9 +39,7 @@ const TriviaDetails = (props) => {
   const handleSubmitAnswer = () => {
     console.log(selectedChoices)
 
-    // Check if it's the last question
     if (currentQuestionIndex === trivia.questions.length - 1) {
-      // Calculate the number of correct choices
       const correctChoices = trivia.questions.reduce(
         (total, question, questionIndex) => {
           const selectedChoiceIndex = selectedChoices[questionIndex]
