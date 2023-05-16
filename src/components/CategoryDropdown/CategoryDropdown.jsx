@@ -5,6 +5,7 @@ const CategoryDropdown = ({ value, onChange }) => {
       value={value}
       onChange={onChange}
     >
+      <option value="">All</option>
       <option value="Keyboard Shortcuts">Keyboard Shortcuts</option>
       <option value="Programming">Programming</option>
       <option value="Pop Culture">Pop Culture</option>

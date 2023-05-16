@@ -23,7 +23,6 @@ const TriviaList = (props) => {
         <label htmlFor="category-filter">Filter by Category:</label>
         <CategoryDropdown value={selectedCategory} onChange={handleCategoryChange} />
       </div>
-
       {filteredTrivias.map((trivia) => (
         <TriviaCard key={trivia._id} trivia={trivia} />
       ))}
