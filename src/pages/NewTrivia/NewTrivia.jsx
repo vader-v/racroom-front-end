@@ -86,10 +86,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
           }
         />
         {triviaFormData.questions.map((question, questionIndex) => (
-          <div 
-            key={questionIndex}
-            className={styles["new-trivia-form"]}
-          >
+          <div key={questionIndex} className={styles["new-trivia-form"]}>
             <label htmlFor={`question-${questionIndex}`}>Question:</label>
             <input
               type="text"
@@ -183,19 +180,16 @@ const NewTrivia = ({ handleAddTrivia }) => {
             >
               Add Choice
             </button>
+            <button
+              type="button"
+              className={styles["add-question-button"]}
+              onClick={handleAddQuestion}
+            >
+              Add Question
+            </button>
           </div>
         ))}
-        <button 
-          type="button" 
-          className={styles["add-question-button"]}
-          onClick={handleAddQuestion}
-        >
-          Add Question
-        </button>
-        <button 
-          type="submit"
-          className={styles["submit-button"]}
-        >
+        <button type="submit" className={styles["submit-button"]}>
           Submit
         </button>
       </form>
