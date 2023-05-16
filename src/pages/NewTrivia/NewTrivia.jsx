@@ -86,7 +86,10 @@ const NewTrivia = ({ handleAddTrivia }) => {
           }
         />
         {triviaFormData.questions.map((question, questionIndex) => (
-          <div key={questionIndex}>
+          <div 
+            key={questionIndex}
+            className={styles["new-trivia-form"]}
+          >
             <label htmlFor={`question-${questionIndex}`}>Question:</label>
             <input
               type="text"
