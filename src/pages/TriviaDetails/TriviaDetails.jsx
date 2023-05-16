@@ -123,6 +123,7 @@ const TriviaDetails = (props) => {
             <div className="profileImgage">
               <OwnerInfo content={trivia} />
             </div>
+            <Link to={'/trivia'}>Return</Link>
             {trivia.owner._id === props.user.profile && (
               <>
                 <Link to={`/trivia/${triviaId}/edit`} state={trivia}>
