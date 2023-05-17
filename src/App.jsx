@@ -24,6 +24,7 @@ import * as triviaService from './services/triviaService'
 
 // styles
 import './App.css'
+import Profiles from './pages/Profiles/Profiles'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
@@ -132,7 +133,14 @@ function App() {
             </ProtectedRoute>
           } 
         />
-        
+        <Route
+          path="/:profileId"
+          element={
+            <ProtectedRoute user={user}>
+              <Profiles />
+            </ProtectedRoute>
+          } 
+        />
       </Routes>
     </>
   )
