@@ -134,6 +134,10 @@ button, input[type="checkbox"] {
 }
 
 img {
+  position: absolute;
+  left: 6%; /* Position the image at the horizontal center of the parent container */
+  top: 14%; /* Position the image at the vertical center of the parent container */
+  transform: translate(-50%, -50%); /* Adjust the position to center the image */
   width: 32px;
   height: 32px;
   object-fit: cover;
@@ -235,12 +239,15 @@ button, input[type="checkbox"] {
 }
 
 .mailbox {
-  display: flex;
+  position: relative;
+  /* display: flex; */
   width: 100%;
-  max-width: 100%;
+  /* justify-content: center;
+  align-items: center; */
+  min-width: 70%;
   height: auto;
   margin-top: 40px;
-  transform: translateX(-150px);
+  /* transform: translateX(-150px); */
   margin-left: auto;
   margin-right: auto;
   
@@ -252,8 +259,11 @@ button, input[type="checkbox"] {
 }
 
 .title {
+  margin-top: 100px !important;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
-  font-size: 5.5vw;
-  top: 60px;
+  font-size: 7vmin;
+  top: -7vh;
   word-wrap: break-word;
 }
