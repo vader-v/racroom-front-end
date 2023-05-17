@@ -1,5 +1,5 @@
 .container {
-  height: 100%;
+  height: 100vh;
   display: flex;
   overflow: scroll;
   justify-content: center;
@@ -8,8 +8,21 @@
   position: relative;
 }
 
-.container article, .container > section {
+.container article {
+  width: 80vw;
+  height: 80vh;
+  padding: 21px;
+  margin-bottom: 21px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  max-width: 700px;
+  flex-direction: column;
+}
+
+.container > section {
   width: 100%;
+  height: auto;
   padding: 21px;
   display: flex;
   max-width: 700px;
@@ -25,11 +38,18 @@
 
 .container header {
   display: flex;
+  justify-content: center;
+  height: 80vh;
+  width: 80vw;
+  max-width: 700px;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   background: rgb(59, 59, 59);
   padding: 21px 28px;
   margin-bottom: 21px;
+  margin-left: auto;
+  margin-right: auto;
+  word-wrap: break-word;
 }
 
 .container h1 {
@@ -95,10 +115,13 @@ button, input[type="checkbox"] {
 
 .container > section article {
   padding: 0;
-  width: 100%;
+  width: 80vw;
   min-height: 140px;
   border-radius: 5px;
-  margin: 4px 0px 14px;
+  margin-bottom: 21px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80vh;
 }
 
 .container > section h1 {
@@ -107,9 +130,14 @@ button, input[type="checkbox"] {
 
 .container > section article p {
   text-indent: 0px;
+  height: 80vh;
 }
 
 img {
+  position: absolute;
+  left: 6%; /* Position the image at the horizontal center of the parent container */
+  top: 14%; /* Position the image at the vertical center of the parent container */
+  transform: translate(-50%, -50%); /* Adjust the position to center the image */
   width: 32px;
   height: 32px;
   object-fit: cover;
@@ -211,11 +239,18 @@ button, input[type="checkbox"] {
 }
 
 .mailbox {
-  width: 1200px;
-  height: 1200px;
-  object-fit: contain;
-  margin: -300px 0px 0px -800px;
   position: relative;
+  /* display: flex; */
+  width: 100%;
+  /* justify-content: center;
+  align-items: center; */
+  min-width: 70%;
+  height: auto;
+  margin-top: 40px;
+  /* transform: translateX(-150px); */
+  margin-left: auto;
+  margin-right: auto;
+  
   z-index: 1;
 }
 
@@ -224,8 +259,11 @@ button, input[type="checkbox"] {
 }
 
 .title {
+  margin-top: 100px !important;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
-  font-size: 100PX;
-  top: 160px;
-  left: 140PX;
+  font-size: 7vmin;
+  top: -7vh;
+  word-wrap: break-word;
 }
