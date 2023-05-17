@@ -47,7 +47,7 @@ const NavBar = ({ user, handleLogout }) => {
 							<NavLink to="/trivia/new" onClick={closeMenu}>Create</NavLink>
 						</li>
 						<li>
-							<NavLink to="/profiles" onClick={closeMenu}>Profiles</NavLink>
+							<NavLink to="/profileList" onClick={closeMenu}>Profiles</NavLink>
 						</li>
 						<li>
 							<NavLink to="" onClick={(event) => {handleLogout(event); closeMenu();}}>LOG OUT</NavLink>

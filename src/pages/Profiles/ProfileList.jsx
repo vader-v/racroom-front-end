@@ -12,25 +12,25 @@ import SearchForm from '../../components/SearchForm/SearchForm'
 // css
 import styles from './Profiles.module.css'
 
-const Profiles = () => {
-  const [profiles, setProfiles] = useState([])
+const ProfileList = () => {
+  const [profileList, setProfileList] = useState([])
   const [searchResults, setSearchResults] = useState([])
 
   useEffect(() => {
     const fetchProfiles = async () => {
-      const profileData = await profileService.getAllProfiles()
-      setProfiles(profileData)
-      setSearchResults(profileData)
+      const profileListData = await profileService.getAllProfiles()
+      setProfileList(profileListData)
+      setSearchResults(profileListData)
     }
     fetchProfiles()
   }, [])
 
-  if (!profiles.length) {
+  if (!profileList.length) {
     return <main className={styles.container}><h1>Loading...</h1></main>
   }
   
   const handleProfileSearch = formData => {
-    const filteredProfileResults = profiles.filter(profile => (
+    const filteredProfileResults = profileList.filter(profile => (
       profile.name.toLowerCase().includes(formData.query.toLowerCase())
     ))
     setSearchResults(filteredProfileResults)
@@ -45,7 +45,7 @@ const Profiles = () => {
       </div>
       <div className='profiles-name-search-list'>
         {searchResults.map(profile =>
-          <Link to={`/profiles/${profile._id}`} key={profile._id} className='profile-names'>
+          <Link to={`/profileList/${profile._id}`} key={profile._id} className='profile-names'>
             {profile.name}
           </Link>
         )}
@@ -57,4 +57,4 @@ const Profiles = () => {
   )
 }
 
-export default Profiles
+export default ProfileList

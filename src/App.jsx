@@ -6,7 +6,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
+import ProfileList from './pages/Profiles/ProfileList'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import TriviaList from './pages/TriviaList/TriviaList'
 import NewTrivia from './pages/NewTrivia/NewTrivia'
@@ -74,10 +74,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
-          path="/profiles"
+          path="/profileList"
           element={
             <ProtectedRoute user={user}>
-              <Profiles />
+              <ProfileList />
             </ProtectedRoute>
           }
         />
