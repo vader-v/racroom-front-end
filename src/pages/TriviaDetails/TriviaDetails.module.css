@@ -207,3 +207,14 @@ button, input[type="checkbox"] {
   margin: 7px 0px 14px 0px;
   font-family: canada-type-gibson, sans-serif;
 }
+
+.mailbox {
+  width: 1200px;
+  height: 1200px;
+  object-fit: contain;
+  margin: -300px 0px 0px -800px;
+}
+
+.mailbox:hover {
+  cursor: pointer;
+}
