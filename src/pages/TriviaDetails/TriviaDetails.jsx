@@ -39,9 +39,9 @@ const TriviaDetails = (props) => {
 	}
 
 	const handleImageClick = () => {
+    audioClip.play()
 		setIsMailboxClicked(true)
 		setPhoto(mailBoxAnimation)
-    audioClip.play()
 		setTimeout(() => {
 			setIsHeaderVisible(true)
 		}, 4500)
