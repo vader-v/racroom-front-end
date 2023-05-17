@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styles from './Landing.module.css'
 import { NavLink } from 'react-router-dom'
-import raccoonImg from '/raccoon-1.svg'
-import raccoonImg2 from '/raccoon-2.svg'
+import raccoonImg2 from '/raccoonAnimation1.svg'
+import raccoonImg from '/raccoonAnimation2.svg'
 
 const Landing = ({ user }) => {
   const [photo, setPhoto] = useState(raccoonImg)

@@ -112,7 +112,6 @@ img {
   height: 32px;
   object-fit: cover;
   margin-right: 12px;
-  border-radius: 50%;
 }
 
 .checkbox {
@@ -207,4 +206,17 @@ button, input[type="checkbox"] {
   border-radius: 5px;
   margin: 7px 0px 14px 0px;
   font-family: canada-type-gibson, sans-serif;
+}
+
+.mailbox {
+  width: 1200px;
+  height: 1200px;
+  object-fit: contain;
+  margin: -300px 0px 0px -800px;
+  position: relative;
+  z-index: 1;
+}
+
+.mailbox:hover {
+  cursor: pointer;
 }
