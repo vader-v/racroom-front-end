@@ -213,6 +213,8 @@ button, input[type="checkbox"] {
   height: 1200px;
   object-fit: contain;
   margin: -300px 0px 0px -800px;
+  position: relative;
+  z-index: 1;
 }
 
 .mailbox:hover {

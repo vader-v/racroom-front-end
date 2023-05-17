@@ -40,7 +40,7 @@ const TriviaDetails = (props) => {
 		setPhoto(mailBoxAnimation)
 		setTimeout(() => {
 			setIsHeaderVisible(true)
-		}, 5500)
+		}, 4500)
 	}
 
 	const handleSubmitAnswer = () => {
