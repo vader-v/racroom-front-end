@@ -127,7 +127,7 @@ return (
       {!isHeaderVisible ? (
         <>
         <h1 className={styles.title}>{trivia.title}</h1>
-          <img
+          <img 
             src={photo} 
             alt=""
             className={`${styles.mailbox} mailbox`}

@@ -15,3 +15,6 @@ Firstly, upon entering our app, you will go to our landing page, where you will 
 - Implement comments on each trivia card
 - Implement a like system to save your favorite trivias
 - Add followers functionality to sort trivia conditionally if followed or all trivia.
+
+## Technologies used
+
