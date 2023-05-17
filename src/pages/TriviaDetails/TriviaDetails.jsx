@@ -10,7 +10,8 @@ import drumSound from '/drum-roll.mp3'
 const TriviaDetails = (props) => {
   const navigate = useNavigate()
   const location = useLocation()
-  console.log(location)
+  // console.log(location)
+  // const { state } = location
 	const { triviaId } = useParams()
 	const [trivia, setTrivia] = useState(null)
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -83,7 +84,7 @@ const TriviaDetails = (props) => {
         handleAddScore({score: correctChoices})
       } else {
         handleUpdateScore({score: correctChoices})
-        navigate(`/trivia/${triviaId}`)
+        navigate(`/trivia/${triviaId}`, {state: scoreList})
       }
     } else {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1)

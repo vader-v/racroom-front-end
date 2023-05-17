@@ -104,8 +104,6 @@ async function updateScore(triviaId, scoreId, scoreData) {
   }
 }
 
-
-
 export {
   indexTrivia,
   showTrivia,
