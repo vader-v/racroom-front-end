@@ -5,6 +5,7 @@ import * as triviaService from "../../services/triviaService"
 import styles from "./TriviaDetails.module.css"
 import mailBoxAnimation from '/mail-raccoon-animation.gif'
 import mailBox from '/mail-box.gif'
+import drumSound from '/drum-roll.mp3'
 
 const TriviaDetails = (props) => {
 	const { triviaId } = useParams()
@@ -15,7 +16,9 @@ const TriviaDetails = (props) => {
 	const [isTriviaFinished, setIsTriviaFinished] = useState(false)
 	const [isHeaderVisible, setIsHeaderVisible] = useState(false)
 	const [photo, setPhoto] = useState(mailBox)
-	const [isMailboxClicked, setIsMailboxClicked] = useState(false) // new state
+	const [isMailboxClicked, setIsMailboxClicked] = useState(false)
+  const audioClip = new Audio(drumSound)
+  audioClip.volume = 0.2
 
 	useEffect(() => {
 		const fetchTrivia = async () => {
@@ -38,6 +41,7 @@ const TriviaDetails = (props) => {
 	const handleImageClick = () => {
 		setIsMailboxClicked(true)
 		setPhoto(mailBoxAnimation)
+    audioClip.play()
 		setTimeout(() => {
 			setIsHeaderVisible(true)
 		}, 4500)
@@ -93,12 +97,15 @@ return (
 		<article>
 			<header>
       {!isHeaderVisible ? (
+        <>
+        <h1 className={styles.title}>{trivia.title}</h1>
           <img 
             src={photo} 
             alt=""
             className={`${styles.mailbox} mailbox`}
             onClick={handleImageClick} 
-          />
+            />
+        </>
         ) : (
 					<>
 						<h3>{trivia.category.toUpperCase()}</h3>
