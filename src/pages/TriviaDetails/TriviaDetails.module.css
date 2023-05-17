@@ -39,7 +39,7 @@
 .container header {
   display: flex;
   justify-content: center;
-  height: 80vh;
+  height: auto;
   width: 80vw;
   max-width: 700px;
   flex-direction: column;

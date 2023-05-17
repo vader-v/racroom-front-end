@@ -169,11 +169,8 @@ return (
 			</header>
 			<p>{trivia.text}</p>
 		</article>
-		<section>
-			<h1>Comments</h1>
-		</section>
 	</main>
- )
+)
 }
 
 export default TriviaDetails
