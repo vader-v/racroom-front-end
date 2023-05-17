@@ -246,7 +246,7 @@ button, input[type="checkbox"] {
   /* transform: translateX(-150px); */
   margin-left: auto;
   margin-right: auto;
-  bottom: 7%;
+  bottom: 50px;
   right: 37%; 
   z-index: 1;
 }
