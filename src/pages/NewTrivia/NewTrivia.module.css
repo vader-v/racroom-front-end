@@ -15,14 +15,19 @@
   resize: vertical;
   border-radius: 5px;
   margin: 7px 0px 14px 0px;
-  border: 1px solid var(--border);
   font-family: canada-type-gibson, sans-serif;
+  border: 2px solid;
+  border-color: rgb(25, 25, 48);
+  border-radius: 5px;
 }
 
 .container form {
-  background: rgb(59, 59, 59);
+  background: rgb(63, 49, 67);
   padding: 21px 28px;
   text-align: center;
+  border: 2px solid;
+  border-color: rgb(25, 25, 48);
+  border-radius: 5px;
 }
 
 .container textarea {
@@ -49,20 +54,25 @@
   margin-left: 7px;
 }
 
-.container a {
-  border: none;
-  font-size: 14px;
-  background: none;
-  font-weight: 500;
-  margin-top: 14px;
-  text-align: center;
-  color: rgb(200, 200, 200);
-}
-
-
-
 .container button:hover {
   color: white;
   background: black;
   transform: scale(1.05);
+}
+
+.container button.delete-question-button:hover,
+.container button.delete-choice-button:hover {
+  background: rgb(94, 0, 0);
+}
+
+.container button.add-question-button:hover,
+.container button.add-choice-button:hover,
+.container button.submit-button:hover {
+  background: rgb(0, 84, 0);
+}
+.container div.new-trivia-form {
+  background: rgb(43, 60, 75);
+  border: 2px solid;
+  border-color: rgb(25, 25, 48);
+  border-radius: 5px;
 }

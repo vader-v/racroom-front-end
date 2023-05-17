@@ -4,7 +4,7 @@
   padding: 14px 21px;
   border-radius: 5px;
   border: 1px solid var(--border);
-  background-color: var(--card-background);
+  background-color: rgb(56, 48, 53);
   box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
   -moz-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
   -webkit-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
@@ -16,10 +16,8 @@ a {
   text-decoration: none;
 }
 
-h6 {
+h6, h4 {
   text-align: left;
-  margin-top: 50px;
-  margin-bottom: 10px;
 }
 
 .container header {

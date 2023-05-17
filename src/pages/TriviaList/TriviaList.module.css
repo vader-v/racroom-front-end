@@ -7,10 +7,9 @@
 }
 
 .dropdown {
-  grid-column: span 4; /* This spans the dropdown menu across all columns */
-  justify-self: center; /* This centers the dropdown menu */
+  grid-column: 1 / -1;
+  justify-self: center;
 }
-
 
 @media only screen and (min-width: 900px) {
   .container {
