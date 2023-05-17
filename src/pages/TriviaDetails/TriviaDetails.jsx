@@ -167,6 +167,7 @@ return (
 					</>
 				)}
 			</header>
+      <section><br/></section>
 			<p>{trivia.text}</p>
 		</article>
 	</main>
