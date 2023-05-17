@@ -4,7 +4,9 @@
   overflow: scroll;
   justify-content: center;
   align-items: center;
-  flex-direction: column;}
+  flex-direction: column;
+  position: relative;
+}
 
 .container article, .container > section {
   width: 100%;
@@ -219,4 +221,11 @@ button, input[type="checkbox"] {
 
 .mailbox:hover {
   cursor: pointer;
+}
+
+.title {
+  position: relative;
+  font-size: 100PX;
+  top: 160px;
+  left: 140PX;
 }
