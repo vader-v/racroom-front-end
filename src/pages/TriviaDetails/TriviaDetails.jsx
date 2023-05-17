@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, Link, useNavigate } from "react-router-dom"
+import { useParams, Link, useNavigate, useLocation } from "react-router-dom"
 import OwnerInfo from "../../components/OwnerInfo/OwnerInfo"
 import * as triviaService from "../../services/triviaService"
 import styles from "./TriviaDetails.module.css"
@@ -9,6 +9,8 @@ import drumSound from '/drum-roll.mp3'
 
 const TriviaDetails = (props) => {
   const navigate = useNavigate()
+  const location = useLocation()
+  console.log(location)
 	const { triviaId } = useParams()
 	const [trivia, setTrivia] = useState(null)
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
