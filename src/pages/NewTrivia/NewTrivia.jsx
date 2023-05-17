@@ -62,8 +62,9 @@ const NewTrivia = ({ handleAddTrivia }) => {
 
   return (
     <main className={styles.container}>
+      <h1>New Trivia!</h1>
       <form onSubmit={handleSaveTrivia}>
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="title">Trivia Title:</label>
         <input
           type="text"
           id="title"
@@ -86,7 +87,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
           }
         />
         {triviaFormData.questions.map((question, questionIndex) => (
-          <div key={questionIndex}>
+          <div key={questionIndex} className={styles["new-trivia-form"]}>
             <label htmlFor={`question-${questionIndex}`}>Question:</label>
             <input
               type="text"
@@ -101,7 +102,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
             />
             <button
               type="button"
-              className="delete-question-button"
+              className={styles["delete-question-button"]}
               onClick={() => handleDeleteQuestion(questionIndex)}
             >
               Delete Question
@@ -156,7 +157,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
                 />
                 <button
                   type="button"
-                  className="delete-choice-button"
+                  className={styles["delete-choice-button"]}
                   onClick={() => handleDeleteChoice(questionIndex, choiceIndex)}
                 >
                   Delete Choice
@@ -165,6 +166,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
             ))}
             <button
               type="button"
+              className={styles["add-choice-button"]}
               onClick={() => {
                 const updatedQuestions = [...triviaFormData.questions]
                 updatedQuestions[questionIndex].choices.push({
@@ -179,12 +181,18 @@ const NewTrivia = ({ handleAddTrivia }) => {
             >
               Add Choice
             </button>
+            <button
+              type="button"
+              className={styles["add-question-button"]}
+              onClick={handleAddQuestion}
+            >
+              Add Question
+            </button>
           </div>
         ))}
-        <button type="button" onClick={handleAddQuestion}>
-          Add Question
+        <button type="submit" className={styles["submit-button"]}>
+          Submit
         </button>
-        <button type="submit">Submit</button>
       </form>
     </main>
   )

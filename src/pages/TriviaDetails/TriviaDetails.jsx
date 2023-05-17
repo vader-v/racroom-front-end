@@ -43,28 +43,34 @@ const TriviaDetails = (props) => {
 		}, 4500)
 	}
 
-	const handleSubmitAnswer = () => {
-		console.log(selectedChoices)
+  const handleAddScore = async (scoreData) => {
+    const newScore = await triviaService.addScore(triviaId, scoreData)
+    setTrivia({...trivia, scores: [...trivia.scores, newScore]})
+  }
 
-		if (currentQuestionIndex === trivia.questions.length - 1) {
-			const correctChoices = trivia.questions.reduce(
-				(total, question, questionIndex) => {
-					const selectedChoiceIndex = selectedChoices[questionIndex]
-					const selectedChoice = question.choices[selectedChoiceIndex]
-					if (selectedChoice && selectedChoice.answer === true) {
-						return total + 1
-					}
-					return total
-				},
-				0
-			)
-			console.log(`Number of correct choices: ${correctChoices}`)
-			setIsTriviaFinished(true)
-		} else {
-			setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
-			setIsChoiceSelected(false)
-		}
-	}
+  const handleSubmitAnswer = () => {
+    console.log(selectedChoices)
+
+    if (currentQuestionIndex === trivia.questions.length - 1) {
+      const correctChoices = trivia.questions.reduce(
+        (total, question, questionIndex) => {
+          const selectedChoiceIndex = selectedChoices[questionIndex]
+          const selectedChoice = question.choices[selectedChoiceIndex]
+          if (selectedChoice && selectedChoice.answer === true) {
+            return total + 1
+          }
+          return total
+        },
+        0
+      )
+      console.log(`Number of correct choices: ${correctChoices}`)
+      setIsTriviaFinished(true)
+      handleAddScore({score: correctChoices})
+    } else {
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
+      setIsChoiceSelected(false)
+    }
+  }
 
 	if (!trivia) return <h1>Loading</h1>
 
@@ -160,7 +166,7 @@ return (
 			<h1>Comments</h1>
 		</section>
 	</main>
-)
+ )
 }
 
 export default TriviaDetails
