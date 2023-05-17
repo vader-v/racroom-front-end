@@ -8,8 +8,18 @@
   position: relative;
 }
 
-.container article, .container > section {
+.container article {
+  width: 80vh;
+  height: 80vh;
+  padding: 21px;
+  display: flex;
+  max-width: 700px;
+  flex-direction: column;
+}
+
+.container > section {
   width: 100%;
+  height: auto;
   padding: 21px;
   display: flex;
   max-width: 700px;
@@ -25,11 +35,17 @@
 
 .container header {
   display: flex;
+  justify-content: center;
+  height: 80vh;
+  width: 80vw;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   background: rgb(59, 59, 59);
   padding: 21px 28px;
   margin-bottom: 21px;
+  margin-left: auto;
+  margin-right: auto;
+  word-wrap: break-word;
 }
 
 .container h1 {
@@ -95,10 +111,11 @@ button, input[type="checkbox"] {
 
 .container > section article {
   padding: 0;
-  width: 100%;
+  width: 80vh;
   min-height: 140px;
   border-radius: 5px;
   margin: 4px 0px 14px;
+  height: 80vh;
 }
 
 .container > section h1 {
@@ -107,6 +124,7 @@ button, input[type="checkbox"] {
 
 .container > section article p {
   text-indent: 0px;
+  height: 80vh;
 }
 
 img {
@@ -214,6 +232,8 @@ button, input[type="checkbox"] {
   width: 1200px;
   height: 1200px;
   object-fit: contain;
+  right: 70px;
+  top: 100px;
   margin: -300px 0px 0px -800px;
   position: relative;
   z-index: 1;
@@ -225,7 +245,7 @@ button, input[type="checkbox"] {
 
 .title {
   position: relative;
-  font-size: 100PX;
-  top: 160px;
-  left: 140PX;
+  font-size: 9vw;
+  top: 60px;
+  word-wrap: break-word;
 }
