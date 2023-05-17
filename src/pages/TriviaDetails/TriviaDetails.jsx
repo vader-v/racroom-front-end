@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 import OwnerInfo from "../../components/OwnerInfo/OwnerInfo"
 import * as triviaService from "../../services/triviaService"
 import styles from "./TriviaDetails.module.css"
@@ -8,6 +8,7 @@ import mailBox from '/mail-box.gif'
 import drumSound from '/drum-roll.mp3'
 
 const TriviaDetails = (props) => {
+  const navigate = useNavigate()
 	const { triviaId } = useParams()
 	const [trivia, setTrivia] = useState(null)
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -17,6 +18,9 @@ const TriviaDetails = (props) => {
 	const [isHeaderVisible, setIsHeaderVisible] = useState(false)
 	const [photo, setPhoto] = useState(mailBox)
 	const [isMailboxClicked, setIsMailboxClicked] = useState(false)
+  const [scoreList, setScoreList] = useState([]);
+  const [isScoreExisted, setIsScoreExisted] = useState(false);
+  const [scoreId, setScoreId] = useState("");
   const audioClip = new Audio(drumSound)
   audioClip.volume = 0.2
 
@@ -52,6 +56,10 @@ const TriviaDetails = (props) => {
     setTrivia({...trivia, scores: [...trivia.scores, newScore]})
   }
 
+  const handleUpdateScore = async (scoreData) => {
+    await triviaService.updateScore(triviaId, scoreId , scoreData)
+  }
+
   const handleSubmitAnswer = () => {
     console.log(selectedChoices)
 
@@ -69,12 +77,32 @@ const TriviaDetails = (props) => {
       )
       console.log(`Number of correct choices: ${correctChoices}`)
       setIsTriviaFinished(true)
-      handleAddScore({score: correctChoices})
+      if (!isScoreExisted) {
+        handleAddScore({score: correctChoices})
+      } else {
+        handleUpdateScore({score: correctChoices})
+        navigate(`/trivia/${triviaId}`)
+      }
     } else {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
       setIsChoiceSelected(false)
     }
   }
+  useEffect(() => {
+    if (trivia) {
+      const newScoreList = trivia.scores.filter(
+        scoreData => scoreData.owner._id == props.user.profile)
+      const currentScoreId = newScoreList[0]._id
+      if (newScoreList.length) {
+        setScoreList(newScoreList)
+        setIsScoreExisted(true)
+        setScoreId(currentScoreId)
+      }
+      console.log("newScore", newScoreList)
+      console.log("currentScoreId", currentScoreId)
+      console.log("isScoreExisted", isScoreExisted)
+    }
+  }, [trivia])
 
 	if (!trivia) return <h1>Loading</h1>
 
@@ -145,6 +173,7 @@ return (
 								Next Question
 							</button>
 						)}
+            {isScoreExisted && <h5>Highest Score: {scoreList[0].score}</h5> }
 						<span>
 							<div className="profileImgage">
 								<OwnerInfo content={trivia} />
