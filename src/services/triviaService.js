@@ -90,7 +90,7 @@ async function addScore(triviaId, scoreData) {
 
 async function updateScore(triviaId, scoreId, scoreData) {
   try {
-    const res = fetch(`${BASE_URL}/${triviaId}/scores/${scoreId}`, {
+    const res = await fetch(`${BASE_URL}/${triviaId}/scores/${scoreId}`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,

@@ -1,59 +1,42 @@
-// npm modules
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-
-// services
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import * as profileService from '../../services/profileService'
-import { NavLink } from 'react-router-dom'
-
-// components
-import SearchForm from '../../components/SearchForm/SearchForm'
-
-// css
-import styles from './Profiles.module.css'
+import ProfileTriviaList from '../../components/ProfileTriviaList/ProfileTriviaList'
 
 const Profiles = () => {
-  const [profiles, setProfiles] = useState([])
-  const [searchResults, setSearchResults] = useState([])
+  const { profileId } = useParams()
+  const [profile, setProfile] = useState(null)
 
   useEffect(() => {
-    const fetchProfiles = async () => {
-      const profileData = await profileService.getAllProfiles()
-      setProfiles(profileData)
-      setSearchResults(profileData)
+    const fetchProfile = async () => {
+      try {
+        const profileData = await profileService.getProfileById(profileId)
+        setProfile(profileData)
+      } catch (error) {
+        console.log(error)
+      }
     }
-    fetchProfiles()
-  }, [])
 
-  if (!profiles.length) {
-    return <main className={styles.container}><h1>Loading...</h1></main>
+    fetchProfile()
+  }, [profileId])
+
+  if (!profile) {
+    return <div>Loading...</div>
   }
-  
-  const handleProfileSearch = formData => {
-    const filteredProfileResults = profiles.filter(profile => (
-      profile.name.toLowerCase().includes(formData.query.toLowerCase())
-    ))
-    setSearchResults(filteredProfileResults)
+  if (!profile.trivia) {
+    return <div>Loading...</div>
   }
+
+  const profileTrivias = profile?.trivias || []
 
   return (
-    <main className={styles.container}>
-      <div className='stationary-search-bar'>
-        <h1>Hello. This is a list of all the profiles.</h1>
-        <SearchForm handleProfileSearch={handleProfileSearch} />
-        {<h2>{searchResults.length} results found</h2>}
-      </div>
-      <div className='profiles-name-search-list'>
-        {searchResults.map(profile =>
-          <Link to={`/profiles/${profile._id}`} key={profile._id} className='profile-names'>
-            {profile.name}
-          </Link>
-        )}
-      </div>
-      <div className={styles.changePassword}>
-        <NavLink to="/auth/change-password">Change Password</NavLink>
-      </div>
-    </main>
+    <div>
+      <h2>Profile Details</h2>
+      <h3>Name: {profile.name}</h3>
+      <img src={profile.photo} alt="Profile" />
+      {/* Display the trivias associated with the profile */}
+      <ProfileTriviaList profileTrivias={profileTrivias} />
+    </div>
   )
 }
 
