@@ -5,6 +5,10 @@
   padding: 21px;
   grid-template-columns: repeat(1, 1fr);
 }
+article {
+
+  box-shadow: 7px 6px 11px 1px rgba(0, 217, 255, 0.449) !important;
+}
 
 .dropdown {
   grid-column: 1 / -1;
