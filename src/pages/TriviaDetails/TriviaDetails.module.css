@@ -265,8 +265,16 @@ button, input[type="checkbox"] {
 }
 
 .trashImage {
-  position: relative;
+  position: absolute;
+  top: 350px;
+  left: 20px;
+  z-index: 100;
   bottom: 0;
-  width: 100px; 
-  height: 100px; 
+  width: 700px; 
+  height: 700px; 
+}
+
+button, input[type="checkbox"] {
+  position: relative;
+  z-index: 101;
 }
