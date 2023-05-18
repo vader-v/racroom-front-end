@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, Link, useNavigate } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import OwnerInfo from "../../components/OwnerInfo/OwnerInfo"
 import * as triviaService from "../../services/triviaService"
 import styles from "./TriviaDetails.module.css"
@@ -8,7 +8,6 @@ import mailBox from '/mail-box.gif'
 import drumSound from '/drum-roll.mp3'
 
 const TriviaDetails = (props) => {
-  const navigate = useNavigate()
 	const { triviaId } = useParams()
 	const [trivia, setTrivia] = useState(null)
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -18,9 +17,10 @@ const TriviaDetails = (props) => {
 	const [isHeaderVisible, setIsHeaderVisible] = useState(false)
 	const [photo, setPhoto] = useState(mailBox)
 	const [isMailboxClicked, setIsMailboxClicked] = useState(false)
-  const [scoreList, setScoreList] = useState([]);
   const [isScoreExisted, setIsScoreExisted] = useState(false);
   const [scoreId, setScoreId] = useState("");
+  const [latestScore, setLatestScore] = useState(0);
+  const [score, setScore] = useState(0);
   const audioClip = new Audio(drumSound)
   audioClip.volume = 0.2
 
@@ -43,9 +43,9 @@ const TriviaDetails = (props) => {
 	}
 
 	const handleImageClick = () => {
+    audioClip.play()
 		setIsMailboxClicked(true)
 		setPhoto(mailBoxAnimation)
-    audioClip.play()
 		setTimeout(() => {
 			setIsHeaderVisible(true)
 		}, 4500)
@@ -76,12 +76,12 @@ const TriviaDetails = (props) => {
         0
       )
       console.log(`Number of correct choices: ${correctChoices}`)
+      setScore(correctChoices)
       setIsTriviaFinished(true)
       if (!isScoreExisted) {
         handleAddScore({score: correctChoices})
       } else {
         handleUpdateScore({score: correctChoices})
-        navigate(`/trivia/${triviaId}`)
       }
     } else {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
@@ -92,17 +92,21 @@ const TriviaDetails = (props) => {
     if (trivia) {
       const newScoreList = trivia.scores.filter(
         scoreData => scoreData.owner._id == props.user.profile)
-      const currentScoreId = newScoreList[0]._id
       if (newScoreList.length) {
-        setScoreList(newScoreList)
+        const currentScoreId = newScoreList[0]._id
         setIsScoreExisted(true)
         setScoreId(currentScoreId)
+        setLatestScore(newScoreList[0].score)
       }
       console.log("newScore", newScoreList)
-      console.log("currentScoreId", currentScoreId)
       console.log("isScoreExisted", isScoreExisted)
+      console.log("latestScore", latestScore)
     }
   }, [trivia])
+
+  useEffect(() => {
+    setLatestScore(score)
+  }, [isTriviaFinished]);
 
 	if (!trivia) return <h1>Loading</h1>
 
@@ -127,7 +131,7 @@ return (
       {!isHeaderVisible ? (
         <>
         <h1 className={styles.title}>{trivia.title}</h1>
-          <img
+          <img 
             src={photo} 
             alt=""
             className={`${styles.mailbox} mailbox`}
@@ -173,7 +177,7 @@ return (
 								Next Question
 							</button>
 						)}
-            {isScoreExisted && <h5>Highest Score: {scoreList[0].score}</h5> }
+            {isScoreExisted && <h5>{!isTriviaFinished ? "Previous" : "New"} Score: {latestScore}</h5> }
 						<span>
 							<div className="profileImgage">
 								<OwnerInfo content={trivia} />
@@ -196,13 +200,11 @@ return (
 					</>
 				)}
 			</header>
+      <section><br/></section>
 			<p>{trivia.text}</p>
 		</article>
-		<section>
-			<h1>Comments</h1>
-		</section>
 	</main>
- )
+)
 }
 
 export default TriviaDetails
