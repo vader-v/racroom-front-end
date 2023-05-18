@@ -13,7 +13,8 @@
   flex-direction: column;
 }
 
-.container > p, .content > p {
+.container > p,
+.content > p {
   margin: 8px;
   background-color: rgb(18, 18, 18);
   padding: 10px;
@@ -28,7 +29,12 @@
   right: 0;
 }
 
-.stationary-search-bar, h2, form, .profile-names, .profiles-name-search-list, a{
+.stationary-search-bar,
+h2,
+form,
+.profile-names,
+.profiles-name-search-list,
+a {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -46,6 +52,59 @@ a {
 
 @media (max-width: 800px) {
   .changePassword {
-    display: none; 
+    display: none;
   }
+}
+
+.profiles-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  bottom: -40px;
+  height: 100vh;
+}
+
+.profiles-container .trivia-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.profiles-container .trivia-item {
+  display: flex;
+  align-items: center;
+}
+
+.profiles-container .trivia-link {
+  margin: 10px;
+}
+
+.profiles-container .trivia-edit-link button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.profiles-container .trivia-edit-link button:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.profiles-container .trivia-delete-button {
+  margin-left: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.profiles-container .trivia-delete-button:hover {
+  background-color: red;
+  color: white;
 }

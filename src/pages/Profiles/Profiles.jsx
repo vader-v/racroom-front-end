@@ -1,8 +1,12 @@
 import { Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+
 import * as profileService from "../../services/profileService"
 import * as triviaService from "../../services/triviaService"
 import * as authService from "../../services/authService"
+
+// css
+import styles from "./Profiles.module.css"
 
 const Profiles = (props) => {
   const { profileId } = useParams()
@@ -51,7 +55,7 @@ const Profiles = (props) => {
   }
 
   return (
-    <div>
+    <div className={styles["profiles-container"]}>
       <h2>Profile Details</h2>
       <h3>Name: {profile.name}</h3>
       <img src={profile.photo} alt="Profile" />
@@ -59,21 +63,33 @@ const Profiles = (props) => {
       {triviaDetails.length > 0 ? (
         <div>
           <h3>Trivias:</h3>
-          <ul>
+          <ul className={styles["trivia-list"]}>
             {triviaDetails.map((trivia) => {
               if (!trivia._id) {
                 return null
               }
               return (
-                <li key={trivia._id}>
-                  <Link to={`/trivia/${trivia._id}`}>{trivia.title}</Link>
+                <li key={trivia._id} className={styles["trivia-item"]}>
+                  <Link
+                    to={`/trivia/${trivia._id}`}
+                    className={styles["trivia-link"]}
+                  >
+                    {trivia.title}
+                  </Link>
                   {trivia.owner._id === props.user.profile && (
                     <>
-                      <Link to={`/trivia/${trivia._id}/edit`} state={trivia}>
-                        Edit
+                      <Link
+                        to={`/trivia/${trivia._id}/edit`}
+                        state={trivia}
+                        className={styles["trivia-edit-link"]}
+                      >
+                        <button className={styles["trivia-edit-button"]}>
+                          Edit
+                        </button>
                       </Link>
                       <button
                         onClick={() => props.handleDeleteTrivia(trivia._id)}
+                        className={styles["trivia-delete-button"]}
                       >
                         Delete
                       </button>
