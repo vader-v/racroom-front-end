@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, NavLink } from "react-router-dom"
 import Confetti from 'react-dom-confetti'
 import OwnerInfo from "../../components/OwnerInfo/OwnerInfo"
 import * as triviaService from "../../services/triviaService"
@@ -11,6 +11,7 @@ import drumSound from '/drum-roll.mp3'
 import winSound from '/end-trivia.mp3'
 import trashCan from '/trash-animation.gif'
 import trashRaccoon from '/trashcan-animation.svg'
+import trashStuborn from '/trashcan-stuborn.gif'
 
 const config = {
   angle: 90,
@@ -47,6 +48,10 @@ const TriviaDetails = (props) => {
   const audioClip2 = new Audio(winSound)
   audioClip2.volume = 0.3
   const [confettiTrigger, setConfettiTrigger] = useState(false)
+  const [showLatestScore, setShowLatestScore] = useState(false)
+  const [isStubbornTrashVisible, setIsStubbornTrashVisible] = useState(false);
+
+
 
 	useEffect(() => {
 		const fetchTrivia = async () => {
@@ -75,6 +80,12 @@ const TriviaDetails = (props) => {
 		}, 4500)
 	}
 
+  const handleTrashClick = () => {
+    setIsStubbornTrashVisible(true);
+    setTimeout(() => setIsStubbornTrashVisible(false), 1000);
+  };
+  
+
   const handleAddScore = async (scoreData) => {
     const newScore = await triviaService.addScore(triviaId, scoreData)
     setTrivia({...trivia, scores: [...trivia.scores, newScore]})
@@ -102,6 +113,7 @@ const TriviaDetails = (props) => {
       console.log(`Number of correct choices: ${correctChoices}`)
       setScore(correctChoices)
       setIsTriviaFinished(true)
+      setShowLatestScore(true)
       if (!doesScoreExist) {
         handleAddScore({score: correctChoices})
       } else {
@@ -153,10 +165,15 @@ const TriviaDetails = (props) => {
 	)
 
 return (
-	<main className={styles.container}>
-    <Confetti active={ confettiTrigger } config={ config } />
+  <main className={styles.container}>
 		<article>
 			<header>
+    {showLatestScore && 
+      <div className={styles.latestScore}>
+        Your Score: {latestScore}
+      </div>
+    }
+    <Confetti active={ confettiTrigger } config={ config } />
       {!isHeaderVisible ? (
         <>
         <h1 className={styles.title}>{trivia.title}</h1>
@@ -239,13 +256,23 @@ return (
 					</>
 				)}
 			</header>
-      <section><br/></section>
         {
           isHeaderVisible && (
             isTriviaFinished ? (
-                <img src={trashCan} alt="Trash Raccoon" className={styles.trashImage} />
-            ) : (
-                <img src={trashRaccoon} alt="Trash Can" className={styles.trashImage} />
+              <NavLink to="/trivia">
+                <img 
+                src={trashCan} 
+                alt="Trash Raccoon" 
+                className={styles.trashImage} 
+                />
+              </NavLink>
+              ) : (
+                  <img 
+                  src={isStubbornTrashVisible ? trashStuborn : trashRaccoon} 
+                  alt="Trash Can" 
+                  className={styles.trashImage} 
+                  onClick={handleTrashClick} 
+                  />
             )
           )
         }
