@@ -290,22 +290,47 @@ img {
   z-index: 1;
 }
 
+.tree {
+  position: relative;
+  width: 100%;
+  height: auto;
+  transform: translateX(-50%);
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -100%;
+  bottom: 600px;
+  right: 45%;
+  z-index: 1;
+}
 
-/* @media (min-width: 1282px) {
-  .mailbox {
-    width: calc(50vw + 0%);
-    left: 10%;
-    transform: translateX(-50%);
-  }
-} */
+.tree2 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  transform: translateX(-50%);
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -100%;
+  bottom: 570px;
+  left: 900px;
+  z-index: 1;
+}
 
-@media (max-width: 1038px) {
-  .mailbox {
-    right: 0;
-    transform: translateX(-50%);
+@media (max-width: 1167px) {
+  .tree {
+    visibility: hidden;
   }
 }
 
+@media (max-width: 1242px) {
+  .tree2 {
+    left: 0;
+    visibility: hidden;
+    overflow: hidden;
+  }
+}
 
 .mailbox:hover {
   cursor: pointer;
