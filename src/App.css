@@ -45,3 +45,30 @@ h4 {
   width: 20px;
   margin-right: 15px;
 }
+
+/* Set the width and color of the scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+/* Customize the thumb (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+/* Hide the scrollbar when not scrolling */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Show the scrollbar on hover */
+::-webkit-scrollbar:hover {
+  width: 10px;
+}
+
+/* Remove the corner between the vertical and horizontal scrollbar */
+::-webkit-scrollbar-corner {
+  display: none;
+}
