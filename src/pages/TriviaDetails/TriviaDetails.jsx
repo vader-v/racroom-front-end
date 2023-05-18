@@ -1,9 +1,10 @@
+// npm modules
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import Confetti from 'react-dom-confetti'
+
+// components
 import OwnerInfo from "../../components/OwnerInfo/OwnerInfo"
-import * as triviaService from "../../services/triviaService"
-import styles from "./TriviaDetails.module.css"
 import mailBoxAnimation from '/mail-raccoon-animation.gif'
 import tree from '/racroom-tree-cutout.png'
 import mailBox from '/mail-box.gif'
@@ -11,6 +12,12 @@ import drumSound from '/drum-roll.mp3'
 import winSound from '/end-trivia.mp3'
 import trashCan from '/trash-animation.gif'
 import trashRaccoon from '/trashcan-animation.svg'
+
+// services
+import * as triviaService from "../../services/triviaService"
+
+// css
+import styles from "./TriviaDetails.module.css"
 
 const config = {
   angle: 90,
