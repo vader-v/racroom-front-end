@@ -17,7 +17,7 @@ const TriviaDetails = (props) => {
 	const [isHeaderVisible, setIsHeaderVisible] = useState(false)
 	const [photo, setPhoto] = useState(mailBox)
 	const [isMailboxClicked, setIsMailboxClicked] = useState(false)
-  const [isScoreExisted, setIsScoreExisted] = useState(false);
+  const [doesScoreExist, setScoreExists] = useState(false);
   const [scoreId, setScoreId] = useState("");
   const [latestScore, setLatestScore] = useState(0);
   const [score, setScore] = useState(0);
@@ -78,7 +78,7 @@ const TriviaDetails = (props) => {
       console.log(`Number of correct choices: ${correctChoices}`)
       setScore(correctChoices)
       setIsTriviaFinished(true)
-      if (!isScoreExisted) {
+      if (!doesScoreExist) {
         handleAddScore({score: correctChoices})
       } else {
         handleUpdateScore({score: correctChoices})
@@ -94,19 +94,19 @@ const TriviaDetails = (props) => {
         scoreData => scoreData.owner._id == props.user.profile)
       if (newScoreList.length) {
         const currentScoreId = newScoreList[0]._id
-        setIsScoreExisted(true)
+        setScoreExists(true)
         setScoreId(currentScoreId)
         setLatestScore(newScoreList[0].score)
       }
       console.log("newScore", newScoreList)
-      console.log("isScoreExisted", isScoreExisted)
+      console.log("doesScoreExist", doesScoreExist)
       console.log("latestScore", latestScore)
     }
-  }, [trivia])
+  }, [doesScoreExist, latestScore, props.user.profile, trivia])
 
   useEffect(() => {
     setLatestScore(score)
-  }, [isTriviaFinished]);
+  }, [isTriviaFinished, score]);
 
 	if (!trivia) return <h1>Loading</h1>
 
@@ -177,7 +177,7 @@ return (
 								Next Question
 							</button>
 						)}
-            {isScoreExisted && <h5>{!isTriviaFinished ? "Previous" : "New"} Score: {latestScore}</h5> }
+            {doesScoreExist && <h5>{!isTriviaFinished ? "Previous" : "New"} Score: {latestScore}</h5> }
 						<span>
 							<div className="profileImgage">
 								<OwnerInfo content={trivia} />
