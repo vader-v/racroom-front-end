@@ -6,6 +6,8 @@ import styles from "./TriviaDetails.module.css"
 import mailBoxAnimation from '/mail-raccoon-animation.gif'
 import mailBox from '/mail-box.gif'
 import drumSound from '/drum-roll.mp3'
+import trashCan from '/trash-animation.gif'
+import trashRaccoon from '/trashcan-animation.svg'
 
 const TriviaDetails = (props) => {
 	const { triviaId } = useParams()
@@ -165,7 +167,7 @@ return (
 							))}
 						</div>
 						{isTriviaFinished ? (
-							<div>Correct Choices: {correctChoices} / {trivia.questions.length}</div>
+							<div className="correctChoices">Correct Choices: {correctChoices} / {trivia.questions.length}</div>
 						) : currentQuestionIndex === trivia.questions.length - 1 ? (
 							<>
 								<button disabled={!isChoiceSelected} onClick={handleSubmitAnswer}>
@@ -201,7 +203,15 @@ return (
 				)}
 			</header>
       <section><br/></section>
-			<p>{trivia.text}</p>
+        {
+          isHeaderVisible && (
+            isTriviaFinished ? (
+                <img src={trashCan} alt="Trash Raccoon" className={styles.trashImage} />
+            ) : (
+                <img src={trashRaccoon} alt="Trash Can" className={styles.trashImage} />
+            )
+          )
+        }
 		</article>
 	</main>
 )

@@ -263,3 +263,10 @@ button, input[type="checkbox"] {
   top: -7vh;
   word-wrap: break-word;
 }
+
+.trashImage {
+  position: relative;
+  bottom: 0;
+  width: 100px; 
+  height: 100px; 
+}
