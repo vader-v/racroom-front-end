@@ -155,7 +155,7 @@ const TriviaDetails = (props) => {
 return (
 	<main className={styles.container}>
     <Confetti active={ confettiTrigger } config={ config } />
-		<article>
+		<article className={styles.article}>
 			<header>
       {!isHeaderVisible ? (
         <>
