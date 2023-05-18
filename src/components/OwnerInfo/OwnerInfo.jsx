@@ -9,14 +9,12 @@ const OwnerInfo = (props) => {
   const { content } = props
 
   const photo = content.owner?.photo || raccoonIcon
-  const ownerName = content.owner?.name || "Unknown Owner"
 
   return (
     <div className={styles.container}>
       <section>
-        <h4>name: {ownerName}</h4>
-        
         <img src={photo} alt="" />
+        <h5>Made by: {content.owner.name}</h5>
       </section>
     </div>
   )
