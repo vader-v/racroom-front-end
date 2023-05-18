@@ -21,8 +21,8 @@ const Landing = ({ user }) => {
         <NavLink to="/trivia">
           <img src={photo} alt="" className={styles.icon} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} />
         </NavLink>
-        <h1>hello, {user ? user.name : 'please '}
-        {user ? null : <NavLink to="/auth/login">Log In</NavLink>}
+        <h1>Hello, {user ? user.name : 'please '}
+        {user ? null : <NavLink to="/auth/login">Log In</NavLink>}!
         </h1>
       </main>
     </div>
