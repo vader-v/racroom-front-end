@@ -1,0 +1,36 @@
+.dropdown {
+  position: relative;
+  width: 200px;
+}
+
+.dropdown select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: white;
+  color: #333;
+  appearance: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropdown::after {
+  content: "\25BC";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #666;
+  pointer-events: none;
+}
+
+.dropdown select:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown select option {
+  background-color: white;
+  color: #333;
+}

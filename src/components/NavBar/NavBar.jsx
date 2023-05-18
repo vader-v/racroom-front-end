@@ -53,6 +53,9 @@ const NavBar = ({ user, handleLogout }) => {
 							<NavLink to={`/profiles/${user.profile}`} onClick={closeMenu}>My Profile</NavLink>
 						</li>
 						<li>
+        <NavLink to="/auth/change-password"  onClick={closeMenu}>Change Password</NavLink>
+      </li>
+						<li>
 							<NavLink to="" onClick={(event) => {handleLogout(event); closeMenu();}}>LOG OUT</NavLink>
 						</li>
 					</>

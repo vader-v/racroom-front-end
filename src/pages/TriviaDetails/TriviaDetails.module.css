@@ -19,6 +19,10 @@
   flex-direction: column;
 }
 
+.article {
+  box-shadow: 7px 6px 11px 1px rgba(0, 217, 255, .0) !important;
+}
+
 .container > section {
   width: 100%;
   height: auto;
@@ -50,6 +54,7 @@
   margin-left: auto;
   margin-right: auto;
   word-wrap: break-word;
+  box-shadow: 7px 6px 11px 1px rgba(0, 216, 255, 0.80);
 }
 
 .container h1 {

@@ -4,13 +4,14 @@ import { Link } from "react-router-dom"
 
 // services
 import * as profileService from "../../services/profileService"
-import { NavLink } from "react-router-dom"
 
 // components
 import SearchForm from "../../components/SearchForm/SearchForm"
 
 // css
 import styles from "./Profiles.module.css"
+
+import raccoonIcon from "../../assets/icons/raccoon.svg"
 
 const ProfileList = () => {
   const [profileList, setProfileList] = useState([])
@@ -47,22 +48,25 @@ const ProfileList = () => {
         <SearchForm handleProfileSearch={handleProfileSearch} />
         {<h2>{searchResults.length} results found</h2>}
       </div>
-      <div className="profiles-name-search-list">
+      <div className={styles.profilesContainer}>
         {searchResults.map((profile) => (
           <Link
             to={`/profiles/${profile._id}`}
             key={profile._id}
-            className="profile-names"
+            className={styles.profileItem}
           >
-            {profile.name}
+            <img
+              src={profile.photo || raccoonIcon}
+              alt="Profile"
+              className={styles.profileImage}
+            />
+            <span className={styles.profileName}>{profile.name}</span>
           </Link>
         ))}
-      </div>
-      <div className={styles.changePassword}>
-        <NavLink to="/auth/change-password">Change Password</NavLink>
       </div>
     </main>
   )
 }
 
 export default ProfileList
+

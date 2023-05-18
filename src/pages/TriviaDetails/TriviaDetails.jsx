@@ -165,8 +165,9 @@ const TriviaDetails = (props) => {
 	)
 
 return (
-  <main className={styles.container}>
-		<article>
+	<main className={styles.container}>
+    <Confetti active={ confettiTrigger } config={ config } />
+		<article className={styles.article}>
 			<header>
     {showLatestScore && 
       <div className={styles.latestScore}>
