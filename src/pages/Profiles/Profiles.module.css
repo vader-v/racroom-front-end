@@ -1,51 +1,109 @@
-.container {
+.profiles-container {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  position: relative;
-  bottom: -40px;
-  height: 100vh;
-}
-
-.content {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.container > p, .content > p {
-  margin: 8px;
-  background-color: rgb(18, 18, 18);
-  padding: 10px;
-  border-radius: 9px;
-}
-
-.changePassword {
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  position: fixed;
-  top: 0;
-  right: 0;
-}
-
-.stationary-search-bar, h2, form, .profile-names, .profiles-name-search-list, a{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   justify-content: center;
-  justify-self: center;
-  justify-items: center;
-  align-self: center;
-  align-content: center;
+  background-color: #333;
+  padding: 20px;
+}
+
+.profile-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #222;
+  padding: 20px;
+  max-width: 80%;
+  width: 800px;
+  border-radius: 10px;
+}
+
+.profile-image {
+  margin-bottom: 20px;
+}
+
+.profile-image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 0;
+  border-radius: 10px;
+}
+
+.trivia-count {
+  color: #fff;
+  margin-top: 10px;
+}
+
+.profile-content {
   text-align: center;
+  color: #fff;
 }
 
-a {
-  margin: 10px;
+.trivia-section {
+  background-color: #444;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  margin: 0 auto;
 }
 
-@media (max-width: 800px) {
-  .changePassword {
-    display: none; 
-  }
+.trivia-section h3 {
+  color: #fff;
+  margin-bottom: 10px;
+  margin: 0 auto;
+}
+
+.trivia-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  background-color: #383838;
+}
+
+.trivia-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #555;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.trivia-link {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+
+.trivia-edit-link button {
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #000000;
+  background-color: #ffffff;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.trivia-delete-button {
+  padding: 4px 8px;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #000000;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 10px;
+}
+
+.trivia-delete-button:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+.trivia-edit-link button:hover {
+  background-color: #000000;
+  color: #ffffff;
 }
