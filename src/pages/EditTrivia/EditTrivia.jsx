@@ -2,19 +2,19 @@
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
 
-// components 
+// components
 import CategoryDropdown from "../../components/CategoryDropdown/CategoryDropdown"
 
 //css
-import styles from './EditTrivia.module.css'
+import styles from "./EditTrivia.module.css"
 
-const EditTrivia = ({handleUpdateTrivia}) => {
+const EditTrivia = ({ handleUpdateTrivia }) => {
   const { state } = useLocation()
   const [triviaFormData, setTriviaFormData] = useState(state)
 
   const handleSaveTrivia = (evt) => {
     evt.preventDefault()
-    const triviaData = {...triviaFormData}
+    const triviaData = { ...triviaFormData }
     handleUpdateTrivia(triviaData)
   }
 
@@ -27,7 +27,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
   const handleAddQuestion = () => {
     setTriviaFormData({
       ...triviaFormData,
-      questions: [...triviaFormData.questions, { text: '', choices: [] }],
+      questions: [...triviaFormData.questions, { text: "", choices: [] }],
     })
   }
 
@@ -45,7 +45,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
     updatedQuestions.splice(questionIndex, 1)
     setTriviaFormData({
       ...triviaFormData,
-      questions: updatedQuestions
+      questions: updatedQuestions,
     })
   }
 
@@ -64,7 +64,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
               title: e.target.value,
             })
           }
-          />
+        />
         <label htmlFor="category-input">Category</label>
         <CategoryDropdown
           value={triviaFormData.category}
@@ -88,7 +88,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
                   text: e.target.value,
                 })
               }
-              />
+            />
             <button
               type="button"
               className="delete-question-button"
@@ -107,35 +107,43 @@ const EditTrivia = ({handleUpdateTrivia}) => {
                   value={choice.text}
                   onChange={(e) => {
                     const updatedQuestions = [...triviaFormData.questions]
-                    updatedQuestions[questionIndex].choices[choiceIndex].text = e.target.value
+                    updatedQuestions[questionIndex].choices[choiceIndex].text =
+                      e.target.value
                     setTriviaFormData({
-                      ...triviaFormData, questions: updatedQuestions
+                      ...triviaFormData,
+                      questions: updatedQuestions,
                     })
                   }}
                 />
-                <label htmlFor={`correct-answer-${questionIndex}-${choiceIndex}`}>
+                <label
+                  htmlFor={`correct-answer-${questionIndex}-${choiceIndex}`}
+                >
                   Correct answer:
                 </label>
                 <input
                   type="checkbox"
                   className="checkbox"
                   id={`correct-answer-${questionIndex}-${choiceIndex}`}
-                  checked={
-                    choice.answer ? "checked" : ""
-                  }
+                  checked={choice.answer ? "checked" : ""}
                   onChange={(e) => {
                     const updatedQuestions = [...triviaFormData.questions]
-                    updatedQuestions[questionIndex].correctAnswerIndex =
-                    e.target.checked ? choiceIndex : 1
-                    updatedQuestions[questionIndex].choices.map((choice, idx) => 
-                      choice.answer = idx === (e.target.checked ? choiceIndex : 1)
-                        ?  true : false )
+                    updatedQuestions[questionIndex].correctAnswerIndex = e
+                      .target.checked
+                      ? choiceIndex
+                      : 1
+                    updatedQuestions[questionIndex].choices.map(
+                      (choice, idx) =>
+                        (choice.answer =
+                          idx === (e.target.checked ? choiceIndex : 1)
+                            ? true
+                            : false)
+                    )
                     setTriviaFormData({
                       ...triviaFormData,
                       questions: updatedQuestions,
                     })
                   }}
-                  />
+                />
                 <button
                   type="button"
                   className="delete-choice-button"
@@ -149,13 +157,16 @@ const EditTrivia = ({handleUpdateTrivia}) => {
               type="button"
               onClick={() => {
                 const updatedQuestions = [...triviaFormData.questions]
-                updatedQuestions[questionIndex].choices.push({text: '', answer: false})
+                updatedQuestions[questionIndex].choices.push({
+                  text: "",
+                  answer: false,
+                })
                 setTriviaFormData({
                   ...triviaFormData,
                   questions: updatedQuestions,
                 })
               }}
-              >
+            >
               Add Choice
             </button>
           </div>
@@ -163,7 +174,9 @@ const EditTrivia = ({handleUpdateTrivia}) => {
         <button type="button" onClick={handleAddQuestion}>
           Add Question
         </button>
-        <button className="submit-button" type="submit">Complete Edit</button>
+        <button className="submit-button" type="submit">
+          Complete Edit
+        </button>
       </form>
     </main>
   )
