@@ -90,7 +90,7 @@ async function addScore(triviaId, scoreData) {
 
 async function updateScore(triviaId, scoreId, scoreData) {
   try {
-    const res = fetch(`${BASE_URL}/${triviaId}/scores/${scoreId}`, {
+    const res = await fetch(`${BASE_URL}/${triviaId}/scores/${scoreId}`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
@@ -104,6 +104,17 @@ async function updateScore(triviaId, scoreId, scoreData) {
   }
 }
 
+async function getTriviaById(triviaId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${triviaId}`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    });
+    return await res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export {
   indexTrivia,
   showTrivia,
@@ -111,5 +122,6 @@ export {
   updateTrivia,
   deleteTrivia,
   addScore,
-  updateScore
+  updateScore,
+  getTriviaById 
 }
