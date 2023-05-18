@@ -50,7 +50,7 @@ const NavBar = ({ user, handleLogout }) => {
 							<NavLink to="/profileList" onClick={closeMenu}>Profiles</NavLink>
 						</li>
 						<li>
-							<NavLink to="/:profileId" onClick={closeMenu}>My Profile</NavLink>
+							<NavLink to={`/profiles/${user.profile}`} onClick={closeMenu}>My Profile</NavLink>
 						</li>
 						<li>
 							<NavLink to="" onClick={(event) => {handleLogout(event); closeMenu();}}>LOG OUT</NavLink>

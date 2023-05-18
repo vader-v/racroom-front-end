@@ -9,9 +9,11 @@
 }
 
 .container form {
+  width: 475px;
   background: rgb(59, 59, 59);
   padding: 21px 28px;
   text-align: center;
+  border-radius: 5px;
 }
 
 .container input, textarea, select, button { 
@@ -31,15 +33,7 @@
 .container label {
   font-weight: 600;
   margin: 7px 0px 14px 0px;
-}
-
-.container button {
-  color: rgb(0, 0, 0);
-  font-weight: 600;
-  margin: 21px 0px 0px 0px;
-  background: white;
-  padding: 7px 14px;
-  width: fit-content;
+  color: black;
 }
 
 .container button.delete-question-button,
@@ -64,11 +58,12 @@ input:focus, select:focus, textarea:focus {
 .container button {
   color: white;
   font-weight: 600;
-  margin: 21px 0px 0px 0px;
+  margin: 21px 10px;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+  width: fit-content;
 }
 
 .container button:hover {
@@ -86,8 +81,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 .container button[type="submit"]:hover {
-  color: black;
-  background: rgb(78, 255, 50);
+  color: white;
+  background: black;
 }
 
 .container button[type="button"] {
@@ -120,4 +115,11 @@ input:focus, select:focus, textarea:focus {
 
 button, input[type="checkbox"] {
   cursor: pointer;
+}
+
+.container div.new-trivia-form {
+  background: linear-gradient(45deg, rgb(94, 241, 197), rgb(37, 149, 241));
+  border-radius: 5px;
+  margin-bottom: 16px;
+  padding: 8px;
 }
