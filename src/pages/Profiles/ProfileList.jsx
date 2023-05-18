@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom"
 
 // components
 import SearchForm from "../../components/SearchForm/SearchForm"
+import ProfileTriviaList from "../../components/ProfileTrivisList/ProfileTriviaList"
 
 // css
 import styles from "./Profiles.module.css"
