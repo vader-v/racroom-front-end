@@ -17,6 +17,10 @@ const TriviaDetails = (props) => {
 	const [isHeaderVisible, setIsHeaderVisible] = useState(false)
 	const [photo, setPhoto] = useState(mailBox)
 	const [isMailboxClicked, setIsMailboxClicked] = useState(false)
+  const [isScoreExisted, setIsScoreExisted] = useState(false);
+  const [scoreId, setScoreId] = useState("");
+  const [latestScore, setLatestScore] = useState(0);
+  const [score, setScore] = useState(0);
   const audioClip = new Audio(drumSound)
   audioClip.volume = 0.2
 
@@ -39,9 +43,9 @@ const TriviaDetails = (props) => {
 	}
 
 	const handleImageClick = () => {
+    audioClip.play()
 		setIsMailboxClicked(true)
 		setPhoto(mailBoxAnimation)
-    audioClip.play()
 		setTimeout(() => {
 			setIsHeaderVisible(true)
 		}, 4500)
@@ -50,6 +54,10 @@ const TriviaDetails = (props) => {
   const handleAddScore = async (scoreData) => {
     const newScore = await triviaService.addScore(triviaId, scoreData)
     setTrivia({...trivia, scores: [...trivia.scores, newScore]})
+  }
+
+  const handleUpdateScore = async (scoreData) => {
+    await triviaService.updateScore(triviaId, scoreId , scoreData)
   }
 
   const handleSubmitAnswer = () => {
@@ -68,13 +76,37 @@ const TriviaDetails = (props) => {
         0
       )
       console.log(`Number of correct choices: ${correctChoices}`)
+      setScore(correctChoices)
       setIsTriviaFinished(true)
-      handleAddScore({score: correctChoices})
+      if (!isScoreExisted) {
+        handleAddScore({score: correctChoices})
+      } else {
+        handleUpdateScore({score: correctChoices})
+      }
     } else {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
       setIsChoiceSelected(false)
     }
   }
+  useEffect(() => {
+    if (trivia) {
+      const newScoreList = trivia.scores.filter(
+        scoreData => scoreData.owner._id == props.user.profile)
+      if (newScoreList.length) {
+        const currentScoreId = newScoreList[0]._id
+        setIsScoreExisted(true)
+        setScoreId(currentScoreId)
+        setLatestScore(newScoreList[0].score)
+      }
+      console.log("newScore", newScoreList)
+      console.log("isScoreExisted", isScoreExisted)
+      console.log("latestScore", latestScore)
+    }
+  }, [trivia])
+
+  useEffect(() => {
+    setLatestScore(score)
+  }, [isTriviaFinished]);
 
 	if (!trivia) return <h1>Loading</h1>
 
@@ -145,6 +177,7 @@ return (
 								Next Question
 							</button>
 						)}
+            {isScoreExisted && <h5>{!isTriviaFinished ? "Previous" : "New"} Score: {latestScore}</h5> }
 						<span>
 							<div className="profileImgage">
 								<OwnerInfo content={trivia} />
@@ -167,13 +200,11 @@ return (
 					</>
 				)}
 			</header>
+      <section><br/></section>
 			<p>{trivia.text}</p>
 		</article>
-		<section>
-			<h1>Comments</h1>
-		</section>
 	</main>
- )
+)
 }
 
 export default TriviaDetails

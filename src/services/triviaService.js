@@ -88,7 +88,21 @@ async function addScore(triviaId, scoreData) {
   }
 }
 
-
+async function updateScore(triviaId, scoreId, scoreData) {
+  try {
+    const res = fetch(`${BASE_URL}/${triviaId}/scores/${scoreId}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(scoreData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export {
   indexTrivia,
@@ -96,5 +110,6 @@ export {
   create,
   updateTrivia,
   deleteTrivia,
-  addScore
+  addScore,
+  updateScore
 }
