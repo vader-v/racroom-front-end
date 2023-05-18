@@ -10,7 +10,7 @@ RacRoom is an application built primarily to learn new skills in a variety of us
 - [Hunter Eckhoff](https://github.com/HeyThatsNeat)
 - [Amir Bullock](https://github.com/vader-v)
 - [Jerry Pao](https://github.com/kyj666pao)
-- [Andrew Winkenwerder]()
+- [Andrew Winkenwerder](https://github.com/andrewwinke123)
 
 ## How to use our app
 Firstly, upon entering our app, you will go to our landing page, where you will log in, or sign up. Once you have successfully logged in you can either create a new trivia, or navigate to the trivia view, and take the trivia quiz you find interesting. If you like you can also use the category dropdown to sort through the trivia list. Once you see a trivia card you find engaging you can click on it to be directed to the trivia details page. Upon which you'll be prompted to open the mailbox containing your selected trivia's contents. The user will then be prompted with the question's and their answers in sequence, displaying the next question and logging the total amount of correct choices every time the user completes a question. When the trivia has finished the user's score will be tallied based on the total correct choices and the total number of questions in the trivia array. This score will then be saved to the user's profile for future reference, to improve upon a certain skill set.
