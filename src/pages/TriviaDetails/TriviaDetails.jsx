@@ -6,6 +6,7 @@ import styles from "./TriviaDetails.module.css"
 import mailBoxAnimation from '/mail-raccoon-animation.gif'
 import mailBox from '/mail-box.gif'
 import drumSound from '/drum-roll.mp3'
+import winSound from '/end-trivia.mp3'
 import trashCan from '/trash-animation.gif'
 import trashRaccoon from '/trashcan-animation.svg'
 
@@ -25,6 +26,8 @@ const TriviaDetails = (props) => {
   const [score, setScore] = useState(0);
   const audioClip = new Audio(drumSound)
   audioClip.volume = 0.2
+  const audioClip2 = new Audio(winSound)
+  audioClip2.volume = 0.3
 
 	useEffect(() => {
 		const fetchTrivia = async () => {
@@ -85,6 +88,9 @@ const TriviaDetails = (props) => {
       } else {
         handleUpdateScore({score: correctChoices})
       }
+      setTimeout(() => {
+        audioClip2.play()
+      }, 600)
     } else {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
       setIsChoiceSelected(false)

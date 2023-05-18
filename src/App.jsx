@@ -34,7 +34,6 @@ function App() {
   useEffect(() => {
     const fetchAllTrivia = async () => {
       const data = await triviaService.indexTrivia()
-      console.log("DATAAAA",data)
       setTrivias(data)
     }
     if (user) fetchAllTrivia()
@@ -51,7 +50,6 @@ function App() {
   }
 
   const handleAddTrivia = async (triviaFormData) => {
-    // console.log(trivias)
     const newTrivia = await triviaService.create(triviaFormData)
     setTrivias([newTrivia, ...trivias])
     navigate('/trivia')
@@ -137,7 +135,7 @@ function App() {
           path="/profiles/:profileId"
           element={
             <ProtectedRoute user={user}>
-              <Profiles />
+              <Profiles user={user} handleDeleteTrivia={handleDeleteTrivia}/>
             </ProtectedRoute>
           } 
         />
