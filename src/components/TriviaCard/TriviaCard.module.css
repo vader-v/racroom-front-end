@@ -12,6 +12,10 @@
   color: #00D8FF;
 }
 
+article {
+  box-shadow: 7px 6px 11px 1px rgba(0, 217, 255, .8) !important;
+}
+
 a {
   text-decoration: none;
 }
