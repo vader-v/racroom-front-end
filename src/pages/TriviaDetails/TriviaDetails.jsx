@@ -43,9 +43,9 @@ const TriviaDetails = (props) => {
 	}
 
 	const handleImageClick = () => {
+    audioClip.play()
 		setIsMailboxClicked(true)
 		setPhoto(mailBoxAnimation)
-    audioClip.play()
 		setTimeout(() => {
 			setIsHeaderVisible(true)
 		}, 4500)
@@ -196,13 +196,11 @@ return (
 					</>
 				)}
 			</header>
+      <section><br/></section>
 			<p>{trivia.text}</p>
 		</article>
-		<section>
-			<h1>Comments</h1>
-		</section>
 	</main>
- )
+)
 }
 
 export default TriviaDetails
