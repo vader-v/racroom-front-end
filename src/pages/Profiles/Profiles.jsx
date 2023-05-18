@@ -2,10 +2,13 @@ import { Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import * as profileService from "../../services/profileService"
 import * as triviaService from "../../services/triviaService"
-const Profiles = () => {
+import * as authService from "../../services/authService"
+
+const Profiles = (props) => {
   const { profileId } = useParams()
   const [profile, setProfile] = useState(null)
   const [triviaDetails, setTriviaDetails] = useState([])
+  const [loggedInUser, setLoggedInUser] = useState(null)
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -30,12 +33,24 @@ const Profiles = () => {
       }
     }
 
+    const fetchLoggedInUser = async () => {
+      try {
+        const loggedInUser = await authService.getUser(profileId)
+        setLoggedInUser(loggedInUser)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     fetchProfile()
+    fetchLoggedInUser()
   }, [profileId])
 
-  if (!profile) {
+  if (!profile || !loggedInUser) {
     return <div>Loading...</div>
   }
+
+  const isOwner = loggedInUser._id === profileId
 
   return (
     <div>
@@ -48,14 +63,24 @@ const Profiles = () => {
           <h3>Trivias:</h3>
           <ul>
             {triviaDetails.map((trivia) => {
-              console.log(trivia) // Check the trivia object in the console
               if (!trivia._id) {
-                console.log("Invalid trivia data:", trivia)
                 return null
               }
               return (
                 <li key={trivia._id}>
                   <Link to={`/trivia/${trivia._id}`}>{trivia.title}</Link>
+                  {trivia.owner._id === props.user.profile && (
+                    <>
+                      <Link to={`/trivia/${trivia._id}/edit`} state={trivia}>
+                        Edit
+                      </Link>
+                      <button
+                        onClick={() => props.handleDeleteTrivia(trivia._id)}
+                      >
+                        Delete
+                      </button>
+                    </>
+                  )}
                 </li>
               )
             })}
