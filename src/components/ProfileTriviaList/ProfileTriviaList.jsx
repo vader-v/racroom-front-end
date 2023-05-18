@@ -1,13 +1,25 @@
-import TriviaCard from "../TriviaCard/TriviaCard"
+// components/ProfileTriviaList.js
 
-const ProfileTriviaList = ({ profileTrivias }) => {
+import { useLocation } from 'react-router-dom';
+import TriviaCard from '../TriviaCard/TriviaCard';
+
+const ProfileTriviaList = ({ triviaDetails }) => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const profileId = searchParams.get('profileId');
+
+  const filteredTrivias = triviaDetails.filter(
+    (trivia) => trivia.profileId === profileId
+  );
+
   return (
     <div>
-      {profileTrivias.map((trivia) => (
+      <h3>Trivias:</h3>
+      {filteredTrivias.map((trivia) => (
         <TriviaCard key={trivia._id} trivia={trivia} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ProfileTriviaList
+export default ProfileTriviaList;
