@@ -57,6 +57,7 @@ const EditTrivia = ({ handleUpdateTrivia }) => {
         <input
           type="text"
           id="title"
+          autoComplete="off"
           value={triviaFormData.title}
           onChange={(e) =>
             setTriviaFormData({
@@ -81,6 +82,7 @@ const EditTrivia = ({ handleUpdateTrivia }) => {
             <input
               type="text"
               id={`question-${questionIndex}`}
+              autoComplete="off"
               value={question.text}
               onChange={(e) =>
                 handleQuestionChange(questionIndex, {
@@ -104,6 +106,7 @@ const EditTrivia = ({ handleUpdateTrivia }) => {
                 <input
                   type="text"
                   id={`choice-${questionIndex}-${choiceIndex}`}
+                  autoComplete="off"
                   value={choice.text}
                   onChange={(e) => {
                     const updatedQuestions = [...triviaFormData.questions]
