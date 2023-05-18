@@ -53,7 +53,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
     <main className={styles.container}>
       <h1>Edit Trivia</h1>
       <form onSubmit={handleSaveTrivia}>
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="title">Trivia Title:</label>
         <input
           type="text"
           id="title"
@@ -76,7 +76,7 @@ const EditTrivia = ({handleUpdateTrivia}) => {
           }
         />
         {triviaFormData.questions.map((question, questionIndex) => (
-          <div key={questionIndex}>
+          <div key={questionIndex} className={styles["new-trivia-form"]}>
             <label htmlFor={`question-${questionIndex}`}>Question:</label>
             <input
               type="text"
