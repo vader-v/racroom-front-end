@@ -5,6 +5,7 @@ import OwnerInfo from "../../components/OwnerInfo/OwnerInfo"
 import * as triviaService from "../../services/triviaService"
 import styles from "./TriviaDetails.module.css"
 import mailBoxAnimation from '/mail-raccoon-animation.gif'
+import tree from '/racroom-tree-cutout.png'
 import mailBox from '/mail-box.gif'
 import drumSound from '/drum-roll.mp3'
 import winSound from '/end-trivia.mp3'
@@ -165,6 +166,16 @@ return (
             className={`${styles.mailbox} mailbox`}
             onClick={handleImageClick} 
             />
+          <img 
+            src={tree} 
+            alt=""
+            className={`${styles.tree} tree`}
+          />
+          <img 
+            src={tree} 
+            alt=""
+            className={`${styles.tree2} tree2`}
+          />
         </>
         ) : (
 					<>
