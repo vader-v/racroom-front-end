@@ -280,7 +280,7 @@ img {
 
 .mailbox {
   position: relative;
-  width: calc(100vw - 50%);
+  width: 100%;
   height: auto;
   transform: translateX(-50%);
   margin-top: 40px;
@@ -291,28 +291,21 @@ img {
   z-index: 1;
 }
 
-@media (min-width: 971px) {
+
+/* @media (min-width: 1282px) {
   .mailbox {
     width: calc(50vw + 0%);
     left: 10%;
     transform: translateX(-50%);
   }
-}
+} */
 
-@media (min-width: 1282px) {
-  .mailbox {
-    width: calc(50vw + 0%);
-    left: 10%;
-    transform: translateX(-50%);
-  }
-}
-
-/* @media (max-width: 1038px) {
+@media (max-width: 1038px) {
   .mailbox {
     right: 0;
     transform: translateX(-50%);
   }
-} */
+}
 
 
 .mailbox:hover {
