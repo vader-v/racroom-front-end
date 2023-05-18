@@ -1,11 +1,31 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
+import Confetti from 'react-dom-confetti'
 import OwnerInfo from "../../components/OwnerInfo/OwnerInfo"
 import * as triviaService from "../../services/triviaService"
 import styles from "./TriviaDetails.module.css"
 import mailBoxAnimation from '/mail-raccoon-animation.gif'
 import mailBox from '/mail-box.gif'
 import drumSound from '/drum-roll.mp3'
+import winSound from '/end-trivia.mp3'
+import trashCan from '/trash-animation.gif'
+import trashRaccoon from '/trashcan-animation.svg'
+
+const config = {
+  angle: 90,
+  spread: 360,
+  startVelocity: 20,
+  elementCount: 70,
+  dragFriction: 0.12,
+  duration: 3000,
+  stagger: 3,
+  width: "10px",
+  height: "10px",
+  perspective: "500px",
+  colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
+}
+
+
 
 const TriviaDetails = (props) => {
 	const { triviaId } = useParams()
@@ -23,6 +43,9 @@ const TriviaDetails = (props) => {
   const [score, setScore] = useState(0);
   const audioClip = new Audio(drumSound)
   audioClip.volume = 0.2
+  const audioClip2 = new Audio(winSound)
+  audioClip2.volume = 0.3
+  const [confettiTrigger, setConfettiTrigger] = useState(false)
 
 	useEffect(() => {
 		const fetchTrivia = async () => {
@@ -83,6 +106,10 @@ const TriviaDetails = (props) => {
       } else {
         handleUpdateScore({score: correctChoices})
       }
+      setTimeout(() => {
+        audioClip2.play()
+        setConfettiTrigger(true)
+      }, 600)
     } else {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
       setIsChoiceSelected(false)
@@ -106,7 +133,7 @@ const TriviaDetails = (props) => {
 
   useEffect(() => {
     setLatestScore(score)
-  }, [isTriviaFinished, score]);
+  }, [isTriviaFinished, score])
 
 	if (!trivia) return <h1>Loading</h1>
 
@@ -126,6 +153,7 @@ const TriviaDetails = (props) => {
 
 return (
 	<main className={styles.container}>
+    <Confetti active={ confettiTrigger } config={ config } />
 		<article>
 			<header>
       {!isHeaderVisible ? (
@@ -165,7 +193,7 @@ return (
 							))}
 						</div>
 						{isTriviaFinished ? (
-							<div>Correct Choices: {correctChoices} / {trivia.questions.length}</div>
+							<div className="correctChoices">Correct Choices: {correctChoices} / {trivia.questions.length}</div>
 						) : currentQuestionIndex === trivia.questions.length - 1 ? (
 							<>
 								<button disabled={!isChoiceSelected} onClick={handleSubmitAnswer}>
@@ -201,6 +229,15 @@ return (
 				)}
 			</header>
       <section><br/></section>
+        {
+          isHeaderVisible && (
+            isTriviaFinished ? (
+                <img src={trashCan} alt="Trash Raccoon" className={styles.trashImage} />
+            ) : (
+                <img src={trashRaccoon} alt="Trash Can" className={styles.trashImage} />
+            )
+          )
+        }
 		</article>
 	</main>
 )
