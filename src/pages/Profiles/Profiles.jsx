@@ -62,21 +62,6 @@ const Profiles = (props) => {
 
   return (
     <div className={styles["profiles-container"]}>
-      <div className={styles["banner-image"]}>
-        {/* Add your banner image here */}
-        {profile.owner === props.user.profile ? (
-          <div className={styles["upload-button-container"]}>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleUploadImage}
-              className={styles["upload-button-input"]}
-            />
-            <button className={styles["upload-button"]}>Upload Image</button>
-          </div>
-        ) : null}
-        <img src="/path/to/banner-image.jpg" alt="Banner" />
-      </div>
       <div className={styles["profile-details"]}>
         <div className={styles["profile-header"]}>
           <div className={styles["profile-image"]}>
