@@ -50,8 +50,6 @@ const Profiles = (props) => {
     return <div>Loading...</div>
   }
 
-  const isOwner = loggedInUser._id === profileId
-
   return (
     <div>
       <h2>Profile Details</h2>
