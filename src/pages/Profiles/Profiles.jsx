@@ -1,63 +1,57 @@
+import { Link, useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
 
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-import * as profileService from "../../services/profileService";
-import * as triviaService from "../../services/triviaService";
-import * as authService from "../../services/authService";
+import * as profileService from "../../services/profileService"
+import * as triviaService from "../../services/triviaService"
+import * as authService from "../../services/authService"
 
 // css
-import styles from "./Profiles.module.css";
+import styles from "./Profiles.module.css"
 
 const Profiles = (props) => {
-  const { profileId } = useParams();
-  const [profile, setProfile] = useState(null);
-  const [triviaDetails, setTriviaDetails] = useState([]);
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const { profileId } = useParams()
+  const [profile, setProfile] = useState(null)
+  const [triviaDetails, setTriviaDetails] = useState([])
+  const [loggedInUser, setLoggedInUser] = useState(null)
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const profileData = await profileService.getProfileById(profileId);
-        setProfile(profileData);
+        const profileData = await profileService.getProfileById(profileId)
+        setProfile(profileData)
         if (profileData && profileData.trivia) {
           // Fetch the details of each trivia based on their IDs
           const fetchTriviaDetails = async () => {
             const promises = profileData.trivia.map(async (triviaId) => {
-              const triviaData = await triviaService.getTriviaById(triviaId);
-              return triviaData;
-            });
-            const triviaDetailsData = await Promise.all(promises);
-            setTriviaDetails(triviaDetailsData);
-          };
+              const triviaData = await triviaService.getTriviaById(triviaId)
+              return triviaData
+            })
+            const triviaDetailsData = await Promise.all(promises)
+            setTriviaDetails(triviaDetailsData)
+          }
 
-          fetchTriviaDetails();
+          fetchTriviaDetails()
         }
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
+    }
 
     const fetchLoggedInUser = async () => {
       try {
-        const loggedInUser = await authService.getUser(profileId);
-        setLoggedInUser(loggedInUser);
+        const loggedInUser = await authService.getUser(profileId)
+        setLoggedInUser(loggedInUser)
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
+    }
 
-    fetchProfile();
-    fetchLoggedInUser();
-  }, [profileId]);
-
-  const handleUploadImage = () => {
-    // Logic to handle image upload
-    // Only allow the owner to upload the image
-  };
+    fetchProfile()
+    fetchLoggedInUser()
+  }, [profileId])
 
   if (!profile || !loggedInUser) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   return (
@@ -83,7 +77,7 @@ const Profiles = (props) => {
             <ul className={styles["trivia-list"]}>
               {triviaDetails.map((trivia) => {
                 if (!trivia._id) {
-                  return null;
+                  return null
                 }
                 return (
                   <li key={trivia._id} className={styles["trivia-item"]}>
@@ -94,7 +88,7 @@ const Profiles = (props) => {
                       {trivia.title}
                     </Link>
                     {trivia.owner._id === props.user.profile && (
-                      <>
+                      <div className={styles["trivia-button-container"]}>
                         <Link
                           to={`/trivia/${trivia._id}/edit`}
                           state={trivia}
@@ -110,10 +104,10 @@ const Profiles = (props) => {
                         >
                           Delete
                         </button>
-                      </>
+                      </div>
                     )}
                   </li>
-                );
+                )
               })}
             </ul>
           </div>
@@ -122,7 +116,7 @@ const Profiles = (props) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Profiles;
+export default Profiles
