@@ -45,7 +45,7 @@ const ProfileList = () => {
       </div>
       <div className='profiles-name-search-list'>
         {searchResults.map(profile =>
-          <Link to={`/profileList/${profile._id}`} key={profile._id} className='profile-names'>
+          <Link to={`/profiles/${profile._id}`} key={profile._id} className='profile-names'>
             {profile.name}
           </Link>
         )}
