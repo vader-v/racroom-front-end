@@ -233,22 +233,52 @@ button, input[type="checkbox"] {
   font-family: canada-type-gibson, sans-serif;
 }
 
-.mailbox {
+/* .mailbox {
   position: relative;
-  /* display: flex; */
   width: 100%;
-  /* justify-content: center;
-  align-items: center; */
   min-width: 70%;
   height: auto;
   margin-top: 40px;
-  /* transform: translateX(-150px); */
   margin-left: auto;
   margin-right: auto;
   bottom: 50px;
   right: 37%; 
   z-index: 1;
+} */
+
+/* .mailbox {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 40px;
+  margin-left: 0;
+  margin-right: auto;
+  bottom: 50px;
+  left: 0;
+  transform: translateX(0%);
+  z-index: 1;
+} */
+
+.mailbox {
+  position: relative;
+  width: calc(100vw - 50%);
+  height: auto;
+  left: 0;
+  transform: translateX(-50%);
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 50px;
+  z-index: 1;
 }
+
+@media (max-width: 768px) {
+  .mailbox {
+    right: 0;
+    transform: translateX(-50%);
+  }
+}
+
 
 .mailbox:hover {
   cursor: pointer;
