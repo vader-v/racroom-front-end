@@ -11,6 +11,14 @@ Join us and embark on an exciting learning adventure. Connect with fellow learne
 # Use our app [here](https://racroom.netlify.app/)!
 ### Trello planning materials [here](https://trello.com/b/1ROgL0md/racroom)!
 
+## App Screenshots
+<p align="center">
+  <img src="public/2023-05-19 (7).png" width="350" title="hover text">
+  <img src="public/2023-05-19 (11).png" width="350" alt="accessibility text">
+  <img src="public/2023-05-19 (10).png" width="350" alt="accessibility text">
+  <img src="public/2023-05-19 (12).png" width="350" alt="accessibility text">
+</p>
+
 ---
 ## Contributors
 - [Hunter Eckhoff](https://github.com/HeyThatsNeat)
@@ -36,12 +44,12 @@ Once the trivia is finished, your score will be tallied based on the total numbe
 ---
 ## Technologies used
 
-- JavaScript.
-- HTML. 
-- CSS.
-- Vite.
-- NodeJS.
-- Express.
+- JavaScript
+- HTML
+- CSS
+- Vite
+- NodeJS
+- Express
 - Netlify for deployment.
 - MongoDB database is accessed via the back-end server. 
 - Mongoose data structure is crucial for full functionality. 
