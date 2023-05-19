@@ -1,4 +1,4 @@
-# RacRoom!
+# RacRoom
 _An open-ended trivia creation and sharing application._
 
 Welcome to RacRoom, an app designed to help you learn new skills through fun trivia question-answer scenarios. RacRoom is here to support your learning journey. You can explore user-created trivia boards, create your own, or check out collections made by others on their profiles.
@@ -10,6 +10,14 @@ Join us and embark on an exciting learning adventure. Connect with fellow learne
 
 # Use our app [here](https://racroom.netlify.app/)!
 ### Trello planning materials [here](https://trello.com/b/1ROgL0md/racroom)!
+
+## App Screenshots
+<p align="center">
+  <img src="public/2023-05-19 (7).png" width="350" title="hover text" alt="Taking Trivia Question">
+  <img src="public/2023-05-19 (11).png" width="350" alt="New Trivia Page">
+  <img src="public/TriviaListReadme.png" width="350" alt="Trivia List Page">
+  <img src="public/2023-05-19 (12).png" width="350" alt="Profile List Page">
+</p>
 
 ---
 ## Contributors
@@ -29,34 +37,37 @@ Once the trivia is finished, your score will be tallied based on the total numbe
 ---
 ## Future updates
 
-- Add group chat functionality for trivia sharing and extra interactivity.
-- Implement comments on each trivia card.
-- Implement a like system to save your favorite trivia.
-- Add followers functionality to sort trivia conditionally if followed or all trivia.
+- Add group chat functionality for trivia sharing and extra interactivity
+- Implement comments on each trivia card
+- Implement a like system to save your favorite trivia
+- Add followers functionality to sort trivia conditionally if followed or all trivia
 ---
 ## Technologies used
 
-- JavaScript.
-- HTML. 
-- CSS.
-- Vite.
-- NodeJS.
-- Express.
-- Netlify for deployment.
-- MongoDB database is accessed via the back-end server. 
-- Mongoose data structure is crucial for full functionality. 
-- Github for future updates.
-- Bearer token authorization for user creation.
+- JavaScript
+- HTML
+- CSS
+- Vite
+- Node.js
+- Express
+- JWT
+- Git
+- React
+- Netlify for deployment
+- MongoDB database is accessed via the back-end server 
+- Mongoose data structure is crucial for full functionality 
+- Github for future updates
+- Bearer token authorization for user creation
 ---
 ## References used
 
-- [MDN Web Docs. (n.d.). Mozilla Developer Network.](https://developer.mozilla.org/en-US/)
+- [MDN Web Docs. (n.d.). Mozilla Developer Network](https://developer.mozilla.org/en-US/)
 
-- [Stack Overflow. (n.d.). Stack Exchange Inc.](https://stackoverflow.com/)
+- [Stack Overflow. (n.d.). Stack Exchange Inc](https://stackoverflow.com/)
 
-- [Google. (n.d.). Google Search Engine.](https://www.google.com/)
+- [Google. (n.d.). Google Search Engine](https://www.google.com/)
 
-- [React Dev Docs.](https://react.dev/)
+- [React Dev Docs](https://react.dev/)
 
 ---
 ## Attributions
