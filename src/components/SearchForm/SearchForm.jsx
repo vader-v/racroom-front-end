@@ -5,9 +5,9 @@ const ProfileSearchForm = (props) => {
   const [formData, setFormData] = useState({ query: '' })
 
   const handleChange = (evt) => {
-    const value = evt.target.value;
-    setFormData({ query: value });
-    props.handleProfileSearch(value); // Custom callback for profile search
+    const value = evt.target.value
+    setFormData({ query: value })
+    props.handleProfileSearch(formData)
   }
 
   return (
@@ -25,13 +25,14 @@ const ProfileSearchForm = (props) => {
 }
 
 
+
 const TriviaSearchForm = (props) => {
   const [formData, setFormData] = useState({ query: '' })
   
   const handleChange = (evt) => {
-    const value = evt.target.value;
-    setFormData({ query: value });
-    props.handleTriviaSearch(value); // Custom callback for trivia search
+    const value = evt.target.value
+    setFormData({ query: value })
+    props.handleTriviaSearch(value)
   }
 
   return (

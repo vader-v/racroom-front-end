@@ -36,10 +36,10 @@ async function getProfileById(profileId) {
   try {
     const res = await fetch(`${BASE_URL}/${profileId}?populate=trivia`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
-    });
-    return await res.json();
+    })
+    return await res.json()
   } catch (err) {
-    throw new Error(err);
+    throw new Error(err)
   }
 }
 

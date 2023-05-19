@@ -43,6 +43,7 @@ const TriviaDetails = (props) => {
 	const [isTriviaFinished, setIsTriviaFinished] = useState(false)
 	const [isHeaderVisible, setIsHeaderVisible] = useState(false)
 	const [photo, setPhoto] = useState(mailBox)
+	const [isMailboxClicked, setIsMailboxClicked] = useState(false)
   const [doesScoreExist, setScoreExists] = useState(false)
   const [scoreId, setScoreId] = useState("")
   const [latestScore, setLatestScore] = useState(0)
