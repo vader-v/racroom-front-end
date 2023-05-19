@@ -31,7 +31,6 @@
   padding-right: 10px;
 }
 
-
 .filters {
   display: flex;
   justify-content: center;
@@ -57,7 +56,6 @@
 .container article:hover {
   background-color: rgb(121, 77, 104);
 }
-
 
 @media only screen and (min-width: 900px) {
   .container {

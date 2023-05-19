@@ -114,7 +114,6 @@ const TriviaDetails = (props) => {
         },
         0
       )
-      console.log(`Number of correct choices: ${correctChoices}`)
       setScore(correctChoices)
       setIsTriviaFinished(true)
       setShowLatestScore(true)
@@ -280,7 +279,8 @@ const TriviaDetails = (props) => {
                 onClick={handleTrashClick}
               />
             </>
-          ))}
+          ))
+				}
       </article>
     </main>
   )

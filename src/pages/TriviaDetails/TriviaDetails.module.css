@@ -158,7 +158,6 @@ img {
   padding: 0, 100px;
 }
 
-
 .container button {
   color: white;
   font-weight: 600;
@@ -330,7 +329,6 @@ button, input[type="checkbox"] {
   cursor: pointer;
 }
 
-
 .latestScore {
   position: relative;
   font-size: 700%;
@@ -351,7 +349,6 @@ button, input[type="checkbox"] {
     top: -15%;
     left: 0%;
   }
-
   .latestScore {
     position: relative;
     font-size: 300%;
