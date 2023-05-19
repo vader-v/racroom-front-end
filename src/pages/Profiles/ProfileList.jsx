@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import * as profileService from "../../services/profileService"
 
 // components
-import SearchForm from "../../components/SearchForm/SearchForm"
+import SearchForm, { ProfileSearchForm } from "../../components/SearchForm/SearchForm"
 
 // css
 import styles from "./Profiles.module.css"
@@ -44,10 +44,10 @@ const ProfileList = () => {
   return (
     <main className={styles.container}>
       <div className="stationary-search-bar">
-        <h1>Hello. This is a list of all the profiles.</h1>
-        <SearchForm handleProfileSearch={handleProfileSearch} />
-        {<h2>{searchResults.length} results found</h2>}
-      </div>
+      <h1>Hello. This is a list of all the profiles.</h1>
+      <ProfileSearchForm handleProfileSearch={handleProfileSearch} />
+      {<h2>{searchResults.length} results found</h2>}
+    </div>
       <div className={styles.profilesContainer}>
         {searchResults.map((profile) => (
           <div className={styles.profileWrapper} key={profile._id}>

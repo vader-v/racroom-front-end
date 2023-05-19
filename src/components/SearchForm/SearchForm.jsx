@@ -1,32 +1,54 @@
 // npm modules
 import { useState } from 'react'
 
-const SearchForm = (props) => {
-  const [formData, setFormData] = useState({query: ''})
+const ProfileSearchForm = (props) => {
+  const [formData, setFormData] = useState({ query: '' })
 
-  const handleChange = evt => {
-    setFormData({ ...formData, [evt.target.name]: evt.target.value })
-    props.handleProfileSearch({ ...formData, [evt.target.name]: evt.target.value })
+  const handleChange = (evt) => {
+    const value = evt.target.value;
+    setFormData({ query: value });
+    props.handleProfileSearch(value); // Custom callback for profile search
   }
 
-  // const handleSubmit = evt => {
-  //   evt.preventDefault()
-  //   props.handleProfileSearch(formData)
-  //   setFormData({query: ""})
-  // }
-
   return (
-    <form className="search-form" >
+    <form className="search-form">
       <input
         name="query"
         type="text"
         autoComplete="off"
         value={formData.query}
-        placeholder='search'
+        placeholder="Search Profiles"
         onChange={handleChange}
       />
     </form>
   )
 }
 
-export default SearchForm
+
+const TriviaSearchForm = (props) => {
+  const [formData, setFormData] = useState({ query: '' })
+  
+  const handleChange = (evt) => {
+    const value = evt.target.value;
+    setFormData({ query: value });
+    props.handleTriviaSearch(value); // Custom callback for trivia search
+  }
+
+  return (
+    <form className="search-form">
+      <input
+        name="query"
+        type="text"
+        autoComplete="off"
+        value={formData.query}
+        placeholder="Search Trivia"
+        onChange={handleChange}
+        />
+    </form>
+  )
+}
+
+export {
+  ProfileSearchForm,
+  TriviaSearchForm
+} 
