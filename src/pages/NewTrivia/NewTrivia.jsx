@@ -10,7 +10,7 @@ import styles from "./NewTrivia.module.css"
 const NewTrivia = ({ handleAddTrivia }) => {
   const [triviaFormData, setTriviaFormData] = useState({
     title: "",
-    category: "Keyboard Shortcuts",
+    category: "All",
     questions: [
       {
         text: "",
