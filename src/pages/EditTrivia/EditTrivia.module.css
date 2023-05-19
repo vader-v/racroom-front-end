@@ -9,8 +9,8 @@
 }
 
 .container form {
-  width: 475px;
-  background: rgb(59, 59, 59);
+  background: linear-gradient(45deg, rgb(53, 14, 169), rgb(128, 67, 144));
+  width: 488px;
   padding: 21px 28px;
   text-align: center;
   border-radius: 5px;
