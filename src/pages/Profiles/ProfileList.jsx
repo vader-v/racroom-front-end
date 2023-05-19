@@ -40,6 +40,7 @@ const ProfileList = () => {
       const filteredProfileResults = profileList.filter((profile) =>
         profile.name.toLowerCase().includes(query.toLowerCase())
       )
+      console.log("FILTERED PROFILE RESULTES", filteredProfileResults)
       setSearchResults(filteredProfileResults)
     } else {
       setSearchResults(profileList)
