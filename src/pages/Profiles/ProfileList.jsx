@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import * as profileService from "../../services/profileService"
 
 // components
-import SearchForm, { ProfileSearchForm } from "../../components/SearchForm/SearchForm"
+import { ProfileSearchForm } from "../../components/SearchForm/SearchForm"
 
 // css
 import styles from "./Profiles.module.css"
