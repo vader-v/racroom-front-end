@@ -108,10 +108,10 @@ async function getTriviaById(triviaId) {
   try {
     const res = await fetch(`${BASE_URL}/${triviaId}`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
-    });
-    return await res.json();
+    })
+    return await res.json()
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 

@@ -46,17 +46,17 @@ const TriviaDetails = (props) => {
 	const [isHeaderVisible, setIsHeaderVisible] = useState(false)
 	const [photo, setPhoto] = useState(mailBox)
 	const [isMailboxClicked, setIsMailboxClicked] = useState(false)
-  const [doesScoreExist, setScoreExists] = useState(false);
-  const [scoreId, setScoreId] = useState("");
-  const [latestScore, setLatestScore] = useState(0);
-  const [score, setScore] = useState(0);
+  const [doesScoreExist, setScoreExists] = useState(false)
+  const [scoreId, setScoreId] = useState("")
+  const [latestScore, setLatestScore] = useState(0)
+  const [score, setScore] = useState(0)
   const audioClip = new Audio(drumSound)
   audioClip.volume = 0.2
   const audioClip2 = new Audio(winSound)
   audioClip2.volume = 0.3
   const [confettiTrigger, setConfettiTrigger] = useState(false)
   const [showLatestScore, setShowLatestScore] = useState(false)
-  const [isStubbornTrashVisible, setIsStubbornTrashVisible] = useState(false);
+  const [isStubbornTrashVisible, setIsStubbornTrashVisible] = useState(false)
 
 
 
@@ -88,9 +88,9 @@ const TriviaDetails = (props) => {
 	}
 
   const handleTrashClick = () => {
-    setIsStubbornTrashVisible(true);
-    setTimeout(() => setIsStubbornTrashVisible(false), 1000);
-  };
+    setIsStubbornTrashVisible(true)
+    setTimeout(() => setIsStubbornTrashVisible(false), 1000)
+  }
   
 
   const handleAddScore = async (scoreData) => {
