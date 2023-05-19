@@ -17,7 +17,7 @@
 }
 
 article {
-  box-shadow: 7px 6px 11px 1px rgba(0, 217, 255, .45) !important;
+  box-shadow: 7px 6px 11px 1px rgba(0, 0, 0, 1) !important;
 }
 
 a {
