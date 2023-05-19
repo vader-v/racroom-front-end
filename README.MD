@@ -44,12 +44,12 @@ Once the trivia is finished, your score will be tallied based on the total numbe
 ---
 ## Technologies used
 
-- JavaScript.
-- HTML. 
-- CSS.
-- Vite.
-- NodeJS.
-- Express.
+- JavaScript
+- HTML
+- CSS
+- Vite
+- NodeJS
+- Express
 - Netlify for deployment.
 - MongoDB database is accessed via the back-end server. 
 - Mongoose data structure is crucial for full functionality. 
