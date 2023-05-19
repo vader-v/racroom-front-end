@@ -1,10 +1,12 @@
-// components
+// npm modules
 import { useState } from 'react'
+
+// components
 import TriviaCard from '../../components/TriviaCard/TriviaCard'
- 
-//css
-import styles from './TriviaList.module.css'
 import CategoryDropdown from '../../components/CategoryDropdown/CategoryDropdown'
+
+// css
+import styles from './TriviaList.module.css'
 
 
 const TriviaList = (props) => {

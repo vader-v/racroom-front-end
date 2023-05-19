@@ -1,8 +1,11 @@
 // npm modules
 import { useState } from "react"
+
+// components
+import CategoryDropdown from "../../components/CategoryDropdown/CategoryDropdown"
+
 // css
 import styles from "./NewTrivia.module.css"
-import CategoryDropdown from "../../components/CategoryDropdown/CategoryDropdown"
 
 const NewTrivia = ({ handleAddTrivia }) => {
   const [triviaFormData, setTriviaFormData] = useState({
@@ -68,6 +71,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
         <input
           type="text"
           id="title"
+          autoComplete="off"
           value={triviaFormData.title}
           onChange={(e) =>
             setTriviaFormData({
@@ -92,6 +96,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
             <input
               type="text"
               id={`question-${questionIndex}`}
+              autoComplete="off"
               value={question.text}
               onChange={(e) =>
                 handleQuestionChange(questionIndex, {
@@ -115,6 +120,7 @@ const NewTrivia = ({ handleAddTrivia }) => {
                 <input
                   type="text"
                   id={`choice-${questionIndex}-${choiceIndex}`}
+                  autoComplete="off"
                   value={choice.text}
                   onChange={(e) => {
                     const updatedQuestions = [...triviaFormData.questions]
