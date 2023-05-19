@@ -35,15 +35,20 @@ const TriviaList = (props) => {
 
   return (
     <main className={styles.container}>
-      <div className={styles.dropdown}>
-        <label htmlFor="category-filter">Filter by Category:</label>
-        <CategoryDropdown value={selectedCategory} onChange={handleCategoryChange} />
-      </div>
+  <div className={styles.filters}>
+    <div className={styles.filter}>
+      <label htmlFor="category-filter">Filter by category:</label>
+      <CategoryDropdown value={selectedCategory} onChange={handleCategoryChange} />
+    </div>
+    <div className={styles.filter}>
+      <label htmlFor="title-search">Search by title:</label>
       <TriviaSearchForm handleTriviaSearch={handleSearch} />
-      {filteredTrivias.map((trivia) => (
-        <TriviaCard key={trivia._id} trivia={trivia} />
-      ))}
-    </main>
+    </div>
+  </div>
+  {filteredTrivias.map((trivia) => (
+    <TriviaCard key={trivia._id} trivia={trivia} />
+  ))}
+</main>
   )
 }
 
