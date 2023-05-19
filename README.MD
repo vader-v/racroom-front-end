@@ -13,10 +13,10 @@ Join us and embark on an exciting learning adventure. Connect with fellow learne
 
 ## App Screenshots
 <p align="center">
-  <img src="public/2023-05-19 (7).png" width="350" title="hover text">
-  <img src="public/2023-05-19 (11).png" width="350" alt="accessibility text">
-  <img src="public/2023-05-19 (10).png" width="350" alt="accessibility text">
-  <img src="public/2023-05-19 (12).png" width="350" alt="accessibility text">
+  <img src="public/2023-05-19 (7).png" width="350" title="hover text" alt="Taking Trivia Question">
+  <img src="public/2023-05-19 (11).png" width="350" alt="New Trivia Page">
+  <img src="public/TriviaListReadme.png" width="350" alt="Trivia List Page">
+  <img src="public/2023-05-19 (12).png" width="350" alt="Profile List Page">
 </p>
 
 ---

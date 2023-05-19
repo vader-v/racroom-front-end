@@ -82,7 +82,7 @@ const NavBar = ({ user, handleLogout }) => {
                   closeMenu()
                 }}
               >
-                LOG OUT
+                Log Out
               </NavLink>
             </li>
           </>
