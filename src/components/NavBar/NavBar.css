@@ -51,7 +51,6 @@ nav ul li a:hover {
 }
 
 @media (max-width: 940px) {
-
   nav ul {
     flex-direction: column;
     position: fixed;
@@ -91,6 +90,7 @@ nav ul li a:hover {
       right: 3px;
       top: 3px;
   }
+
   .hamburger-icon.inside {
     display: block;
     position: fixed;
