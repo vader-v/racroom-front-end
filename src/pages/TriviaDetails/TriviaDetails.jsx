@@ -92,7 +92,7 @@ const TriviaDetails = (props) => {
     setTimeout(() => setIsStubbornTrashVisible(false), 1000)
   }
   
-
+console.log(trivia)
   const handleAddScore = async (scoreData) => {
     const newScore = await triviaService.addScore(triviaId, scoreData)
     setTrivia({...trivia, scores: [...trivia.scores, newScore]})
