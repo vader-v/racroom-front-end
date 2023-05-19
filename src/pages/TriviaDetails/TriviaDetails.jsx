@@ -279,7 +279,8 @@ const TriviaDetails = (props) => {
                 onClick={handleTrashClick}
               />
             </>
-          ))}
+          ))
+				}
       </article>
     </main>
   )

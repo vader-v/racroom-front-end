@@ -139,7 +139,8 @@ const EditTrivia = ({ handleUpdateTrivia }) => {
                         (choice.answer =
                           idx === (e.target.checked ? choiceIndex : 1)
                             ? true
-                            : false)
+                            : false
+                        )
                     )
                     setTriviaFormData({
                       ...triviaFormData,

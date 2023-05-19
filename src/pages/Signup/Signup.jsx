@@ -128,7 +128,7 @@ const Signup = ({ handleAuthEvt }) => {
             className={styles.button}
             disabled={ isFormInvalid() || isSubmitted }
           >
-            {!isSubmitted ? 'Sign Up' : '🚀 Sending...'}
+            {!isSubmitted ? 'Sign Up' : 'Sending...'}
           </button>
         </div>
       </form>
