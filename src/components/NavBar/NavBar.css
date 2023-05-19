@@ -16,6 +16,7 @@ nav ul li {
   color: #fff;
   font-size: 1.2rem;
   font-weight: bold; 
+  margin: 0 10px;
 }
 
 nav ul li a {

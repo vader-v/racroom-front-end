@@ -9,8 +9,8 @@
 }
 
 .container > img {
-  width: 32px;
-  height: 32px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   margin-right: 12px;
   border-radius: 50%;
