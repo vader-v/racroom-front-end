@@ -102,7 +102,6 @@ const TriviaDetails = (props) => {
   }
 
   const handleSubmitAnswer = () => {
-    console.log(selectedChoices)
     if (currentQuestionIndex === trivia.questions.length - 1) {
       const correctChoices = trivia.questions.reduce(
         (total, question, questionIndex) => {
@@ -115,7 +114,6 @@ const TriviaDetails = (props) => {
         },
         0
       )
-      console.log(`Number of correct choices: ${correctChoices}`)
       setScore(correctChoices)
       setIsTriviaFinished(true)
       setShowLatestScore(true)
