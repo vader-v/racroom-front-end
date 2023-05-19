@@ -1,9 +1,7 @@
 import { useState } from 'react'
-
 import TriviaCard from '../../components/TriviaCard/TriviaCard'
 import CategoryDropdown from '../../components/CategoryDropdown/CategoryDropdown'
 import { TriviaSearchForm } from '../../components/SearchForm/SearchForm'
-
 import styles from './TriviaList.module.css'
 
 const TriviaList = (props) => {
