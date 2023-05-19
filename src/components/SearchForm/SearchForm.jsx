@@ -7,7 +7,7 @@ const ProfileSearchForm = (props) => {
   const handleChange = (evt) => {
     const value = evt.target.value
     setFormData({ query: value })
-    props.handleProfileSearch(formData)
+    props.handleProfileSearch(value)
   }
 
   return (
@@ -23,6 +23,7 @@ const ProfileSearchForm = (props) => {
     </form>
   )
 }
+
 
 
 
