@@ -1,13 +1,13 @@
 // npm modules
-import { useState } from "react"
+import { useState } from 'react'
 
 const ProfileSearchForm = (props) => {
-  const [formData, setFormData] = useState({ query: "" })
+  const [formData, setFormData] = useState({ query: '' })
 
   const handleChange = (evt) => {
     const value = evt.target.value
     setFormData({ query: value })
-    props.handleProfileSearch(value)
+    props.handleProfileSearch(formData)
   }
 
   return (
@@ -24,13 +24,15 @@ const ProfileSearchForm = (props) => {
   )
 }
 
-const TriviaSearchForm = (props) => {
-  const [formData, setFormData] = useState({ query: "" })
 
+
+const TriviaSearchForm = (props) => {
+  const [formData, setFormData] = useState({ query: '' })
+  
   const handleChange = (evt) => {
     const value = evt.target.value
     setFormData({ query: value })
-    props.handleTriviaSearch(value) // Custom callback for trivia search
+    props.handleTriviaSearch(value)
   }
 
   return (
@@ -42,9 +44,12 @@ const TriviaSearchForm = (props) => {
         value={formData.query}
         placeholder="Search Trivia"
         onChange={handleChange}
-      />
+        />
     </form>
   )
 }
 
-export { ProfileSearchForm, TriviaSearchForm }
+export {
+  ProfileSearchForm,
+  TriviaSearchForm
+} 
