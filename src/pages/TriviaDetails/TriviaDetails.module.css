@@ -243,45 +243,6 @@ img {
   font-family: canada-type-gibson, sans-serif;
 }
 
-/* .mailbox {
-  position: relative;
-  width: 100%;
-  min-width: 70%;
-  height: auto;
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  bottom: 50px;
-  right: 37%; 
-  z-index: 1;
-} */
-
-/* .mailbox {
-  position: relative;
-  width: 100%;
-  height: auto;
-  margin-top: 40px;
-  margin-left: 0;
-  margin-right: auto;
-  bottom: 50px;
-  left: 0;
-  transform: translateX(0%);
-  z-index: 1;
-} */
-
-/* .mailbox {
-  position: relative;
-  width: calc(100vw - 50%);
-  height: auto;
-  left: 0;
-  transform: translateX(-50%);
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  bottom: 50px;
-  z-index: 1;
-} */
-
 .mailbox {
   position: relative;
   width: 100%;
@@ -370,24 +331,6 @@ button, input[type="checkbox"] {
 }
 
 
-@media screen and (max-width: 768px) {
-  .trashImage {
-    position: relative;
-    width: 70%;
-    top: -15%;
-    left: 0%;
-  }
-}
-
-@media screen and (max-height: 768px) {
-  .trashImage {
-    position: relative;
-    width: 70%;
-    top: -15%;
-    left: -15%;
-  }
-}
-
 .latestScore {
   position: relative;
   font-size: 700%;
@@ -399,4 +342,35 @@ button, input[type="checkbox"] {
   left: 50%;
   transform: translate(-35%, 90%);
   z-index: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .trashImage {
+    position: relative;
+    width: 70%;
+    top: -15%;
+    left: 0%;
+  }
+
+  .latestScore {
+    position: relative;
+    font-size: 300%;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-weight: bold;
+    text-shadow: 10px 10px 4px #000000;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 300%);
+    z-index: 400;
+  }
+}
+
+@media screen and (max-height: 768px) {
+  .trashImage {
+    position: relative;
+    width: 70%;
+    top: -15%;
+    left: -15%;
+  }
 }
