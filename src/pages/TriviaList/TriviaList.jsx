@@ -1,17 +1,14 @@
-// npm modules
 import { useState } from 'react'
 
-// components
 import TriviaCard from '../../components/TriviaCard/TriviaCard'
 import CategoryDropdown from '../../components/CategoryDropdown/CategoryDropdown'
 import { TriviaSearchForm } from '../../components/SearchForm/SearchForm'
 
-// css
 import styles from './TriviaList.module.css'
 
 const TriviaList = (props) => {
-  const [selectedCategory, setSelectedCategory] = useState("")
-  const [searchQuery, setSearchQuery] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState('')
+  const [searchQuery, setSearchQuery] = useState('')
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value)
@@ -35,14 +32,21 @@ const TriviaList = (props) => {
 
   return (
     <main className={styles.container}>
-      <div className={styles.dropdown}>
-        <label htmlFor="category-filter">Filter by Category:</label>
-        <CategoryDropdown value={selectedCategory} onChange={handleCategoryChange} />
+      <div className={styles.wrapper}>
+        <div className={styles.searchBar}>
+          <label htmlFor='title-search'>Search by title:</label>
+          <TriviaSearchForm handleTriviaSearch={handleSearch} />
+        </div>
+        <div className={styles.dropdown}>
+          <label htmlFor="category-filter">Filter by category:</label>
+          <CategoryDropdown value={selectedCategory} onChange={handleCategoryChange} />
+        </div>
       </div>
-      <TriviaSearchForm handleTriviaSearch={handleSearch} />
-      {filteredTrivias.map((trivia) => (
-        <TriviaCard key={trivia._id} trivia={trivia} />
-      ))}
+      <div className={styles.triviaList}>
+        {filteredTrivias.map((trivia) => (
+          <TriviaCard key={trivia._id} trivia={trivia} />
+        ))}
+      </div>
     </main>
   )
 }
