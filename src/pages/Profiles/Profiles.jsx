@@ -5,6 +5,9 @@ import * as profileService from "../../services/profileService"
 import * as triviaService from "../../services/triviaService"
 import * as authService from "../../services/authService"
 
+
+import raccoonIcon from '../../assets/icons/raccoon.svg'
+
 // css
 import styles from "./Profiles.module.css"
 
@@ -54,12 +57,16 @@ const Profiles = (props) => {
     return <div>Loading...</div>
   }
 
+  
+  const profilePhoto = profile.photo || raccoonIcon
+
   return (
     <div className={styles["profiles-container"]}>
       <div className={styles["profile-details"]}>
         <div className={styles["profile-header"]}>
           <div className={styles["profile-image"]}>
-            <img src={profile.photo} alt="Profile" />
+
+            <img src={profilePhoto} alt="Profile" />
           </div>
           {triviaDetails.length > 0 ? (
             <div className={styles["trivia-count"]}>
@@ -85,7 +92,9 @@ const Profiles = (props) => {
                       to={`/trivia/${trivia._id}`}
                       className={styles["trivia-link"]}
                     >
-                      {trivia.title}
+                      <p>
+                      Title: {trivia.title}; Category: {trivia.category}; Number of questions: {trivia.questions.length}
+                      </p>
                     </Link>
                     {trivia.owner._id === props.user.profile && (
                       <div className={styles["trivia-button-container"]}>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import * as profileService from "../../services/profileService"
 
 // components
-import SearchForm from "../../components/SearchForm/SearchForm"
+import { ProfileSearchForm } from "../../components/SearchForm/SearchForm"
 
 // css
 import styles from "./Profiles.module.css"
@@ -44,24 +44,25 @@ const ProfileList = () => {
   return (
     <main className={styles.container}>
       <div className="stationary-search-bar">
-        <h1>Hello. This is a list of all the profiles.</h1>
-        <SearchForm handleProfileSearch={handleProfileSearch} />
-        {<h2>{searchResults.length} results found</h2>}
-      </div>
+      <h1>Hello. This is a list of all the profiles.</h1>
+      <ProfileSearchForm handleProfileSearch={handleProfileSearch} />
+      {<h2>{searchResults.length} results found</h2>}
+    </div>
       <div className={styles.profilesContainer}>
         {searchResults.map((profile) => (
-          <Link
-            to={`/profiles/${profile._id}`}
-            key={profile._id}
-            className={styles.profileItem}
-          >
-            <img
-              src={profile.photo || raccoonIcon}
-              alt="Profile"
-              className={styles.profileImage}
-            />
-            <span className={styles.profileName}>{profile.name}</span>
-          </Link>
+          <div className={styles.profileWrapper} key={profile._id}>
+            <Link
+              to={`/profiles/${profile._id}`}
+              className={styles.profileItem}
+            >
+              <img
+                src={profile.photo || raccoonIcon}
+                alt="Profile"
+                className={styles.profileImage}
+              />
+              <span className={styles.profileName}>{profile.name}</span>
+            </Link>
+          </div>
         ))}
       </div>
     </main>
@@ -69,4 +70,3 @@ const ProfileList = () => {
 }
 
 export default ProfileList
-

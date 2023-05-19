@@ -1,5 +1,4 @@
 // components
-import profileIcon from '../../assets/icons/profile.png'
 import raccoonIcon from '../../assets/icons/raccoon.svg'
 
 // css
