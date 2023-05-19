@@ -370,24 +370,6 @@ button, input[type="checkbox"] {
 }
 
 
-@media screen and (max-width: 768px) {
-  .trashImage {
-    position: relative;
-    width: 70%;
-    top: -15%;
-    left: 0%;
-  }
-}
-
-@media screen and (max-height: 768px) {
-  .trashImage {
-    position: relative;
-    width: 70%;
-    top: -15%;
-    left: -15%;
-  }
-}
-
 .latestScore {
   position: relative;
   font-size: 700%;
@@ -399,4 +381,35 @@ button, input[type="checkbox"] {
   left: 50%;
   transform: translate(-35%, 90%);
   z-index: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .trashImage {
+    position: relative;
+    width: 70%;
+    top: -15%;
+    left: 0%;
+  }
+
+  .latestScore {
+    position: relative;
+    font-size: 300%;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-weight: bold;
+    text-shadow: 10px 10px 4px #000000;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 300%);
+    z-index: 400;
+  }
+}
+
+@media screen and (max-height: 768px) {
+  .trashImage {
+    position: relative;
+    width: 70%;
+    top: -15%;
+    left: -15%;
+  }
 }
