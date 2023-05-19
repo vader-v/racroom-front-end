@@ -1,34 +1,34 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-import TriviaCard from '../../components/TriviaCard/TriviaCard';
-import CategoryDropdown from '../../components/CategoryDropdown/CategoryDropdown';
-import { TriviaSearchForm } from '../../components/SearchForm/SearchForm';
+import TriviaCard from '../../components/TriviaCard/TriviaCard'
+import CategoryDropdown from '../../components/CategoryDropdown/CategoryDropdown'
+import { TriviaSearchForm } from '../../components/SearchForm/SearchForm'
 
-import styles from './TriviaList.module.css';
+import styles from './TriviaList.module.css'
 
 const TriviaList = (props) => {
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('')
+  const [searchQuery, setSearchQuery] = useState('')
 
   const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
-  };
+    setSelectedCategory(e.target.value)
+  }
 
   const handleSearch = (query) => {
-    setSearchQuery(query.toLowerCase());
-  };
+    setSearchQuery(query.toLowerCase())
+  }
 
   const filterTrivias = (trivia) => {
     if (selectedCategory && trivia.category !== selectedCategory) {
-      return false;
+      return false
     }
     if (searchQuery && !trivia.title.toLowerCase().includes(searchQuery)) {
-      return false;
+      return false
     }
-    return true;
-  };
+    return true
+  }
 
-  const filteredTrivias = props.trivias.filter(filterTrivias);
+  const filteredTrivias = props.trivias.filter(filterTrivias)
 
   return (
     <main className={styles.container}>
@@ -48,7 +48,7 @@ const TriviaList = (props) => {
         ))}
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default TriviaList;
+export default TriviaList
