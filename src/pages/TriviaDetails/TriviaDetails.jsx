@@ -75,12 +75,16 @@ const TriviaDetails = (props) => {
   }
 
   const handleImageClick = () => {
-    audioClip.play()
-    setIsMailboxClicked(true)
-    setPhoto(mailBoxAnimation)
-    setTimeout(() => {
+    if (isMailboxClicked) {
       setIsHeaderVisible(true)
-    }, 4500)
+    } else {
+      audioClip.play()
+      setIsMailboxClicked(true)
+      setPhoto(mailBoxAnimation)
+      setTimeout(() => {
+        setIsHeaderVisible(true)
+      }, 4500)
+    }
   }
 
   const handleTrashClick = () => {
@@ -99,7 +103,6 @@ const TriviaDetails = (props) => {
 
   const handleSubmitAnswer = () => {
     console.log(selectedChoices)
-
     if (currentQuestionIndex === trivia.questions.length - 1) {
       const correctChoices = trivia.questions.reduce(
         (total, question, questionIndex) => {
@@ -130,6 +133,7 @@ const TriviaDetails = (props) => {
       setIsChoiceSelected(false)
     }
   }
+
   useEffect(() => {
     if (trivia) {
       const newScoreList = trivia.scores.filter(
@@ -141,11 +145,8 @@ const TriviaDetails = (props) => {
         setScoreId(currentScoreId)
         setLatestScore(newScoreList[0].score)
       }
-      console.log("newScore", newScoreList)
-      console.log("doesScoreExist", doesScoreExist)
-      console.log("latestScore", latestScore)
     }
-  }, [doesScoreExist, latestScore, props.user.profile, trivia])
+  }, [trivia])
 
   useEffect(() => {
     setLatestScore(score)
@@ -244,7 +245,7 @@ const TriviaDetails = (props) => {
                 <div className="profileImgage">
                   <OwnerInfo content={trivia} />
                 </div>
-                <Link to={"/trivia"} className={styles.return}>Return</Link>
+                <Link to={"/trivia"}>Return</Link>
                 {trivia.owner._id === props.user.profile && (
                   <>
                     <Link to={`/trivia/${triviaId}/edit`} state={trivia}>
@@ -272,12 +273,14 @@ const TriviaDetails = (props) => {
               />
             </NavLink>
           ) : (
-            <img
-              src={isStubbornTrashVisible ? trashStuborn : trashRaccoon}
-              alt="Trash Can"
-              className={styles.trashImage}
-              onClick={handleTrashClick}
-            />
+            <>
+              <img
+                src={isStubbornTrashVisible ? trashStuborn : trashRaccoon}
+                alt="Trash Can"
+                className={styles.trashImage}
+                onClick={handleTrashClick}
+              />
+            </>
           ))}
       </article>
     </main>
