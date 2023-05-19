@@ -6,6 +6,7 @@
   width: 340px;
   height: 220px;
   padding: 14px 21px;
+  margin: 0 16px;
   border-radius: 5px;
   border: 1px solid var(--border);
   background-color: rgb(56, 48, 53);

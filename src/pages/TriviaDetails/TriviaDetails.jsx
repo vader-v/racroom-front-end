@@ -148,7 +148,7 @@ const TriviaDetails = (props) => {
 
   useEffect(() => {
     setLatestScore(score)
-  }, [isTriviaFinished, score])
+  }, [isTriviaFinished])
 
   if (!trivia) return <h1>Loading</h1>
 
