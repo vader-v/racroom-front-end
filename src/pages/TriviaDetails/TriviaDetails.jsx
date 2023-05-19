@@ -102,7 +102,6 @@ const TriviaDetails = (props) => {
   }
 
   const handleSubmitAnswer = () => {
-    console.log(selectedChoices)
     if (currentQuestionIndex === trivia.questions.length - 1) {
       const correctChoices = trivia.questions.reduce(
         (total, question, questionIndex) => {
