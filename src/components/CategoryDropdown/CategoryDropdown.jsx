@@ -5,7 +5,7 @@ const CategoryDropdown = ({ value, onChange }) => {
   return (
     <div className={styles.dropdown}>
       <select name="category" value={value} onChange={onChange}>
-        <option value="">All</option>
+        <option value="All">All</option>
         <option value="Pop Culture">Pop Culture</option>
         <option value="History">History</option>
         <option value="Games">Games</option>
