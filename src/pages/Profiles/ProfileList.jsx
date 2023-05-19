@@ -34,9 +34,9 @@ const ProfileList = () => {
     )
   }
 
-  const handleProfileSearch = (formData) => {
+  const handleProfileSearch = (query) => {
     const filteredProfileResults = profileList.filter((profile) =>
-      profile.name.toLowerCase().includes(formData.query.toLowerCase())
+      profile.name.toLowerCase().includes(query.toLowerCase())
     )
     setSearchResults(filteredProfileResults)
   }
