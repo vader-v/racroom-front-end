@@ -22,7 +22,7 @@
 }
 
 .container form {
-  background: linear-gradient(45deg, rgb(53, 14, 169), rgb(128, 67, 144));
+  background: linear-gradient(45deg, rgb(53, 14, 169), rgb(202, 123, 221));
   padding: 21px 28px;
   text-align: center;
   border: 2px solid;
@@ -37,6 +37,7 @@
 .container label {
   font-weight: 600;
   margin: 7px 0px 14px 0px;
+  color: black;
 }
 
 .container button {
