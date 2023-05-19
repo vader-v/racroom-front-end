@@ -97,7 +97,7 @@ const Profiles = (props) => {
                       </p>
                     </Link>
                     {trivia.owner._id === props.user.profile && (
-                      <div className={styles["trivia-button-container"]}>
+                      <div className={styles.buttoncontainer}>
                         <Link
                           to={`/trivia/${trivia._id}/edit`}
                           state={trivia}
