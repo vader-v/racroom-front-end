@@ -50,13 +50,13 @@ Once the trivia is finished, your score will be tallied based on the total numbe
 ---
 ## References used
 
-- MDN Web Docs. (n.d.). Mozilla Developer Network. https://developer.mozilla.org/en-US/
+- [MDN Web Docs. (n.d.). Mozilla Developer Network.](https://developer.mozilla.org/en-US/)
 
-- Stack Overflow. (n.d.). Stack Exchange Inc. https://stackoverflow.com/
+- [Stack Overflow. (n.d.). Stack Exchange Inc.](https://stackoverflow.com/)
 
-- Google. (n.d.). Google Search Engine. https://www.google.com/
+- [Google. (n.d.). Google Search Engine.](https://www.google.com/)
 
-- React Dev Docs. https://react.dev/
+- [React Dev Docs.](https://react.dev/)
 
 ---
 ## Attributions
@@ -64,6 +64,9 @@ Once the trivia is finished, your score will be tallied based on the total numbe
 _Stylesheet References_
 
 
-- CSS wand - https://www.csswand.dev/
+- [CSS wand](https://www.csswand.dev/)
 
-- CSS tricks - https://css-tricks.com/almanac/
+- [CSS tricks](https://css-tricks.com/almanac/)
+---
+## RacRoom back end link
+- [Here is a link to our back end repository!](https://github.com/HeyThatsNeat/racroom-back-end)
