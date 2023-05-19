@@ -10,8 +10,8 @@ import styles from './TriviaCard.module.css'
 const TriviaCard = ({ trivia }) => {
   return (
     <>
-      <Link to={`/trivia/${trivia._id}`} state={trivia}>
         <article className={styles.container}>
+      <Link to={`/trivia/${trivia._id}`} state={trivia}>
           <header>
             <span>
               <h1>{trivia.title}</h1>
@@ -20,8 +20,8 @@ const TriviaCard = ({ trivia }) => {
             <h6>Category:</h6>
             <h4>{trivia.category}</h4>
           </header>
-        </article>
       </Link>
+        </article>
     </>
   )
 }
