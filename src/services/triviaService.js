@@ -9,14 +9,13 @@ async function indexTrivia(){
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
     })
     return res.json()
-  } catch (err) {
-    console.log(err)
+  } catch (error) {
+    throw new Error(error)
   }
 }
 
 async function create(triviaFormData) {
   try {
-    // BASE_URL IS POST http://localhost:3001/api/trivia
     const res = await fetch(BASE_URL, {
       method: 'POST',
       headers: { 
@@ -27,7 +26,7 @@ async function create(triviaFormData) {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 
@@ -38,7 +37,7 @@ async function showTrivia(triviaId) {
     }) 
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 
@@ -54,7 +53,7 @@ async function updateTrivia(triviaFormData) {
 		})
 		return res.json()
 	} catch (error) {
-		console.log(error)
+		throw new Error(error)
 	}
 }
 
@@ -68,7 +67,7 @@ async function deleteTrivia(triviaId) {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 
@@ -84,7 +83,7 @@ async function addScore(triviaId, scoreData) {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 
@@ -100,7 +99,7 @@ async function updateScore(triviaId, scoreId, scoreData) {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 
@@ -111,7 +110,7 @@ async function getTriviaById(triviaId) {
     })
     return await res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 
@@ -123,5 +122,5 @@ export {
   deleteTrivia,
   addScore,
   updateScore,
-  getTriviaById 
+  getTriviaById,
 }

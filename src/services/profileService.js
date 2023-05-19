@@ -9,8 +9,8 @@ async function getAllProfiles() {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return await res.json()
-  } catch (err) {
-    throw new Error(err)
+  } catch (error) {
+    throw new Error(error)
   }
 }
 
@@ -27,8 +27,8 @@ async function addPhoto(photoData) {
       body: photoFormData,
     })
     return await res.json()
-  } catch (err) {
-    throw new Error(err)
+  } catch (error) {
+    throw new Error(error)
   }
 }
 
@@ -38,8 +38,8 @@ async function getProfileById(profileId) {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return await res.json()
-  } catch (err) {
-    throw new Error(err)
+  } catch (error) {
+    throw new Error(error)
   }
 }
 
