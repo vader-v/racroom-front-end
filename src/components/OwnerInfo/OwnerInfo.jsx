@@ -13,7 +13,7 @@ const OwnerInfo = (props) => {
     <div className={styles.container}>
       <section>
         <img src={photo} alt="" />
-        <h5>Made by: {content.owner.name}</h5>
+        <h5>Made by: {content.owner?.name}</h5>
       </section>
     </div>
   )

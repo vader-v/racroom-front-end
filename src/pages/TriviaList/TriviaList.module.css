@@ -20,8 +20,16 @@
   padding: 10px;
 }
 
+.searchBar {
+  margin-bottom: 10px;
+}
+
 .dropdown {
-  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.triviaList {
+  width: 100%;
 }
 
 @media only screen and (min-width: 900px) {

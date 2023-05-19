@@ -35,24 +35,19 @@ const ProfileList = () => {
   }
 
   const handleProfileSearch = (formData) => {
-    const { query } = formData
-    if (query) {
-      const filteredProfileResults = profileList.filter((profile) =>
-        profile.name.toLowerCase().includes(query.toLowerCase())
-      )
-      setSearchResults(filteredProfileResults)
-    } else {
-      setSearchResults(profileList)
-    }
+    const filteredProfileResults = profileList.filter((profile) =>
+      profile.name.toLowerCase().includes(formData.query.toLowerCase())
+    )
+    setSearchResults(filteredProfileResults)
   }
 
   return (
     <main className={styles.container}>
-      <div className="stationary-search-bar">
-      <h1>Hello. This is a list of all the profiles.</h1>
-      <ProfileSearchForm handleProfileSearch={handleProfileSearch} />
-      {<h2>{searchResults.length} results found</h2>}
-    </div>
+      <div className={`${styles.searchBarContainer} ${styles.center}`}>
+        <h1>Hello. This is a list of all the profiles.</h1>
+        <ProfileSearchForm handleProfileSearch={handleProfileSearch} />
+        {<h2>{searchResults.length} results found</h2>}
+      </div>
       <div className={styles.profilesContainer}>
         {searchResults.map((profile) => (
           <div className={styles.profileWrapper} key={profile._id}>
