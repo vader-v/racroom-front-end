@@ -45,7 +45,6 @@ const TriviaDetails = (props) => {
 	const [isTriviaFinished, setIsTriviaFinished] = useState(false)
 	const [isHeaderVisible, setIsHeaderVisible] = useState(false)
 	const [photo, setPhoto] = useState(mailBox)
-	const [isMailboxClicked, setIsMailboxClicked] = useState(false)
   const [doesScoreExist, setScoreExists] = useState(false);
   const [scoreId, setScoreId] = useState("");
   const [latestScore, setLatestScore] = useState(0);
@@ -103,8 +102,6 @@ const TriviaDetails = (props) => {
   }
 
   const handleSubmitAnswer = () => {
-    console.log(selectedChoices)
-
     if (currentQuestionIndex === trivia.questions.length - 1) {
       const correctChoices = trivia.questions.reduce(
         (total, question, questionIndex) => {
@@ -117,7 +114,6 @@ const TriviaDetails = (props) => {
         },
         0
       )
-      console.log(`Number of correct choices: ${correctChoices}`)
       setScore(correctChoices)
       setIsTriviaFinished(true)
       setShowLatestScore(true)
@@ -145,9 +141,6 @@ const TriviaDetails = (props) => {
         setScoreId(currentScoreId)
         setLatestScore(newScoreList[0].score)
       }
-      console.log("newScore", newScoreList)
-      console.log("doesScoreExist", doesScoreExist)
-      console.log("latestScore", latestScore)
     }
   }, [doesScoreExist, latestScore, props.user.profile, trivia])
 
