@@ -22,7 +22,6 @@ const Profiles = (props) => {
         const profileData = await profileService.getProfileById(profileId)
         setProfile(profileData)
         if (profileData && profileData.trivia) {
-          // Fetch the details of each trivia based on their IDs
           const fetchTriviaDetails = async () => {
             const promises = profileData.trivia.map(async (triviaId) => {
               const triviaData = await triviaService.getTriviaById(triviaId)
@@ -31,7 +30,6 @@ const Profiles = (props) => {
             const triviaDetailsData = await Promise.all(promises)
             setTriviaDetails(triviaDetailsData)
           }
-
           fetchTriviaDetails()
         }
       } catch (error) {
@@ -73,7 +71,6 @@ const Profiles = (props) => {
         </div>
         <div className={styles["profile-content"]}>
           <h2>{profile.name}</h2>
-          {/* Display additional profile information here */}
         </div>
         {triviaDetails.length > 0 ? (
           <div className={styles["trivia-section"]}>
