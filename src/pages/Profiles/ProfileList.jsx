@@ -50,18 +50,19 @@ const ProfileList = () => {
       </div>
       <div className={styles.profilesContainer}>
         {searchResults.map((profile) => (
-          <Link
-            to={`/profiles/${profile._id}`}
-            key={profile._id}
-            className={styles.profileItem}
-          >
-            <img
-              src={profile.photo || raccoonIcon}
-              alt="Profile"
-              className={styles.profileImage}
-            />
-            <span className={styles.profileName}>{profile.name}</span>
-          </Link>
+          <div className={styles.profileWrapper} key={profile._id}>
+            <Link
+              to={`/profiles/${profile._id}`}
+              className={styles.profileItem}
+            >
+              <img
+                src={profile.photo || raccoonIcon}
+                alt="Profile"
+                className={styles.profileImage}
+              />
+              <span className={styles.profileName}>{profile.name}</span>
+            </Link>
+          </div>
         ))}
       </div>
     </main>
@@ -69,4 +70,3 @@ const ProfileList = () => {
 }
 
 export default ProfileList
-
