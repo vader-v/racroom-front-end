@@ -19,7 +19,7 @@ const TriviaList = (props) => {
   }
 
   const filterTrivias = (trivia) => {
-    if (selectedCategory && trivia.category !== selectedCategory) {
+    if (selectedCategory !== 'All' && selectedCategory && trivia.category !== selectedCategory) {
       return false
     }
     if (searchQuery && !trivia.title.toLowerCase().includes(searchQuery)) {
@@ -32,22 +32,26 @@ const TriviaList = (props) => {
 
   return (
     <main className={styles.container}>
-    <div className={styles.wrapper}>
-      <div className={styles.searchBar}>
-        <label htmlFor='title-search'>Search by title:</label>
-        <TriviaSearchForm handleTriviaSearch={handleSearch} />
+      <div className={styles.wrapper}>
+        <div className={styles.searchBar}>
+          <label htmlFor='title-search'>Search by title:</label>
+          <TriviaSearchForm handleTriviaSearch={handleSearch} />
+        </div>
+        <div className={styles.dropdown}>
+          <label htmlFor="category-filter">Filter by category:</label>
+          <CategoryDropdown value={selectedCategory} onChange={handleCategoryChange} />
+        </div>
       </div>
-      <div className={styles.dropdown}>
-        <label htmlFor="category-filter">Filter by category:</label>
-        <CategoryDropdown value={selectedCategory} onChange={handleCategoryChange} />
+      <div className={`${styles.triviaList} ${styles.triviaGrid}`}>
+        {filteredTrivias.length > 0 ? (
+          filteredTrivias.map((trivia) => (
+            <TriviaCard key={trivia._id} trivia={trivia} />
+          ))
+        ) : (
+          <p>No trivia found.</p>
+        )}
       </div>
-    </div>
-    <div className={`${styles.triviaList} ${styles.triviaGrid}`}>
-      {filteredTrivias.map((trivia) => (
-        <TriviaCard key={trivia._id} trivia={trivia} />
-      ))}
-    </div>
-  </main>
+    </main>
   )
 }
 
