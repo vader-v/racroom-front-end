@@ -6,7 +6,6 @@ import TriviaCard from '../../components/TriviaCard/TriviaCard'
 import CategoryDropdown from '../../components/CategoryDropdown/CategoryDropdown'
 import { TriviaSearchForm } from '../../components/SearchForm/SearchForm'
 
-
 // css
 import styles from './TriviaList.module.css'
 
@@ -19,21 +18,20 @@ const TriviaList = (props) => {
   }
 
   const handleSearch = (query) => {
-    setSelectedCategory("");
-    setSearchQuery(query.toLowerCase());
+    setSearchQuery(query.toLowerCase())
   }
 
   const filterTrivias = (trivia) => {
     if (selectedCategory && trivia.category !== selectedCategory) {
-      return false;
+      return false
     }
     if (searchQuery && !trivia.title.toLowerCase().includes(searchQuery)) {
-      return false;
+      return false
     }
-    return true;
+    return true
   }
 
-  const filteredTrivias = props.trivias.filter(filterTrivias);
+  const filteredTrivias = props.trivias.filter(filterTrivias)
 
   return (
     <main className={styles.container}>
